@@ -608,9 +608,11 @@ uint16_t MifareClassicAppProcess(uint8_t *Buffer, uint16_t BitCount) {
             }
 //#ifdef SUPPORT_MF_CLASSIC_MAGIC_MODE
             else if (Buffer[0] == CMD_CHINESE_UNLOCK) {
-                State = STATE_CHINESE_IDLE;
-                Buffer[0] = ACK_VALUE;
-                return ACK_NAK_FRAME_SIZE;
+                if (bUidMode) {
+                    State = STATE_CHINESE_IDLE;
+                    Buffer[0] = ACK_VALUE;
+                    return ACK_NAK_FRAME_SIZE;
+                }
             }
 //#endif
             break;
