@@ -4,7 +4,11 @@
 # because Atmel does not ship sh.exe anymore with the toolchain.
 SHELL = /bin/sh
 
+SETTINGS    += -DCONFIG_UART_MODE
+
 #Supported configurations
+SETTINGS    += -DCONFIG_MF_DETECTION_SUPPORT
+SETTINGS    += -DCONFIG_MF_DETECTION_4K_SUPPORT
 SETTINGS    += -DCONFIG_MF_CLASSIC_MINI_4B_SUPPORT
 SETTINGS    += -DCONFIG_MF_CLASSIC_1K_SUPPORT
 SETTINGS    += -DCONFIG_MF_CLASSIC_1K_7B_SUPPORT
@@ -44,14 +48,17 @@ SETTINGS	+= -DDEFAULT_CONFIGURATION=CONFIG_NONE
 #SETTINGS	+= -DDEFAULT_RBUTTON_ACTION=BUTTON_ACTION_UID_RIGHT_DECREMENT
 SETTINGS	+= -DDEFAULT_RBUTTON_ACTION=BUTTON_ACTION_CYCLE_SETTINGS
 #SETTINGS	+= -DDEFAULT_RBUTTON_ACTION=BUTTON_ACTION_STORE_MEM
-SETTINGS	+= -DDEFAULT_LBUTTON_ACTION=BUTTON_ACTION_RECALL_MEM
+SETTINGS    += -DDEFAULT_LBUTTON_ACTION=BUTTON_ACTION_CYCLE_SETTINGS_DEC
+#SETTINGS	+= -DDEFAULT_LBUTTON_ACTION=BUTTON_ACTION_RECALL_MEM
 
 #Define if button action setting should be independent of active setting
 SETTINGS	+= -DBUTTON_SETTING_GLOBAL
 
 #Default LED functions
-SETTINGS	+= -DDEFAULT_RED_LED_ACTION=LED_SETTING_CHANGE
-SETTINGS	+= -DDEFAULT_GREEN_LED_ACTION=LED_POWERED
+#SETTINGS	+= -DDEFAULT_RED_LED_ACTION=LED_SETTING_CHANGE
+#SETTINGS	+= -DDEFAULT_GREEN_LED_ACTION=LED_POWERED
+SETTINGS    += -DDEFAULT_RED_LED_ACTION=LED_POWERED
+SETTINGS    += -DDEFAULT_GREEN_LED_ACTION=LED_SETTING_CHANGE
 
 #Define if LED function setting should be independent of active setting
 SETTINGS	+= -DLED_SETTING_GLOBAL
@@ -68,7 +75,7 @@ SETTINGS	+= -DLOG_SETTING_GLOBAL
 SETTINGS	+= -DDEFAULT_SETTING=SETTINGS_FIRST
 
 #Default pending task timeout
-SETTINGS	+= -DDEFAULT_PENDING_TASK_TIMEOUT=50 #* 100ms
+SETTINGS	+= -DDEFAULT_PENDING_TASK_TIMEOUT=20 #* 100ms
 
 #Default reader threshold
 SETTINGS	+= -DDEFAULT_READER_THRESHOLD=400
@@ -85,7 +92,7 @@ SPM_HELPER_OBJCOPY = --set-section-flags=.spmhelper="alloc,load"
 
 #Build configuration
 ifeq ($(OS),Windows_NT)
-BUILD_DATE   = "\"$(shell date /t)\""
+BUILD_DATE   = "\"$(shell date -I)\""
 else
 BUILD_DATE   = $(shell date +'\"%y%m%d\"')
 endif
@@ -95,9 +102,9 @@ ARCH         = XMEGA
 BOARD        = NONE
 F_CPU        = 27120000
 F_USB        = 48000000
-TARGET       = Chameleon-Mini
+TARGET       = Chameleon-RevG
 OPTIMIZATION = s
-SRC         += $(TARGET).c LUFADescriptors.c System.c Configuration.c Random.c Common.c Memory.c MemoryAsm.S Button.c Log.c Settings.c LED.c Map.c AntennaLevel.c
+SRC         += Chameleon-Mini.c LUFADescriptors.c System.c Configuration.c Random.c Common.c Memory.c MemoryAsm.S Button.c Log.c Settings.c LED.c Map.c AntennaLevel.c Uart.c uartcmd.c
 SRC         += Terminal/Terminal.c Terminal/Commands.c Terminal/XModem.c Terminal/CommandLine.c
 SRC         += Codec/Codec.c Codec/ISO14443-2A.c Codec/Reader14443-2A.c Codec/SniffISO14443-2A.c Codec/Reader14443-ISR.S
 SRC         += Application/MifareUltralight.c Application/MifareClassic.c Application/ISO14443-3A.c Application/Crypto1.c Application/Reader14443A.c Application/Sniff14443A.c Application/CryptoTDEA.S
@@ -120,8 +127,8 @@ AVRDUDE_WRITE_EEPROM = -U eeprom:w:$(TARGET).eep
 AVRDUDE_FLAGS = -p $(AVRDUDE_MCU) -P $(AVRDUDE_PORT) -c $(AVRDUDE_PROGRAMMER)
 
 #AVRDUDE settings to program the precompiled firmware
-AVRDUDE_WRITE_APP_LATEST = -U application:w:Latest/Chameleon-Mini.hex
-AVRDUDE_WRITE_EEPROM_LATEST = -U eeprom:w:Latest/Chameleon-Mini.eep
+AVRDUDE_WRITE_APP_LATEST = -U application:w:Latest/Chameleon-RevG.hex
+AVRDUDE_WRITE_EEPROM_LATEST = -U eeprom:w:Latest/Chameleon-RevG.eep
 
 
 # Default target

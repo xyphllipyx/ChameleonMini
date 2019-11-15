@@ -187,7 +187,27 @@ CommandStatusIdType CommandGetField(char *OutMessage);
 #define COMMAND_CLONE  "CLONE"
 CommandStatusIdType CommandExecClone(char *OutMessage);
 
+#define COMMAND_SETUIDMODE   "UIDMODE"
+CommandStatusIdType CommandGetUidMode(char *OutMessage);
+CommandStatusIdType CommandSetUidMode(char *OutMessage, const char *InParam);
+
+#define COMMAND_SETSAKMODE   "SAKMODE"
+CommandStatusIdType CommandGetSakMode(char *OutMessage);
+CommandStatusIdType CommandSetSakMode(char *OutMessage, const char *InParam);
+
 #define COMMAND_LIST_END    ""
 /* Defines the end of command list. This is no actual command */
+
+#define COMMAND_DETECTION   "DETECTION"
+CommandStatusIdType CommandGetDetection(char *OutParam);
+CommandStatusIdType CommandSetDetection(char *OutMessage, const char *InParam);
+
+#define COMMAND_BAUDRATE    "BAUDRATE"
+CommandStatusIdType CommandGetBaudrate(char *OutParam);
+CommandStatusIdType CommandSetBaudrate(char *OutMessage, const char *InParam);
+
+#define COMMAND_SETLEDMODE    "LEDMODE"
+CommandStatusIdType CommandGetLedMode(char *OutMessage);
+CommandStatusIdType CommandSetLedMode(char *OutMessage, const char *InParam);
 
 #endif /* COMMANDS_H_ */

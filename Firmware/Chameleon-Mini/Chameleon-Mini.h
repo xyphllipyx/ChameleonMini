@@ -20,7 +20,7 @@
 #include "AntennaLevel.h"
 #include "Settings.h"
 
-#define CHAMELEON_MINI_VERSION_STRING    BUILD_DATE
+#define CHAMELEON_MINI_VERSION_STRING    __DATE__
 
 #endif //CHAMELEON_MINI_H
 

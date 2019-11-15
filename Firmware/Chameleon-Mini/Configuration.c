@@ -3,6 +3,10 @@
  *
  *  Created on: 15.02.2013
  *      Author: skuser
+ *
+ *  ChangeLog
+ *    2019-09-22    Willok    Add Turn on the antenna load when simulation tags. It solves the problem of blind area in the short distance of reading head.
+ *
  */
 
 #include "Configuration.h"
@@ -34,6 +38,12 @@ static const MapEntryType PROGMEM ConfigurationMap[] = {
 #endif
 #ifdef CONFIG_MF_CLASSIC_4K_7B_SUPPORT
     { .Id = CONFIG_MF_CLASSIC_4K_7B, 	.Text = "MF_CLASSIC_4K_7B" },
+#endif
+#ifdef CONFIG_MF_DETECTION_SUPPORT
+    { .Id = CONFIG_MF_DETECTION,   .Text = "MF_DETECTION_1K" },
+#endif
+#ifdef CONFIG_MF_DETECTION_4K_SUPPORT
+    { .Id = CONFIG_MF_DETECTION_4K,    .Text = "MF_DETECTION_4K" },
 #endif
 #ifdef CONFIG_ISO14443A_SNIFF_SUPPORT
     { .Id = CONFIG_ISO14443A_SNIFF,	.Text = "ISO14443A_SNIFF" },
@@ -247,6 +257,42 @@ static const PROGMEM ConfigurationType ConfigurationTable[] = {
         .TagFamily = TAG_FAMILY_ISO14443A
     },
 #endif
+#ifdef CONFIG_MF_DETECTION_SUPPORT
+    [CONFIG_MF_DETECTION] = {
+        .CodecInitFunc = ISO14443ACodecInit,
+        .CodecDeInitFunc = ISO14443ACodecDeInit,
+        .CodecTaskFunc = ISO14443ACodecTask,
+        .ApplicationInitFunc = MifareDetectionInit1K,
+        .ApplicationResetFunc = MifareClassicAppReset,
+        .ApplicationTaskFunc = MifareClassicAppTask,
+        .ApplicationTickFunc = ApplicationTickDummy,
+        .ApplicationProcessFunc = MifareClassicAppProcess,
+        .ApplicationGetUidFunc = MifareClassicGetUid,
+        .ApplicationSetUidFunc = MifareClassicSetUid,
+        .UidSize = MIFARE_CLASSIC_UID_SIZE,
+        .MemorySize = MIFARE_CLASSIC_1K_MEM_SIZE,
+        .ReadOnly = false,
+        .TagFamily = TAG_FAMILY_ISO14443A
+    },
+#endif
+#ifdef CONFIG_MF_DETECTION_4K_SUPPORT
+    [CONFIG_MF_DETECTION_4K] = {
+        .CodecInitFunc = ISO14443ACodecInit,
+        .CodecDeInitFunc = ISO14443ACodecDeInit,
+        .CodecTaskFunc = ISO14443ACodecTask,
+        .ApplicationInitFunc = MifareDetectionInit4K,
+        .ApplicationResetFunc = MifareClassicAppReset,
+        .ApplicationTaskFunc = MifareClassicAppTask,
+        .ApplicationTickFunc = ApplicationTickDummy,
+        .ApplicationProcessFunc = MifareClassicAppProcess,
+        .ApplicationGetUidFunc = MifareClassicGetUid,
+        .ApplicationSetUidFunc = MifareClassicSetUid,
+        .UidSize = MIFARE_CLASSIC_UID_SIZE,
+        .MemorySize = MIFARE_CLASSIC_4K_MEM_SIZE,
+        .ReadOnly = false,
+        .TagFamily = TAG_FAMILY_ISO14443A
+    },
+#endif
 #ifdef CONFIG_ISO14443A_SNIFF_SUPPORT
     [CONFIG_ISO14443A_SNIFF] = {
         .CodecInitFunc = Sniff14443ACodecInit,
@@ -380,6 +426,9 @@ ConfigurationType ActiveConfiguration;
 void ConfigurationInit(void) {
     memcpy_P(&ActiveConfiguration,
              &ConfigurationTable[CONFIG_NONE], sizeof(ConfigurationType));
+    //    Simulation mode antenna load, Default is close load.
+    PORTC.DIRSET = PIN7_bm;
+    PORTC.OUTCLR = PIN7_bm;
 
     ConfigurationSetById(GlobalSettings.ActiveSettingPtr->Configuration);
 }
@@ -387,6 +436,7 @@ void ConfigurationInit(void) {
 void ConfigurationSetById(ConfigurationEnum Configuration) {
     CodecDeInit();
 
+    //    Cancel currently executed command when configuration changes
     CommandLinePendingTaskBreak(); // break possibly pending task
 
     GlobalSettings.ActiveSettingPtr->Configuration = Configuration;
@@ -394,6 +444,12 @@ void ConfigurationSetById(ConfigurationEnum Configuration) {
     /* Copy struct from PROGMEM to RAM */
     memcpy_P(&ActiveConfiguration,
              &ConfigurationTable[Configuration], sizeof(ConfigurationType));
+
+    //    Configure antenna load as appropriate
+    if (Configuration == CONFIG_ISO14443A_READER)
+        PORTC.OUTCLR = PIN7_bm;
+    else
+        PORTC.OUTSET = PIN7_bm;
 
     CodecInit();
     ApplicationInit();
@@ -407,6 +463,10 @@ bool ConfigurationSetByName(const char *Configuration) {
     MapIdType Id;
 
     if (MapTextToId(ConfigurationMap, ARRAY_COUNT(ConfigurationMap), Configuration, &Id)) {
+        //    The last configuration can only be configured as a reader
+        if (GlobalSettings.ActiveSettingIdx >= SETTINGS_COUNT && Id != CONFIG_ISO14443A_READER) {
+            return false;
+        }
         ConfigurationSetById(Id);
         LogEntry(LOG_INFO_CONFIG_SET, Configuration, StringLength(Configuration, CONFIGURATION_NAME_LENGTH_MAX - 1));
         return true;

@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <util/parity.h>
-#include <util/delay.h>
+//#include <util/delay.h>
 #include <avr/pgmspace.h>
 #include <avr/io.h>
 

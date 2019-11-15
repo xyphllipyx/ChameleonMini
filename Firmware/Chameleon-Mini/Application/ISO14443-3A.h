@@ -133,7 +133,7 @@ bool ISO14443AWakeUp(void *Buffer, uint16_t *BitCount, uint16_t ATQAValue, bool 
 
         return true;
     } else {
-        *BitCount = 0;
+//        *BitCount = 0;
 
         return false;
     }

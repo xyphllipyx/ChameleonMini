@@ -12,7 +12,7 @@
 #include "LEDHook.h"
 #include "AntennaLevel.h"
 #include "Terminal/Terminal.h"
-#include <util/delay.h>
+//#include <util/delay.h>
 #include <avr/interrupt.h>
 #include <avr/io.h>
 
@@ -79,8 +79,6 @@ static volatile uint16_t BitRate1;
 static volatile uint16_t BitRate2;
 static volatile uint16_t SampleDataCount;
 static volatile uint16_t ReadCommandFromReader = 0;
-
-#ifdef CONFIG_VICINITY_SUPPORT
 
 /* This function implements CODEC_DEMOD_IN_INT0_VECT interrupt vector.
  * It is called when a pulse is detected in CODEC_DEMOD_IN_PORT (PORTB).
@@ -460,8 +458,6 @@ LOADMOD_FINISHED_LABEL:
     Flags.LoadmodFinished = 1;
     return;
 }
-
-#endif /* CONFIG_VICINITY_SUPPORT */
 
 /* This functions resets all global variables used in the codec and enables interrupts to wait for reader data */
 void StartISO15693Demod(void) {

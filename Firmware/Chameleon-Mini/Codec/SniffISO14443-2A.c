@@ -13,7 +13,7 @@
 #include "../Application/Application.h"
 #include "LEDHook.h"
 #include "Terminal/Terminal.h"
-#include <util/delay.h>
+//#include <util/delay.h>
 
 /* Sampling is done using internal clock, synchronized to the field modulation.
  * For that we need to convert the bit rate for the internal clock. */
@@ -109,7 +109,9 @@ INLINE void ReaderSniffDeInit(void) {
 
 // Find first pause and start sampling
 ISR(CODEC_DEMOD_IN_INT1_VECT) {
+#ifndef        CONFIG_UART_MODE
     PORTE.OUTSET = PIN2_bm;
+#endif
 
     /* This is the first edge of the first modulation-pause after StartDemod.
      * Now we have time to start
@@ -147,8 +149,9 @@ ISR(CODEC_TIMER_SAMPLING_CCD_VECT) {
 
             // Shutdown the Reader->Card Sniffing,
             // disable the sampling timer
+#ifndef        CONFIG_UART_MODE
             PORTE.OUTCLR = PIN2_bm;
-
+#endif
 
 
             CODEC_TIMER_SAMPLING.CTRLA = TC_CLKSEL_OFF_gc;
@@ -473,7 +476,9 @@ ISR(CODEC_TIMER_TIMESTAMPS_CCB_VECT) { // EOC found
 
 void Sniff14443ACodecInit(void) {
 
+#ifndef        CONFIG_UART_MODE
     PORTE.DIRSET = PIN3_bm | PIN2_bm;
+#endif
     // Common Codec Register settings
     CodecInitCommon();
     isr_func_CODEC_TIMER_LOADMOD_CCB_VECT = &isr_SniffISO14443_2A_CODEC_TIMER_LOADMOD_CCB_VECT;
@@ -496,7 +501,9 @@ void Sniff14443ACodecDeInit(void) {
 
 
 void Sniff14443ACodecTask(void) {
+#ifndef        CONFIG_UART_MODE
     PORTE.OUTSET = PIN3_bm;
+#endif
     if (Flags.ReaderDataAvaliable) {
         Flags.ReaderDataAvaliable = false;
 
@@ -526,7 +533,8 @@ void Sniff14443ACodecTask(void) {
         CardSniffDeinit();
         ReaderSniffInit();
     }
+#ifndef        CONFIG_UART_MODE
     PORTE.OUTCLR = PIN3_bm;
-
+#endif
 
 }

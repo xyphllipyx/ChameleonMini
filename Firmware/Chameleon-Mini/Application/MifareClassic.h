@@ -16,6 +16,10 @@
 #define MIFARE_CLASSIC_1K_MEM_SIZE    1024
 #define MIFARE_CLASSIC_4K_MEM_SIZE    4096
 
+void DetectionInit(void);
+void DetectionLogClear(void);
+void MifareDetectionInit1K(void);
+void MifareDetectionInit4K(void);
 void MifareClassicAppInitMini4B(void);
 void MifareClassicAppInit1K(void);
 void MifareClassicAppInit4K(void);

@@ -317,12 +317,48 @@ const PROGMEM CommandEntryType CommandTable[] = {
         .GetFunc        = NO_FUNCTION
     },
     {
+        .Command    = COMMAND_SETUIDMODE,
+        .ExecFunc   = NO_FUNCTION,
+        .ExecParamFunc = NO_FUNCTION,
+        .SetFunc    = CommandSetUidMode,
+        .GetFunc    = CommandGetUidMode
+    },
+    {
+        .Command    = COMMAND_SETSAKMODE,
+        .ExecFunc   = NO_FUNCTION,
+        .ExecParamFunc = NO_FUNCTION,
+        .SetFunc    = CommandSetSakMode,
+        .GetFunc    = CommandGetSakMode
+    },
+    {
         /* This has to be last element */
         .Command    = COMMAND_LIST_END,
         .ExecFunc   = NO_FUNCTION,
         .ExecParamFunc = NO_FUNCTION,
         .SetFunc    = NO_FUNCTION,
         .GetFunc    = NO_FUNCTION
+    },
+    {
+        .Command    = COMMAND_SETLEDMODE,
+        .ExecFunc   = NO_FUNCTION,
+        .ExecParamFunc = NO_FUNCTION,
+        .SetFunc    = CommandSetLedMode,
+        .GetFunc    = CommandGetLedMode
+    },
+    {
+        .Command    = COMMAND_DETECTION,
+        .ExecFunc   = NO_FUNCTION,
+        .ExecParamFunc = NO_FUNCTION,
+        .SetFunc    = CommandSetDetection,
+        .GetFunc    = CommandGetDetection,
+    },
+    {
+        .Command    = COMMAND_BAUDRATE,
+        .ExecFunc   = NO_FUNCTION,
+        .ExecParamFunc = NO_FUNCTION,
+//    .SetFunc    = CommandSetBaudrate,
+        .SetFunc    = NO_FUNCTION,
+        .GetFunc    = CommandGetBaudrate,
     }
 };
 

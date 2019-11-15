@@ -15,6 +15,7 @@
 #include "../AntennaLevel.h"
 #include "../Battery.h"
 #include "../Codec/Codec.h"
+#include "uartcmd.h"
 
 extern Reader14443Command Reader14443CurrentCommand;
 extern Sniff14443Command Sniff14443CurrentCommand;
@@ -23,8 +24,10 @@ extern const PROGMEM CommandEntryType CommandTable[];
 
 CommandStatusIdType CommandGetVersion(char *OutParam) {
     snprintf_P(OutParam, TERMINAL_BUFFER_SIZE, PSTR(
-                   "ChameleonMini RevG %S using LUFA %S compiled with AVR-GCC %S. Based on the open-source NFC tool ChameleonMini. https://github.com/emsec/ChameleonMini commit %S"
-               ), PSTR(CHAMELEON_MINI_VERSION_STRING), PSTR(LUFA_VERSION_STRING), PSTR(__VERSION__), PSTR(COMMIT_ID)
+//    "ChameleonMini RevG %S using LUFA %S compiled with AVR-GCC %S. Based on the open-source NFC tool ChameleonMini. https://github.com/emsec/ChameleonMini commit %S"
+//    ), PSTR(CHAMELEON_MINI_VERSION_STRING), PSTR(LUFA_VERSION_STRING), PSTR(__VERSION__), PSTR(COMMIT_ID)
+                   "ChameleonMini RevG compiled at %S %S(%S) using LUFA %S with AVR-GCC %S."
+               ), PSTR(BUILD_DATE), PSTR(__TIME__), PSTR(COMMIT_ID), PSTR(LUFA_VERSION_STRING), PSTR(__VERSION__)
               );
 
     return COMMAND_INFO_OK_WITH_TEXT_ID;
@@ -607,4 +610,151 @@ CommandStatusIdType CommandExecClone(char *OutMessage) {
     CommandLinePendingTaskTimeout = &Reader14443AAppTimeout;
 
     return TIMEOUT_COMMAND;
+}
+
+extern uint32_t dwBaudRate;
+CommandStatusIdType CommandGetBaudrate(char *OutParam) {
+    snprintf(OutParam, TERMINAL_BUFFER_SIZE, "%lu", dwBaudRate);
+    return COMMAND_INFO_OK_WITH_TEXT_ID;
+}
+
+uint8_t uart_baudrate(uint32_t NewBaudrate);
+
+CommandStatusIdType CommandSetBaudrate(char *OutMessage, const char *InParam) {
+    uint32_t tmp = 0;
+
+    if (!sscanf_P(InParam, PSTR("%ld"), &tmp) || tmp < 115200 || tmp > 921600) {
+        snprintf_P(OutMessage, TERMINAL_BUFFER_SIZE, PSTR("Set %ld Error.\r\n"), tmp);
+        return COMMAND_ERR_INVALID_PARAM_ID;
+    }
+
+    if (0 == uart_baudrate(tmp)) {
+        TerminalSendStringP(PSTR("Invalid Baudrate.\r\nUse Default baudrate 460800.\r\n"));
+    }
+
+    return COMMAND_INFO_OK_ID;
+}
+
+// Send test command
+void SendTestCmd(uint8_t bData) {
+    uint8_t Buffer[sizeof(CMD_HEAD)];
+    PCMD_HEAD CmdHead = (PCMD_HEAD)Buffer;
+    uint8_t *pDataPtr = (uint8_t *)(CmdHead + 1);
+
+    // Filling structure
+    CmdHead->bSign = 0xA5;
+    CmdHead->bCmd = CMD_BLE_TEST;
+    CmdHead->bCmdLen = 1;
+    pDataPtr[0] = bData;
+    CmdHead->bChkSum = GetChkSum(CmdHead, NULL);
+
+    uart_putb((uint8_t *)CmdHead, sizeof(CMD_HEAD) + CmdHead->bCmdLen);
+}
+
+extern uint8_t LedMode;
+extern uint8_t bKeepAlive;
+extern uint8_t bUSBTerminal;
+// Set led mode
+CommandStatusIdType CommandSetLedMode(char *OutMessage, const char *InParam) {
+    if (COMMAND_IS_SUGGEST_STRING(InParam)) {
+        snprintf_P(OutMessage, TERMINAL_BUFFER_SIZE, PSTR("%c,%c"), COMMAND_CHAR_TRUE, COMMAND_CHAR_FALSE);
+        return COMMAND_INFO_OK_WITH_TEXT_ID;
+    }
+
+    switch (InParam[0]) {
+        case '0':                // Close
+            LedMode = 0;
+            break;
+        case '1':                // Open
+            LedMode = 1;
+            break;
+        case 'R':                // State reset
+            bKeepAlive = 1;
+            break;
+        case 'T':                // Test
+            SendTestCmd(InParam[1]);
+            break;
+        default:
+            return COMMAND_ERR_INVALID_PARAM_ID;
+    }
+
+    return COMMAND_INFO_OK_ID;
+}
+
+CommandStatusIdType CommandGetLedMode(char *OutMessage) {
+    if (LedMode)
+        OutMessage[0] = COMMAND_CHAR_TRUE;
+    else
+        OutMessage[0] = COMMAND_CHAR_FALSE;
+
+    OutMessage[1] = '\0';
+    return COMMAND_INFO_OK_WITH_TEXT_ID;
+}
+
+extern uint8_t       bUidMode;
+extern uint8_t EEMEM bUidMode_EEP;
+// UIDMODE  Set tag mode orginal or magic back door
+CommandStatusIdType CommandSetUidMode(char *OutMessage, const char *InParam) {
+    if (COMMAND_IS_SUGGEST_STRING(InParam)) {
+        snprintf_P(OutMessage, TERMINAL_BUFFER_SIZE, PSTR("%c,%c"), COMMAND_CHAR_TRUE, COMMAND_CHAR_FALSE);
+        return COMMAND_INFO_OK_WITH_TEXT_ID;
+    }
+    switch (InParam[0]) {
+        case '0':        // Close
+        case '1':        // Open magic back door mode
+            bUidMode = InParam[0] - '0';
+            WriteEEPBlock((uint16_t) &bUidMode_EEP, &bUidMode, 1);
+            break;
+        default:
+            return COMMAND_ERR_INVALID_PARAM_ID;
+            break;
+    }
+
+    return COMMAND_INFO_OK_ID;
+}
+
+CommandStatusIdType CommandGetUidMode(char *OutMessage) {
+    OutMessage[0] = bUidMode + '0';
+    OutMessage[1] = '\0';
+    return COMMAND_INFO_OK_WITH_TEXT_ID;
+}
+
+// SAKMODE  Set Tag fix sak or changeable SAK ATQA
+CommandStatusIdType CommandSetSakMode(char *OutMessage, const char *InParam) {
+    if (GlobalSettings.ActiveSettingPtr->Configuration != CONFIG_MF_CLASSIC_1K &&
+            GlobalSettings.ActiveSettingPtr->Configuration != CONFIG_MF_CLASSIC_4K &&
+            GlobalSettings.ActiveSettingPtr->Configuration != CONFIG_MF_DETECTION &&
+            GlobalSettings.ActiveSettingPtr->Configuration != CONFIG_MF_DETECTION_4K) {
+        return COMMAND_ERR_INVALID_USAGE_ID;
+    }
+    if (COMMAND_IS_SUGGEST_STRING(InParam)) {
+        snprintf_P(OutMessage, TERMINAL_BUFFER_SIZE, PSTR("%c,%c"), COMMAND_CHAR_TRUE, COMMAND_CHAR_FALSE);
+        return COMMAND_INFO_OK_WITH_TEXT_ID;
+    }
+    if (InParam[0] == '1') {
+        GlobalSettings.ActiveSettingPtr->bSakMode = 1;
+    } else if (InParam[0] == '0') {
+        GlobalSettings.ActiveSettingPtr->bSakMode = 0;
+    } else {
+        return COMMAND_ERR_INVALID_PARAM_ID;
+    }
+
+    // save global configuration to EEPROM
+    SettingsSave();
+
+    // 重新应用
+    ConfigurationSetById(GlobalSettings.ActiveSettingPtr->Configuration);
+
+
+    return COMMAND_INFO_OK_ID;
+}
+
+CommandStatusIdType CommandGetSakMode(char *OutMessage) {
+    if (GlobalSettings.ActiveSettingPtr->bSakMode)
+        OutMessage[0] = COMMAND_CHAR_TRUE;
+    else
+        OutMessage[0] = COMMAND_CHAR_FALSE;
+
+    OutMessage[1] = '\0';
+    return COMMAND_INFO_OK_WITH_TEXT_ID;
 }

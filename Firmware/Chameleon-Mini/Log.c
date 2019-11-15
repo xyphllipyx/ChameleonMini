@@ -11,7 +11,7 @@ static uint16_t LogMemLeft;
 static uint16_t LogFRAMAddr = FRAM_LOG_START_ADDR;
 static uint8_t EEMEM LogFRAMAddrValid = false;
 static bool EnableLogSRAMtoFRAM = false;
-LogFuncType CurrentLogFunc;
+LogFuncType CurrentLogFunc = NULL;
 
 static const MapEntryType PROGMEM LogModeMap[] = {
     { .Id = LOG_MODE_OFF, 		.Text = "OFF" 		},
@@ -62,16 +62,16 @@ void LogInit(void) {
     LogSetModeById(GlobalSettings.ActiveSettingPtr->LogMode);
     LogMemPtr = LogMem;
     LogMemLeft = sizeof(LogMem);
+    memset(LogMemPtr, LOG_EMPTY, LOG_SIZE);
 
     uint8_t result;
     ReadEEPBlock((uint16_t) &LogFRAMAddrValid, &result, 1);
-    memset(LogMemPtr, LOG_EMPTY, LOG_SIZE);
-    if (result) {
+    if (result == 0x5A) {
         MemoryReadBlock(&LogFRAMAddr, FRAM_LOG_ADDR_ADDR, 2);
     } else {
         LogFRAMAddr = FRAM_LOG_START_ADDR;
         MemoryWriteBlock(&LogFRAMAddr, FRAM_LOG_ADDR_ADDR, 2);
-        result = true;
+        result = 0x5A;
         WriteEEPBlock((uint16_t) &LogFRAMAddrValid, &result, 1);
     }
 
@@ -126,7 +126,8 @@ bool LogMemLoadBlock(void *Buffer, uint32_t BlockAddress, uint16_t ByteCount) {
     }
 }
 
-INLINE void LogSRAMClear(void) {
+//INLINE void LogSRAMClear(void)
+void LogSRAMClear(void) {
     uint16_t i, until = LOG_SIZE - LogMemLeft;
 
     for (i = 0; i < until; i++) {

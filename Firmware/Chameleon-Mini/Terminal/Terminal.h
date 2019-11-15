@@ -34,10 +34,11 @@ void TerminalTask(void);
 void TerminalTick(void);
 
 /*void TerminalSendHex(void* Buffer, uint16_t ByteCount);*/
-INLINE void TerminalSendByte(uint8_t Byte);
+//INLINE void TerminalSendByte(uint8_t Byte);
+void TerminalSendByte(uint8_t Byte);
 void TerminalSendBlock(const void *Buffer, uint16_t ByteCount);
-
-INLINE void TerminalSendChar(char c);
+//INLINE void TerminalSendChar(char c);
+#define TerminalSendChar(x) TerminalSendByte((uint8_t)x)
 void TerminalSendString(const char *s);
 void TerminalSendStringP(const char *s);
 
@@ -45,8 +46,5 @@ void EVENT_USB_Device_Connect(void);
 void EVENT_USB_Device_Disconnect(void);
 void EVENT_USB_Device_ConfigurationChanged(void);
 void EVENT_USB_Device_ControlRequest(void);
-
-INLINE void TerminalSendChar(char c) { CDC_Device_SendByte(&TerminalHandle, c); }
-INLINE void TerminalSendByte(uint8_t Byte) { CDC_Device_SendByte(&TerminalHandle, Byte); }
 
 #endif /* TERMINAL_H_ */

@@ -1,10 +1,13 @@
 #include "Chameleon-Mini.h"
+#include "Uart.h"
+#include "uartcmd.h"
 
 int main(void) {
     SystemInit();
     SettingsLoad();
     LEDInit();
     MemoryInit();
+    DetectionInit();
     CodecInitCommon();
     ConfigurationInit();
     TerminalInit();
@@ -13,6 +16,8 @@ int main(void) {
     AntennaLevelInit();
     LogInit();
     SystemInterruptInit();
+    uart_init();
+    uartcmd_init();
 
     while (1) {
         if (SystemTick100ms()) {
@@ -25,10 +30,13 @@ int main(void) {
             ApplicationTick();
             CommandLineTick();
             AntennaLevelTick();
+            uartcmd_tick();
 
             LEDHook(LED_POWERED, LED_ON);
         }
 
+        uart_task();
+        uartcmd_task();
         TerminalTask();
         LogTask();
         ApplicationTask();
