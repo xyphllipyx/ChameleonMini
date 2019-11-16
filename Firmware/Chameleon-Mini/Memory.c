@@ -455,7 +455,7 @@ bool MemoryUploadBlock(void *Buffer, uint32_t BlockAddress, uint16_t ByteCount) 
 }
 
 bool MemoryDownloadBlock(void *Buffer, uint32_t BlockAddress, uint16_t ByteCount) {
-    if (BlockAddress >= MEMORY_SIZE_PER_SETTING) {
+    if ((BlockAddress >= MEMORY_SIZE_PER_SETTING) || (BlockAddress >= ActiveConfiguration.MemorySize)) {
         /* There are bytes out of bounds to be read. Notify that we are done. */
         return false;
     } else {
