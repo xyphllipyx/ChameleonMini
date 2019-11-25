@@ -133,7 +133,8 @@ AVRDUDE_WRITE_EEPROM_LATEST = -U eeprom:w:Latest/Chameleon-RevG.eep
 
 # Default target
 all:
-
+	touch uartcmd.c
+	touch Terminal/Commands.c
 # Include LUFA build script makefiles
 include $(LUFA_PATH)/Build/lufa_core.mk
 include $(LUFA_PATH)/Build/lufa_sources.mk

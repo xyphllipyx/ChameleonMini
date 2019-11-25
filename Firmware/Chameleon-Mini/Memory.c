@@ -204,7 +204,7 @@ INLINE void FlashWrite(const void *Buffer, uint32_t Address, uint16_t ByteCount)
     /* We assume that FlashWrite is always called for write actions that are
      * aligned to APP_SECTION_PAGE_SIZE and a multiple of APP_SECTION_PAGE_SIZE.
      * Thus only full pages are written into the flash. */
-    uint16_t PageCount = ByteCount / APP_SECTION_PAGE_SIZE;
+    uint16_t PageCount = (ByteCount + APP_SECTION_PAGE_SIZE - 1) / APP_SECTION_PAGE_SIZE;
     uint32_t PhysicalAddress = Address + FLASH_DATA_ADDR;
 
     if ((PhysicalAddress >= FLASH_DATA_START) && (PhysicalAddress <= FLASH_DATA_END)) {
@@ -240,7 +240,7 @@ INLINE void FlashWrite(const void *Buffer, uint32_t Address, uint16_t ByteCount)
 }
 
 INLINE void FlashErase(uint32_t Address, uint16_t ByteCount) {
-    uint16_t PageCount = ByteCount / APP_SECTION_PAGE_SIZE;
+    uint16_t PageCount = (ByteCount + APP_SECTION_PAGE_SIZE - 1) / APP_SECTION_PAGE_SIZE;
     uint32_t PhysicalAddress = Address + FLASH_DATA_ADDR;
 
     if ((PhysicalAddress >= FLASH_DATA_START) && (PhysicalAddress <= FLASH_DATA_END)) {
@@ -308,7 +308,7 @@ INLINE void FRAMToFlash(uint32_t Address, uint16_t ByteCount) {
     /* We assume that FlashWrite is always called for write actions that are
      * aligned to APP_SECTION_PAGE_SIZE and a multiple of APP_SECTION_PAGE_SIZE.
      * Thus only full pages are written into the flash. */
-    uint16_t PageCount = ByteCount / APP_SECTION_PAGE_SIZE;
+    uint16_t PageCount = (ByteCount + APP_SECTION_PAGE_SIZE - 1) / APP_SECTION_PAGE_SIZE;
     uint32_t PhysicalAddress = Address + FLASH_DATA_ADDR;
 
     if ((PhysicalAddress >= FLASH_DATA_START) && (PhysicalAddress <= FLASH_DATA_END)) {
