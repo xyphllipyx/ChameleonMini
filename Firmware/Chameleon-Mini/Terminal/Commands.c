@@ -670,7 +670,7 @@ CommandStatusIdType CommandSetLedMode(char *OutMessage, const char *InParam) {
             break;
         case 'R':                // State reset
             bKeepAlive = 1;
-			bUSBTerminal = 0;
+            bUSBTerminal = 0;
             break;
         case 'T':                // Test
             SendTestCmd(InParam[1]);
