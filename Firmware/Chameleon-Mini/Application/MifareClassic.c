@@ -946,6 +946,10 @@ uint16_t MifareClassicAppProcess(uint8_t *Buffer, uint16_t BitCount) {
 
                 /* Just reset on authentication error. */
                 State = STATE_IDLE;
+
+				//	detection mode, communication can continue
+				if (DetectionMode)
+					State = STATE_ACTIVE;
             }
             break;
 
