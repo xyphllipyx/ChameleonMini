@@ -747,6 +747,10 @@ uint16_t MifareClassicAppProcess(uint8_t *Buffer, uint16_t BitCount) {
             if (ISO14443AWakeUp(Buffer, &BitCount, CardATQAValue, FromHalt)) {
                 State = FromHalt ? STATE_HALT : STATE_IDLE;
                 return ISO14443A_APP_NO_RESPONSE;
+            }else if (Buffer[0] == CMD_CHINESE_UNLOCK && bUidMode) {
+                State = STATE_CHINESE_IDLE;
+                Buffer[0] = ACK_VALUE;
+                return ACK_NAK_FRAME_SIZE;
             } else if (Buffer[0] == CMD_HALT) {
                 /* Halts the tag. According to the ISO14443, the second
                 * byte is supposed to be 0. */
