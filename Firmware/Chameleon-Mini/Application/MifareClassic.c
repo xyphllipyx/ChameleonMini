@@ -605,19 +605,13 @@ uint16_t MifareClassicAppProcess(uint8_t *Buffer, uint16_t BitCount) {
             if (ISO14443AWakeUp(Buffer, &BitCount, CardATQAValue, FromHalt)) {
                 State = STATE_READY1;
                 return BitCount;
+            } else if (Buffer[0] == CMD_CHINESE_UNLOCK && bUidMode){
+                State = STATE_CHINESE_IDLE;
+                Buffer[0] = ACK_VALUE;
+                return ACK_NAK_FRAME_SIZE;
             }
-//#ifdef SUPPORT_MF_CLASSIC_MAGIC_MODE
-            else if (Buffer[0] == CMD_CHINESE_UNLOCK) {
-                if (bUidMode) {
-                    State = STATE_CHINESE_IDLE;
-                    Buffer[0] = ACK_VALUE;
-                    return ACK_NAK_FRAME_SIZE;
-                }
-            }
-//#endif
             break;
 
-//#ifdef SUPPORT_MF_CLASSIC_MAGIC_MODE
         case STATE_CHINESE_IDLE:
             /* Support special china commands that dont require authentication. */
             if (Buffer[0] == CMD_CHINESE_UNLOCK_RW) {
@@ -693,7 +687,6 @@ uint16_t MifareClassicAppProcess(uint8_t *Buffer, uint16_t BitCount) {
             State = STATE_CHINESE_IDLE;
 
             return ACK_NAK_FRAME_SIZE;
-//#endif
 
         case STATE_READY1:
             if (ISO14443AWakeUp(Buffer, &BitCount, CardATQAValue, FromHalt)) {
@@ -853,7 +846,7 @@ uint16_t MifareClassicAppProcess(uint8_t *Buffer, uint16_t BitCount) {
                     LogEntry(LOG_ERR_APP_NOT_AUTHED, NULL, 0);
 
                     return ACK_NAK_FRAME_SIZE;
-                } else if (Buffer[0] == 0xE0) {
+                } else if ((Buffer[0] == 0xE0) && (CardSAKValue & 0x20)) {
                     if (ISO14443ACheckCRCA(Buffer, CMD_READ_FRAME_SIZE)) {
                         Buffer[0] = 0x10;
                         Buffer[1] = 0x78;
