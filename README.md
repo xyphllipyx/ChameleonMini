@@ -183,6 +183,41 @@ STORE_LOG|Write the log data in the temporary cache to the memory, which can be 
 CLEAR_LOG|Clear log data immediately after pressing|
 CLONE|Read the UID card number immediately after pressing, continue searching, and simulate immediately after reading the card|
 
+C.Hardware Introduction
+
+1.Button function introduction
+
+(1)ChameleonMini Rev G
+
+Turn on Bluetooth and check the battery:
+In the off state, press any button once to turn on the Bluetooth power and light up the white LED to show the current power. After 15 seconds, it will automatically shut down after no operation. Bluetooth is on. Press any button once to sleep and shut down immediately. Can be used to quickly check the battery level.
+Turn on the chameleon:
+When the Bluetooth is on, press any button twice (double-click), or in the off state, press any button three times (three-click) to turn on the chameleon. The red LED lights up to indicate the slot number. After 5 seconds without operation, it will automatically sleep and shut down.
+DFU firmware upgrade status:
+In the closed state, press and hold the yellow button near the USB, and then let go after inserting the USB, the chameleon enters the DFU firmware upgrade mode.
+
+(2 ) ChameleonTiny
+
+Turn on the chameleon:
+In the closed state, press the A button once to turn on the chameleon power. The red LED lights up to indicate the slot number. After 5 seconds without operation, it will automatically sleep and shut down.
+DFU firmware upgrade status:
+In the off state, hold down the B button and connect the USB. You can enter the DFU flash firmware mode.
+
+2.Charging and Standby Mode
+
+Charging method: Plug in the USB at any time and start charging immediately.
+Battery type: LIR2032H replaceable lithium-ion rechargeable battery
+Charging time: 2 hours @ 0-100%
+Charging current: 40mA
+Start-up current: 38mA
+Card reading current: 65mA
+Sleep current: 5uA (9uA-MAX)
+Battery capacity: 70mAh
+Duration: Swipe the card 3 times a day for 5 seconds each time, and it can be used for one year on a single charge.
+Sleeping time: Fully charged, it can be left for two years when it is turned off and sleeping.
+Port type: 
+MINI: MicroUSB 
+TINY: Type-C
 
 Parameter
 ------------------------
