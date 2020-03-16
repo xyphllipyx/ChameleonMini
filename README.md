@@ -41,7 +41,8 @@ A.Upgrade to the latest firmware
 (1) Prepare your Windows computer. Linux or MAC please refer to GITHUB.
 
 (2) Prepare the firmware. Go to GITHUB to compile the latest firmware:
-https://github.com/RfidResearchGroup/ChameleonMini Or use the firmware in attachment.
+https://github.com/RfidResearchGroup/ChameleonMini 
+Or use the firmware in attachment.
 
 (3) Install the DFU driver. The DFU driver comes from ATMEL's official LIBUSB driver library. You can download it yourself or find it in attachment.
 
@@ -57,9 +58,13 @@ It should be noted that the Android APP is currently not compatible with the off
 2. Upgrade (OTA) Bluetooth firmware for Chameleon MINI
 
 (1) Prepare Android phone and install APP.
+
 Google Store: https://play.google.com/store/apps/details?id=com.proxgrind.chameleon&hl=en
+
 Weiyun download:https://share.weiyun.com/5g1cB6G
+
 Baidu download: https://pan.baidu.com/s/1GqO35IUvFR3kJFwXtCWZiw
+
 Password: e4g1
 
 (2) Open the app and connect the device using Bluetooth. Press any button on the MINI, and the white battery light is on, and Bluetooth is connectable. At this time, open the app again and click Connect to automatically connect the chameleon.
