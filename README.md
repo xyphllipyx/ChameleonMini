@@ -281,14 +281,18 @@ HID iCLASS|125kHz/ISO15693/ISO14443B|Possible but not supported|Possible but not
 Epass|ISO14443A/B|Supported / Supported|Low rate only / not supported|No|
 ISO15693|ISO15693|Support|Support|No|
 
+
 （2）Sniff Mode Support Type
+
 
 |Encoding type|Whether the hardware supports|Does the software support| Whether the application layer supports|Note|
 | ------------------- |:-------------------:| -------------------:| ------------------- |-------------------:|
 Non-13.56MHz|Not Supported|Not Supported|Not Supported|
 ISO 14443 A 106 kbit/s|Reader -> card Direction sniffing|Maybe support the other direction|Currently only supported Reader -> card Direction sniffing |Support|
 
+
 （3） Card Type Supported via Reading
+
 
 Card type |Encoding type|  Whether the hardware stand by|Whether the software stand by|Whether the application layer supports|Note
 | ------------------- |:-------------------:| -------------------:| ------------------- |-------------------:|-------------------:|
