@@ -232,6 +232,70 @@ In the off state, hold down the B button and connect the USB. You can enter the 
 **Android APP**|×|×|√|√|
 **Firmware anti lost**|×|×|√|×|
 
+3.List of new commands
+
+| Command    | Effect Range    | Description | 
+| ------------------- |:-------------------:| -------------------:|
+**UIDMODE?**|All slot|Returns the configuration of the all slot|
+**UIDMODE=?**|All slot|Returns a list of all supported configurations|
+**UIDMODE=[0;1]**|All slot|Activates(1)，deactivates(0)，the magic card mode(It will has Chinese magic card back door)|
+**SAKMODE?**|Current slot|Returns the configuration of the current slot|
+**SAKMODE=?**|Current slot|Returns a list of all supported configurations|
+**SAKMODE=[0;1]**|Current slot|Activates(1)，deactivates(0)，the real SAK ATQA mode (the SAK ATQA will be mapped from block 0)|
+**CONFIG=MF_DETECTION_1K**|Current slot|Set current slot to detection 1K mode.|(It will record the key information as log in flash)|
+**CONFIG=MF_DETECTION_****4****K**|Current slot|Set current slot to detection 4K mode.|(It will record the key information as log in flash)|
+**DETECTION=0**|Device|Clears the detection log memory|
+**DETECTION？**|Device|Wait for an XModem connection and then downloads the binary detection log data.|
+
+4.Complete Instruction List
+-----------------------
+
+From the official:
+https://rawgit.com/emsec/ChameleonMini/master/Doc/Doxygen/html/_page__command_line.html
+
+Or see the instruction sheet in the attached files.
+
+（1）Simulation Support
+
+5.Supported Cards & Encoding Types
+-------------------------------
+
+From the official:
+https://github.com/emsec/ChameleonMini/wiki/Supported-Cards-and--Codecs
+
+（1）Simulation Support
+
+|Card Type|Encoding Type|Whether the hardware supports|Does the software support|Whether the application layer supports|Note|
+| ------------------- |:-------------------:| -------------------:| ------------------- |:-------------------:| -------------------:|
+Non13.56MHz|No|No|No| |
+Mifare Ultralight|ISO14443A/106 kbit/s|Support|Support|Support|
+Mifare Ultralight Ev1|ISO14443A/106 kbit/s|Support|Support|Support|
+MifareClassic1K/4K 4B/7B|ISO14443A/106 kbit/s|Support|Support|Support|
+Mifare DESFire|ISO14443A High Rate|Supports low rates, or possibly higher rates|Only supported Low rate|No|
+Mifare DESFire EV1|ISO14443A High rate|Supports low rates, or possibly higher rates|Only supported Low rate|No|Backward compatible|
+Mifare DESFire EV2|ISO14443A High rate| Supports low rates, or possibly higher rates|Only supported|Low rate|No|Backward compatible|
+Mifare PLUS|ISO14443A High rate|Supports low rates, or possibly higher rates|Only supported Low rate|No
+Sniff Mode NTAG|ISO14443A 106 kbit/s|Support|Support| No
+LEGIC prime|LEGICprime/ ISO14443A/ ISO15693|Possible but not supported|Possible but not supported|No|
+HID iCLASS|125kHz/ISO15693/ISO14443B|Possible but not supported|Possible but not supported|No|
+Epass|ISO14443A/B|Supported / Supported|Low rate only / not supported|No|
+ISO15693|ISO15693|Support|Support|No|
+
+（2）Sniff Mode Support Type
+
+|Encoding type|Whether the hardware supports|Does the software support| Whether the application layer supports|Note|
+| ------------------- |:-------------------:| -------------------:| ------------------- |-------------------:|
+Non-13.56MHz|Not Supported|Not Supported|Not Supported|
+ISO 14443 A 106 kbit/s|Reader -> card Direction sniffing|Maybe support the other direction|Currently only supported Reader -> card Direction sniffing |Support|
+
+（3） Card Type Supported via Reading
+
+Card type |Encoding type|  Whether the hardware stand by|Whether the software stand by|Whether the application layer supports|Note
+| ------------------- |:-------------------:| -------------------:| ------------------- |-------------------:|-------------------:|
+Non13.56MHz|Not Supported|Not Supported|Not Supported|
+Mifare Ultralight|ISO14443A 106 kbit/s|Support|Support|SupportCommand: dump_mfu
+MifareClassic1K/4K 4B/7B|ISO14443A 106 kbit/s|Support|Support|Not Supported|No card reading instruction, encryption function has been implemented|MIFARE DESFIRE|ISO14443A High rate|Supports low rates, or possibly higher rates|  Only supported Low rate|Not Supported|No card reading instruction, encryption function is being supported|
+
 2.Charging and Standby Mode
 -----------------------
 
