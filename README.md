@@ -35,6 +35,7 @@ Detect memory full: If the memory is full during dense flow detection, multiple 
 -------------------
 
 A.Upgrade to the latest firmware
+==============================
 
 1.Upgrade Chameleon AVR Firmware
 
@@ -75,6 +76,7 @@ It will pop up the OTA upgrade page, click "Auto Upgrade", and the APP will imme
 -----------------------
 
 B. Quick Crash Course
+====================
 
 1.Detect keys and upload card files
 
@@ -184,6 +186,7 @@ CLEAR_LOG|Clear log data immediately after pressing|
 CLONE|Read the UID card number immediately after pressing, continue searching, and simulate immediately after reading the card|
 
 C.Hardware Introduction
+=======================
 
 1.Button function introduction
 
