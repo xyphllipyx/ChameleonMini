@@ -57,7 +57,6 @@ The hardware is also compatible with the official firmware of the KAOS brothers:
 It should be noted that the Android APP is currently not compatible with the official firmware.
 
 2. Upgrade (OTA) Bluetooth firmware for Chameleon MINI
---------------------------------------------
 
 (1) Prepare Android phone and install APP.
 
@@ -169,8 +168,6 @@ ISO14443A_SNIFF|Sniffing|-|Not supported|
 ISO15693_SNIFF|Sniffing|-|Not supported|
 
 4. Button Custom Function Introduction
----------------------------------------
-
 
 |Option names    | Description    | 
 | ------------------- |:-------------------:| 
