@@ -341,6 +341,10 @@ The code repository contains
 * RevE: Contains the whole contents of the discontinued RevE repository.
 * RevE-light: Contains our development files for the RevE-light - **WARNING:** currently not supported / not functional
 
+Schematics for ChameleonMini
+--------------------------
+
+[Here](http://chameleontiny.com/downloads/)
 
 External Contributions
 ----------------------
