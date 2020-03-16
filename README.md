@@ -38,6 +38,7 @@ A.Upgrade to the latest firmware
 ==============================
 
 1.Upgrade Chameleon AVR Firmware
+-------------------------------
 
 (1) Prepare your Windows computer. Linux or MAC please refer to GITHUB.
 
@@ -57,6 +58,7 @@ The hardware is also compatible with the official firmware of the KAOS brothers:
 It should be noted that the Android APP is currently not compatible with the official firmware.
 
 2. Upgrade (OTA) Bluetooth firmware for Chameleon MINI
+-------------------------------------------------------
 
 (1) Prepare Android phone and install APP.
 
@@ -79,6 +81,7 @@ B. Quick Crash Course
 ====================
 
 1.Detect keys and upload card files
+---------------------------------
 
 (1) Prepare the computer GUI or Android APP.
  
@@ -125,6 +128,7 @@ Open the app, click the "DUMP" column below, click the "SCanner" in the "plus si
 Click the card data file in the “DUM” column below, and click “Upload” below to upload to the card slot corresponding to the chameleon.
 
 2. Introduction to UID mode and SAK mode
+----------------------------------------
 
 (1) UID mode
 
@@ -140,6 +144,7 @@ The current card slot takes effect.
 How to open: Click the "SAK Mode" button in the APP or directly send the command "SAKMODE = 1" to turn it on, and "SAKMODE = 0" to turn it off.
 
 3. Card slot function introduction
+---------------------------------
 
 UID Card Function Class
 
@@ -167,6 +172,8 @@ ISO14443A_SNIFF|Sniffing|-|Not supported|
 ISO15693_SNIFF|Sniffing|-|Not supported|
 
 4. Button Custom Function Introduction
+---------------------------------------
+
 
 |Option names    | Description    | 
 | ------------------- |:-------------------:| 
@@ -189,6 +196,7 @@ C.Hardware Introduction
 =======================
 
 1.Button function introduction
+-----------------------------
 
 (1)ChameleonMini Rev G
 
@@ -207,6 +215,7 @@ DFU firmware upgrade status:
 In the off state, hold down the B button and connect the USB. You can enter the DFU flash firmware mode.
 
 2.Charging and Standby Mode
+-----------------------
 
 Charging method: Plug in the USB at any time and start charging immediately.
 Battery type: LIR2032H replaceable lithium-ion rechargeable battery
