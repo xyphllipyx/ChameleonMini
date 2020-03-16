@@ -208,6 +208,30 @@ In the closed state, press the A button once to turn on the chameleon power. The
 DFU firmware upgrade status:
 In the off state, hold down the B button and connect the USB. You can enter the DFU flash firmware mode.
 
+ Appendix
+ =================
+
+1.Feature comparison table for each version
+
+|-     | Rev.G Official by KAOS    | Rev.E Old Rdv2.0 by ProxGrind | Rev.G by ProxGrind    |Rev.G  Tiny by ProxGrind |
+| ------------------- |:-------------------:| -------------------:| -------------------:|-------------------:
+**Simulation**|Good performance, has blind area|Poor compatibility|Perfect performance|no blind area|Perfect performance|no blind area|
+**As a reader**|1-2cm for white tag|0cm for keyfob|×|5-6cm for white tag|3-4cm for keyfob|3-5cm for white tag|2-3cm for keyfob|
+**Read current**|170mA|×|65mA|60mA|
+**BLE nrf52832**|×|×|√|×|
+**Li-ion battery**|√|×|√|√|
+**Battery indicator**|×|×|√|×|
+**Low power sleep**|×|×|√|√|
+**RF field wakeup**|×|√|√|√|
+**Button wakeup**|×|√|√|√|
+**Auto power off**|×|√|√|√|
+**Official firmware compatible**|√|√|√|√|
+**Replaceable Antenna**|×|×|√|×|
+**MFKEY32 crack**|×|√|√|√|
+**8 LED for slot**|×|√|√|√|
+**Android APP**|×|×|√|√|
+**Firmware anti lost**|×|×|√|×|
+
 2.Charging and Standby Mode
 -----------------------
 
