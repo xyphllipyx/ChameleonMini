@@ -32,6 +32,9 @@ When shutting down, press and hold the button next to USB and then connect USB. 
 Charging: Any time you connect USB, it will automatically start charging. Stop automatically after filling. The white LED indicates the power level.
 Detect memory full: If the memory is full during dense flow detection, multiple red LEDs will be abnormally lit.
 
+Dropbox download for all relevant files: 
+----------------------------------------
+**[Here]**(https://www.dropbox.com/s/xt2o9ugalaam4xu/REV.G%20User%20Manual%2020200309.zip?dl=0)
 
 A.Upgrade to the latest firmware
 ==============================
@@ -42,7 +45,7 @@ A.Upgrade to the latest firmware
 (1) Prepare your Windows computer. Linux or MAC please refer to GITHUB.
 
 (2) Prepare the firmware. Go to GITHUB to compile the latest firmware:
-[Here](https://github.com/RfidResearchGroup/ChameleonMini)
+**[Here]**(https://github.com/RfidResearchGroup/ChameleonMini)
 
 Or use the firmware in attachment.
 
@@ -61,11 +64,11 @@ It should be noted that the Android APP is currently not compatible with the off
 
 (1) Prepare Android phone and install APP.
 
-Google Store: [Here](https://play.google.com/store/apps/details?id=com.proxgrind.chameleon&hl=en)
+Google Store: **[Here]**(https://play.google.com/store/apps/details?id=com.proxgrind.chameleon&hl=en)
 
-Weiyun download:[Here](https://share.weiyun.com/5g1cB6G)
+Weiyun download:**[Here]**(https://share.weiyun.com/5g1cB6G)
 
-Baidu download: [Here](https://pan.baidu.com/s/1GqO35IUvFR3kJFwXtCWZiw)
+Baidu download: **[Here]**(https://pan.baidu.com/s/1GqO35IUvFR3kJFwXtCWZiw)
 
 Password: e4g1
 
@@ -84,17 +87,17 @@ B. Quick Crash Course
 
 (1) Prepare the computer GUI or Android APP.
  
-Computer GUI download address: [Here](http://www.icesql.se/download/ChameleonMiniGUI/publish.htm)
+Computer GUI download address: **[Here]**(http://www.icesql.se/download/ChameleonMiniGUI/publish.htm)
 
-Source: [Here](https://github.com/iceman1001/ChameleonMini-rebootedGUI)
+Source: **[Here]**(https://github.com/iceman1001/ChameleonMini-rebootedGUI)
 
  Android APP download address:
 
-Google Store:[Here](https://play.google.com/store/apps/details?id=com.proxgrind.chameleon&hl=en)
+Google Store:**[Here]**(https://play.google.com/store/apps/details?id=com.proxgrind.chameleon&hl=en)
 
-Weiyun download: [Here](https://share.weiyun.com/5g1cB6G)
+Weiyun download: **[Here]**(https://share.weiyun.com/5g1cB6G)
 
-Baidu download: [Here](https://pan.baidu.com/s/1GqO35IUvFR3kJFwXtCWZiw)
+Baidu download: **[Here]**(https://pan.baidu.com/s/1GqO35IUvFR3kJFwXtCWZiw)
 
 Password: e4g1
 
@@ -252,7 +255,7 @@ In the off state, hold down the B button and connect the USB. You can enter the 
 -----------------------
 
 From the official:
-[Here](https://rawgit.com/emsec/ChameleonMini/master/Doc/Doxygen/html/_page__command_line.html)
+**[Here]**(https://rawgit.com/emsec/ChameleonMini/master/Doc/Doxygen/html/_page__command_line.html)
 
 Or see the instruction sheet in the attached files.
 
@@ -262,7 +265,7 @@ Or see the instruction sheet in the attached files.
 -------------------------------
 
 From the official:
-[Here](https://github.com/emsec/ChameleonMini/wiki/Supported-Cards-and--Codecs)
+**[Here]**(https://github.com/emsec/ChameleonMini/wiki/Supported-Cards-and--Codecs)
 
 （1）Simulation Support
 
@@ -345,7 +348,7 @@ The code repository contains
 Schematics for ChameleonMini
 --------------------------
 
-[Here](http://chameleontiny.com/downloads/)
+**[Here]**(http://chameleontiny.com/downloads/)
 
 External Contributions
 ----------------------
