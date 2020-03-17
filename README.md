@@ -42,7 +42,7 @@ A.Upgrade to the latest firmware
 (1) Prepare your Windows computer. Linux or MAC please refer to GITHUB.
 
 (2) Prepare the firmware. Go to GITHUB to compile the latest firmware:
-https://github.com/RfidResearchGroup/ChameleonMini 
+[Here](https://github.com/RfidResearchGroup/ChameleonMini)
 Or use the firmware in attachment.
 
 (3) Install the DFU driver. The DFU driver comes from ATMEL's official LIBUSB driver library. You can download it yourself or find it in attachment.
@@ -52,7 +52,7 @@ Or use the firmware in attachment.
 (5) Start to upgrade the firmware. Run the "ChameleonFirmwareUpgrade.bat" file in the attachment to automatically start the firmware upgrade. It usually takes 2-5 seconds. After the progress bar is complete, the firmware upgrade is complete!
 
 (6) A description of the firmware. The chameleon REV.G version uses the same firmware for both the MINI with Bluetooth version and ITNY. The hardware design of the RF part is exactly the same.
-The hardware is also compatible with the official firmware of the KAOS brothers: https://github.com/emsec/ChameleonMini
+The hardware is also compatible with the official firmware of the KAOS brothers: [Here](https://github.com/emsec/ChameleonMini)
 
 It should be noted that the Android APP is currently not compatible with the official firmware.
 
@@ -60,11 +60,11 @@ It should be noted that the Android APP is currently not compatible with the off
 
 (1) Prepare Android phone and install APP.
 
-Google Store: https://play.google.com/store/apps/details?id=com.proxgrind.chameleon&hl=en
+Google Store: [Here](https://play.google.com/store/apps/details?id=com.proxgrind.chameleon&hl=en)
 
-Weiyun download:https://share.weiyun.com/5g1cB6G
+Weiyun download:[Here](https://share.weiyun.com/5g1cB6G)
 
-Baidu download: https://pan.baidu.com/s/1GqO35IUvFR3kJFwXtCWZiw
+Baidu download: [Here](https://pan.baidu.com/s/1GqO35IUvFR3kJFwXtCWZiw)
 
 Password: e4g1
 
@@ -83,17 +83,17 @@ B. Quick Crash Course
 
 (1) Prepare the computer GUI or Android APP.
  
-Computer GUI download address: http://www.icesql.se/download/ChameleonMiniGUI/publish.htm
+Computer GUI download address: [Here](http://www.icesql.se/download/ChameleonMiniGUI/publish.htm)
 
-Source: https://github.com/iceman1001/ChameleonMini-rebootedGUI
+Source: [Here](https://github.com/iceman1001/ChameleonMini-rebootedGUI)
 
  Android APP download address:
 
-Google Store:https://play.google.com/store/apps/details?id=com.proxgrind.chameleon&hl=en
+Google Store:[Here](https://play.google.com/store/apps/details?id=com.proxgrind.chameleon&hl=en)
 
-Weiyun download: https://share.weiyun.com/5g1cB6G
+Weiyun download: [Here](https://share.weiyun.com/5g1cB6G)
 
-Baidu download: https://pan.baidu.com/s/1GqO35IUvFR3kJFwXtCWZiw
+Baidu download: [Here](https://pan.baidu.com/s/1GqO35IUvFR3kJFwXtCWZiw)
 
 Password: e4g1
 
@@ -251,7 +251,7 @@ In the off state, hold down the B button and connect the USB. You can enter the 
 -----------------------
 
 From the official:
-https://rawgit.com/emsec/ChameleonMini/master/Doc/Doxygen/html/_page__command_line.html
+[Here](https://rawgit.com/emsec/ChameleonMini/master/Doc/Doxygen/html/_page__command_line.html)
 
 Or see the instruction sheet in the attached files.
 
@@ -261,7 +261,7 @@ Or see the instruction sheet in the attached files.
 -------------------------------
 
 From the official:
-https://github.com/emsec/ChameleonMini/wiki/Supported-Cards-and--Codecs
+[Here](https://github.com/emsec/ChameleonMini/wiki/Supported-Cards-and--Codecs)
 
 （1）Simulation Support
 
