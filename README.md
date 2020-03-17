@@ -213,7 +213,7 @@ In the off state, hold down the B button and connect the USB. You can enter the 
  **Appendix**
  =================
 
-1.Feature comparison table for each version
+**1.Feature comparison table for each version**
 
 |-     | Rev.G Official by KAOS    | Rev.E Old Rdv2.0 by ProxGrind | Rev.G by ProxGrind    |Rev.G  Tiny by ProxGrind |
 | ------------------- |:-------------------:| -------------------:| -------------------:|-------------------:
@@ -234,7 +234,20 @@ In the off state, hold down the B button and connect the USB. You can enter the 
 **Android APP**|×|×|√|√|
 **Firmware anti lost**|×|×|√|×|
 
-3.List of new commands
+**2.Comparison Table Analog Card Characteristic**
+
+||**Rev.G Official By KAOS**|**Rev.E old RDV2.0 By PROXGRIND**|**Rev.G new RDV2.0 By PROXGRIND** |**M1 white tag**|
+| ------------------- |:-------------------:| -------------------:| ------------------- |-------------------:|
+**122U r/w full data**|1-2 sector only|Smooth|Smooth|Smooth|
+**122U Range**|61mm|41mm|73mm|71mm|
+**PM3 r/w full data**|1-2 sector only|Smooth|Smooth|Smooth
+**PM3 Range**|57mm|74mm|88mm|89mm|
+**Phone NFC r/w full data**|No|Smooth|Smooth|Smooth
+**Phone NFC Range**|25mm|18mm|33mm|32mm
+**Magic back door** |By default|No|Dual mode|No
+**SAK ATQA Support**|No|No|Modifiable|No|
+
+**3.List of new commands**
 
 | Command    | Effect Range    | Description | 
 | ------------------- |:-------------------:| -------------------:|
