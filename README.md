@@ -16,7 +16,7 @@ Our Europe Reseller
 Our US Reseller
 **[Here](https://hackerwarehouse.com/)**
 
-Most information can be found on **[here](http://chameleontiny.com/)**
+Most information can be found on **[Here](http://chameleontiny.com/)**
 
 Our APP can be found here: **[Here](https://play.google.com/store/apps/details?id=com.proxgrind.chameleon)**
 
@@ -56,7 +56,7 @@ Or use the firmware in attachment.
 (5) Start to upgrade the firmware. Run the "ChameleonFirmwareUpgrade.bat" file in the attachment to automatically start the firmware upgrade. It usually takes 2-5 seconds. After the progress bar is complete, the firmware upgrade is complete!
 
 (6) A description of the firmware. The chameleon REV.G version uses the same firmware for both the MINI with Bluetooth version and ITNY. The hardware design of the RF part is exactly the same.
-The hardware is also compatible with the official firmware of the KAOS brothers: [Here](https://github.com/emsec/ChameleonMini)
+The hardware is also compatible with the official firmware of the KAOS brothers: **[Here](https://github.com/emsec/ChameleonMini)**
 
 It should be noted that the Android APP is currently not compatible with the official firmware.
 
