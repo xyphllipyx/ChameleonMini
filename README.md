@@ -70,7 +70,7 @@ Weiyun download:**[Here](https://share.weiyun.com/5g1cB6G)**
 
 Baidu download: **[Here](https://pan.baidu.com/s/1GqO35IUvFR3kJFwXtCWZiw)**
 
-Password: e4g1
+**Password: e4g1**
 
 (2) Open the app and connect the device using Bluetooth. Press any button on the MINI, and the white battery light is on, and Bluetooth is connectable. At this time, open the app again and click Connect to automatically connect the chameleon.
 
@@ -82,8 +82,7 @@ It will pop up the OTA upgrade page, click "Auto Upgrade", and the APP will imme
 B. Quick Crash Course
 ====================
 
-1.Detect keys and upload card files
----------------------------------
+**1.Detect keys and upload card files**
 
 (1) Prepare the computer GUI or Android APP.
  
@@ -99,7 +98,7 @@ Weiyun download: **[Here](https://share.weiyun.com/5g1cB6G)**
 
 Baidu download: **[Here](https://pan.baidu.com/s/1GqO35IUvFR3kJFwXtCWZiw)**
 
-Password: e4g1
+**Password: e4g1**
 
 (2) Connect the Chameleon MINI or TINY using the Android APP.
 
@@ -129,7 +128,7 @@ Open the app, click the "DUMP" column below, click the "SCanner" in the "plus si
 
 Click the card data file in the “DUM” column below, and click “Upload” below to upload to the card slot corresponding to the chameleon.
 
-2. Introduction to UID mode and SAK mode
+**2. Introduction to UID mode and SAK mode**
 
 (1) UID mode
 
@@ -144,7 +143,7 @@ This function is used to meet the situation that some cards with special SAK val
 The current card slot takes effect.
 How to open: Click the "SAK Mode" button in the APP or directly send the command "SAKMODE = 1" to turn it on, and "SAKMODE = 0" to turn it off.
 
-3. Card slot function introduction
+**3. Card slot function introduction**
 
 UID Card Function Class
 
@@ -161,7 +160,7 @@ SL2S2002|-|8 Byte|8192 byte|
 TITAGITSTANDARD|-|8 Byte|44  byte|
 EM4233|-|8 Byte|208 byte|
 
-Cracking and card reading functions
+**Cracking and card reading functions**
  
 |Option     | Ability    | Cracking Type | APP Supported    |
 | ------------------- |:-------------------:| -------------------:| -------------------:|
@@ -171,7 +170,7 @@ ISO14443A_READER|Reader Mode|-|Display UID|
 ISO14443A_SNIFF|Sniffing|-|Not supported|
 ISO15693_SNIFF|Sniffing|-|Not supported|
 
-4. Button Custom Function Introduction
+**4. Button Custom Function Introduction**
 
 |Option names    | Description    | 
 | ------------------- |:-------------------:| 
@@ -193,8 +192,7 @@ CLONE|Read the UID card number immediately after pressing, continue searching, a
 C.Hardware Introduction
 =======================
 
-1.Button function introduction
------------------------------
+**1.Button function introduction**
 
 (1)ChameleonMini Rev G
 
@@ -212,7 +210,7 @@ In the closed state, press the A button once to turn on the chameleon power. The
 DFU firmware upgrade status:
 In the off state, hold down the B button and connect the USB. You can enter the DFU flash firmware mode.
 
- Appendix
+ **Appendix**
  =================
 
 1.Feature comparison table for each version
