@@ -43,6 +43,7 @@ A.Upgrade to the latest firmware
 
 (2) Prepare the firmware. Go to GITHUB to compile the latest firmware:
 [Here](https://github.com/RfidResearchGroup/ChameleonMini)
+
 Or use the firmware in attachment.
 
 (3) Install the DFU driver. The DFU driver comes from ATMEL's official LIBUSB driver library. You can download it yourself or find it in attachment.
