@@ -23,6 +23,7 @@ Our APP can be found here: **[Here](https://play.google.com/store/apps/details?i
 Dropbox download for all relevant files: 
 ----------------------------------------
 **[Here](https://www.dropbox.com/s/xt2o9ugalaam4xu/REV.G%20User%20Manual%2020200309.zip?dl=0)** **Dropbox**
+
 **[Here](https://drive.google.com/open?id=1nU6r8VS4HwFRkp9hhhIlAmfU49p4cbn6)** **Google Drive**
 
 A.Upgrade to the latest firmware
