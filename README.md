@@ -20,21 +20,10 @@ Most information can be found on **[Here](http://chameleontiny.com/)**
 
 Our APP can be found here: **[Here](https://play.google.com/store/apps/details?id=com.proxgrind.chameleon)**
 
-
-Button Usage
------------
-When the power is off, press any button once to turn on the Bluetooth power, and at the same time, display the current power with a white LED.
-In the Bluetooth 'ON' state, click any button to turn off the Bluetooth power, the power LED goes out, and the system sleeps.
-Bluetooth will sleep automatically 15 seconds after no operation.
-Press any button for a long time, you can quickly check the power, and immediately sleep when you release.
-Click the button three times to turn on the power of chameleon. Sleep automatically after 5 seconds without operation.
-When shutting down, press and hold the button next to USB and then connect USB. You can enter DFU mode.
-Charging: Any time you connect USB, it will automatically start charging. Stop automatically after filling. The white LED indicates the power level.
-Detect memory full: If the memory is full during dense flow detection, multiple red LEDs will be abnormally lit.
-
 Dropbox download for all relevant files: 
 ----------------------------------------
-**[Here](https://www.dropbox.com/s/xt2o9ugalaam4xu/REV.G%20User%20Manual%2020200309.zip?dl=0)**
+**[Here](https://www.dropbox.com/s/xt2o9ugalaam4xu/REV.G%20User%20Manual%2020200309.zip?dl=0)** **Dropbox**
+**[Here](https://drive.google.com/open?id=1nU6r8VS4HwFRkp9hhhIlAmfU49p4cbn6)** **Google Drive**
 
 A.Upgrade to the latest firmware
 ==============================
@@ -188,6 +177,17 @@ TOGGLE_FIELD|Click once to turn off the antenna and click again to turn on the a
 STORE_LOG|Write the log data in the temporary cache to the memory, which can be saved even when power is off|
 CLEAR_LOG|Clear log data immediately after pressing|
 CLONE|Read the UID card number immediately after pressing, continue searching, and simulate immediately after reading the card|
+
+Button Usage
+-----------
+When the power is off, press any button once to turn on the Bluetooth power, and at the same time, display the current power with a white LED.
+In the Bluetooth 'ON' state, click any button to turn off the Bluetooth power, the power LED goes out, and the system sleeps.
+Bluetooth will sleep automatically 15 seconds after no operation.
+Press any button for a long time, you can quickly check the power, and immediately sleep when you release.
+Click the button three times to turn on the power of chameleon. Sleep automatically after 5 seconds without operation.
+When shutting down, press and hold the button next to USB and then connect USB. You can enter DFU mode.
+Charging: Any time you connect USB, it will automatically start charging. Stop automatically after filling. The white LED indicates the power level.
+Detect memory full: If the memory is full during dense flow detection, multiple red LEDs will be abnormally lit.
 
 C.Hardware Introduction
 =======================
