@@ -364,7 +364,7 @@ Schematics for ChameleonMini
 
 Usage Guide for new function
 ---------------------------
-img:https://ibb.co/VvcGbg9
+<a href="https://ibb.co/VvcGbg9"><img src="https://i.ibb.co/K9pgB2h/EUd-Gl7w-Uw-AAg-Cf6.jpg" alt="EUd-Gl7w-Uw-AAg-Cf6" border="0"></a><br />
 
 External Contributions
 ----------------------
