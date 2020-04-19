@@ -362,6 +362,10 @@ Schematics for ChameleonMini
 
 **[Here](http://chameleontiny.com/downloads/)**
 
+Usage Guide for new function
+---------------------------
+img:https://ibb.co/VvcGbg9
+
 External Contributions
 ----------------------
 Iceman  
