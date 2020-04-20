@@ -6,14 +6,14 @@ if not exist "%~dp0dfu-programmer.exe" (
 	exit
 )
 
-if not exist "%~dp0Chameleon-Mini.eep" (
-	echo Cannot find Chameleon-Mini.eep. Please run this .bat script in the same directory where Chameleon-Mini.eep and Chameleon-Mini.hex are saved.
+if not exist "%~dp0Chameleon-RevG.eep" (
+	echo Cannot find Chameleon-RevG.eep. Please run this .bat script in the same directory where Chameleon-RevG.eep and Chameleon-RevG.hex are saved.
 	pause > nul
 	exit
 )
 
-if not exist "%~dp0Chameleon-Mini.hex" (
-	echo Cannot find Chameleon-Mini.hex. Please run this .bat script in the same directory where Chameleon-Mini.eep and Chameleon-Mini.hex are saved.
+if not exist "%~dp0Chameleon-RevG.hex" (
+	echo Cannot find Chameleon-RevG.hex. Please run this .bat script in the same directory where Chameleon-RevG.eep and Chameleon-RevG.hex are saved.
 	pause > nul
 	exit
 )
@@ -26,7 +26,7 @@ IF %ERRORLEVEL% NEQ 0 (
 	exit
 )
 
-"%~dp0dfu-programmer.exe" atxmega128a4u flash-eeprom "%~dp0Chameleon-Mini.eep" --force
+"%~dp0dfu-programmer.exe" atxmega128a4u flash-eeprom "%~dp0Chameleon-RevG.eep" --force
 
 IF %ERRORLEVEL% NEQ 0 (
 	echo There was an error with executing this command. Maybe your ChameleonMini is not in bootloader mode?
@@ -34,7 +34,7 @@ IF %ERRORLEVEL% NEQ 0 (
 	exit
 )
 
-"%~dp0dfu-programmer.exe" atxmega128a4u flash "%~dp0Chameleon-Mini.hex"
+"%~dp0dfu-programmer.exe" atxmega128a4u flash "%~dp0Chameleon-RevG.hex"
 
 IF %ERRORLEVEL% NEQ 0 (
 	echo There was an error with executing this command. Maybe your ChameleonMini is not in bootloader mode?
