@@ -54,11 +54,7 @@ It should be noted that the Android APP is currently not compatible with the off
 
 (1) Prepare Android phone and install APP.
 
-Google Store: **[Here](https://play.google.com/store/apps/details?id=com.proxgrind.chameleon&hl=en)**
-
-Weiyun download:**[Here](https://share.weiyun.com/5g1cB6G)**
-
-Baidu download: **[Here](https://pan.baidu.com/s/1GqO35IUvFR3kJFwXtCWZiw)**
+Google Store: **[Here](https://play.google.com/store/apps/details?id=com.proxgrind.chameleon)**
 
 **Password: e4g1**
 
@@ -82,11 +78,7 @@ Source: **[Here](https://github.com/iceman1001/ChameleonMini-rebootedGUI)**
 
  Android APP download address:
 
-Google Store:**[Here](https://play.google.com/store/apps/details?id=com.proxgrind.chameleon&hl=en)**
-
-Weiyun download: **[Here](https://share.weiyun.com/5g1cB6G)**
-
-Baidu download: **[Here](https://pan.baidu.com/s/1GqO35IUvFR3kJFwXtCWZiw)**
+Google Store:**[Here](https://play.google.com/store/apps/details?id=com.proxgrind.chameleon)**
 
 **Password: e4g1**
 
