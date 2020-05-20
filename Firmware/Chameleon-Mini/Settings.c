@@ -28,8 +28,10 @@ SettingsType EEMEM StoredSettings = {
         [0 ...(SETTINGS_COUNT - 1)] =	{
             .Configuration = DEFAULT_CONFIGURATION,
             .ButtonActions = {
-                [BUTTON_L_PRESS_SHORT] = DEFAULT_LBUTTON_ACTION, [BUTTON_R_PRESS_SHORT] = DEFAULT_RBUTTON_ACTION,
-                [BUTTON_L_PRESS_LONG]  = DEFAULT_LBUTTON_ACTION, [BUTTON_R_PRESS_LONG]  = DEFAULT_RBUTTON_ACTION
+                [BUTTON_L_PRESS_SHORT] = DEFAULT_LBUTTON_ACTION, [BUTTON_L_PRESS_SHORT] = DEFAULT_LBUTTON_ACTION,
+                [BUTTON_L_PRESS_LONG]  = DEFAULT_LBUTTON_ACTION_LONG, [BUTTON_L_PRESS_LONG]  = DEFAULT_LBUTTON_ACTION_LONG,
+                [BUTTON_R_PRESS_SHORT] = DEFAULT_RBUTTON_ACTION, [BUTTON_R_PRESS_SHORT] = DEFAULT_RBUTTON_ACTION,
+                [BUTTON_R_PRESS_LONG]  = DEFAULT_RBUTTON_ACTION_LONG, [BUTTON_R_PRESS_LONG]  = DEFAULT_RBUTTON_ACTION_LONG
             },
             .LogMode = DEFAULT_LOG_MODE,
             .LEDRedFunction = DEFAULT_RED_LED_ACTION,
@@ -44,7 +46,7 @@ SettingsType EEMEM StoredSettings = {
             .Configuration = CONFIG_ISO14443A_READER,
             .ButtonActions = {
                 [BUTTON_L_PRESS_SHORT] = DEFAULT_LBUTTON_ACTION, [BUTTON_R_PRESS_SHORT] = DEFAULT_RBUTTON_ACTION,
-                [BUTTON_L_PRESS_LONG]  = DEFAULT_LBUTTON_ACTION, [BUTTON_R_PRESS_LONG]  = DEFAULT_RBUTTON_ACTION
+                [BUTTON_L_PRESS_LONG]  = DEFAULT_LBUTTON_ACTION_LONG, [BUTTON_R_PRESS_LONG]  = DEFAULT_RBUTTON_ACTION_LONG
             },
             .LogMode = DEFAULT_LOG_MODE,
             .LEDRedFunction = DEFAULT_RED_LED_ACTION,
@@ -67,8 +69,8 @@ void SettingsLoad(void) {
             GlobalSettings.Settings[i].Configuration = CONFIG_NONE;
             GlobalSettings.Settings[i].ButtonActions[BUTTON_L_PRESS_SHORT] = DEFAULT_LBUTTON_ACTION;
             GlobalSettings.Settings[i].ButtonActions[BUTTON_R_PRESS_SHORT] = DEFAULT_RBUTTON_ACTION;
-            GlobalSettings.Settings[i].ButtonActions[BUTTON_L_PRESS_LONG]  = DEFAULT_LBUTTON_ACTION;
-            GlobalSettings.Settings[i].ButtonActions[BUTTON_R_PRESS_LONG]  = DEFAULT_RBUTTON_ACTION;
+            GlobalSettings.Settings[i].ButtonActions[BUTTON_L_PRESS_LONG]  = DEFAULT_LBUTTON_ACTION_LONG;
+            GlobalSettings.Settings[i].ButtonActions[BUTTON_R_PRESS_LONG]  = DEFAULT_RBUTTON_ACTION_LONG;
             GlobalSettings.Settings[i].LogMode = DEFAULT_LOG_MODE;
             GlobalSettings.Settings[i].LEDRedFunction = DEFAULT_RED_LED_ACTION;
             GlobalSettings.Settings[i].LEDGreenFunction = DEFAULT_GREEN_LED_ACTION;
