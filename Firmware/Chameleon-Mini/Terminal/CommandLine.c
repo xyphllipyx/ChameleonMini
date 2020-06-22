@@ -331,14 +331,6 @@ const PROGMEM CommandEntryType CommandTable[] = {
         .GetFunc    = CommandGetSakMode
     },
     {
-        /* This has to be last element */
-        .Command    = COMMAND_LIST_END,
-        .ExecFunc   = NO_FUNCTION,
-        .ExecParamFunc = NO_FUNCTION,
-        .SetFunc    = NO_FUNCTION,
-        .GetFunc    = NO_FUNCTION
-    },
-    {
         .Command    = COMMAND_SETLEDMODE,
         .ExecFunc   = NO_FUNCTION,
         .ExecParamFunc = NO_FUNCTION,
@@ -359,6 +351,14 @@ const PROGMEM CommandEntryType CommandTable[] = {
 //    .SetFunc    = CommandSetBaudrate,
         .SetFunc    = NO_FUNCTION,
         .GetFunc    = CommandGetBaudrate,
+    },
+    {
+        /* This has to be last element */
+        .Command    = COMMAND_LIST_END,
+        .ExecFunc   = NO_FUNCTION,
+        .ExecParamFunc = NO_FUNCTION,
+        .SetFunc    = NO_FUNCTION,
+        .GetFunc    = NO_FUNCTION
     }
 };
 

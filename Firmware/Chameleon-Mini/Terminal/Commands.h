@@ -195,9 +195,6 @@ CommandStatusIdType CommandSetUidMode(char *OutMessage, const char *InParam);
 CommandStatusIdType CommandGetSakMode(char *OutMessage);
 CommandStatusIdType CommandSetSakMode(char *OutMessage, const char *InParam);
 
-#define COMMAND_LIST_END    ""
-/* Defines the end of command list. This is no actual command */
-
 #define COMMAND_DETECTION   "DETECTION"
 CommandStatusIdType CommandGetDetection(char *OutParam);
 CommandStatusIdType CommandSetDetection(char *OutMessage, const char *InParam);
@@ -209,5 +206,8 @@ CommandStatusIdType CommandSetBaudrate(char *OutMessage, const char *InParam);
 #define COMMAND_SETLEDMODE    "LEDMODE"
 CommandStatusIdType CommandGetLedMode(char *OutMessage);
 CommandStatusIdType CommandSetLedMode(char *OutMessage, const char *InParam);
+
+#define COMMAND_LIST_END    ""
+/* Defines the end of command list. This is no actual command */
 
 #endif /* COMMANDS_H_ */
