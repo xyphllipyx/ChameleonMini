@@ -2,6 +2,9 @@ Chameleon-Mini
 ==============
 This is NOT the official repository of ChameleonMini, a freely programmable, portable tool for NFC security analysis that can emulate and clone contactless cards, read RFID tags and sniff/log RF data. 
 
+Chameleon BLE API
+[Codes.RAR](https://github.com/RfidResearchGroup/ChameleonBLEAPI/blob/master/code.rar)
+
 Our Project is based on the open-source project by ChameleonMini RevG by Kasper & Oswald [Webshop](https://shop.kasper.it/). 
 
 Our ChameleonMini / ChameleonTiny by ProxGrind is available on Indiegogo now. 
