@@ -1,9 +1,6 @@
-name: Firmware Build
+name: Firmware Build (Pull Request, Firmware Modified, Artifact in build job)
 
 on:
-  push:
-    paths:
-      - "Firmware/**"
   pull_request:
     paths:
       - "Firmware/**"
@@ -15,8 +12,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Cleanup similar named things from root
-      run: rm Chameleon*
+    - name: Make a firmware build folder
+      run: mkdir FirmwareBuild
     - name: Print Kernel Ver
       run: uname -a
     - name: Update APT
@@ -26,14 +23,14 @@ jobs:
     - name: Make Firmware
       run: make
       working-directory: Firmware/Chameleon-Mini/
-    - name: Move hex file to root
-      run: mv Chameleon*.hex $GITHUB_WORKSPACE/
+    - name: Move hex file to FirmwareBuild
+      run: mv Chameleon*.hex $GITHUB_WORKSPACE/FirmwareBuild/
       working-directory: Firmware/Chameleon-Mini/
-    - name: Move eep file to root
-      run: mv Chameleon*.eep $GITHUB_WORKSPACE/
+    - name: Move eep file to FirmwareBuild
+      run: mv Chameleon*.eep $GITHUB_WORKSPACE/FirmwareBuild/
       working-directory: Firmware/Chameleon-Mini/
-    - name: Upload Build Artifact
+    - name: Upload Build Artifact to Action
       uses: actions/upload-artifact@v2.1.4
       with:
         name: "ChameleonBuild"
-        path: "Chameleon*.*"
+        path: "FirmwareBuild/**"
