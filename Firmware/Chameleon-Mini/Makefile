@@ -188,10 +188,6 @@ dfu-prog: $(TARGET).hex $(TARGET).eep check_size
 	dfu-programmer $(MCU) reset
 
 check_size:
-ifeq ($(OS),Windows_NT)
-# TODO Windows version of this check
-	@PROGMEM_SIZE = 0
-else
 	@{ \
 	set -e; \
 	if [ ! -f $(TARGET).elf ]; then \
@@ -204,7 +200,6 @@ else
 		exit 1; \
 	fi; \
 	}
-endif
 
 style:
 	# Make sure astyle is installed
