@@ -183,7 +183,8 @@ def cmdUpgrade(chameleon, arg):
     exit(0)
 
 def cmdClear(chameleon, arg):
-    return "Slot has been cleared: {}".format(chameleon.cmdClear()['response'])
+    chameleon.cmdClear()
+    return "Slot has been cleared"
 
 # Custom class for argparse
 class CmdListAction(argparse.Action):
