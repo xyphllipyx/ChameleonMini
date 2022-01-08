@@ -21,7 +21,9 @@ Our US Reseller
 
 Most information can be found on **[Here](http://chameleontiny.com/)**
 
-Our APP can be found here: **[Here](https://play.google.com/store/apps/details?id=com.proxgrind.chameleon)**
+Our Android APP can be found here: **[Here](https://play.google.com/store/apps/details?id=com.proxgrind.chameleon)**
+
+[Bettse](https://github.com/bettse) wrote an iOS app: **[ChameleonTiny Manager](https://apps.apple.com/us/app/chameleontiny-manager/id1601341565)**
 
 Dropbox download for all relevant files: [Link-Broken]
 ----------------------------------------
@@ -73,15 +75,19 @@ B. Quick Crash Course
 
 **1.Detect keys and upload card files**
 
-(1) Prepare the computer GUI or Android APP.
+(1) Prepare the computer GUI, Android APP, or iOS App:
  
 Computer GUI download address: **[Here](http://www.icesql.se/download/ChameleonMiniGUI/publish.htm)**
 
 Source: **[Here](https://github.com/iceman1001/ChameleonMini-rebootedGUI)**
 
- Android APP download address:
+Android APP download address:
 
 Google Store:**[Here](https://play.google.com/store/apps/details?id=com.proxgrind.chameleon)**
+
+iOS App download address:
+
+Apple App Store: **[Here](https://apps.apple.com/us/app/chameleontiny-manager/id1601341565)**
 
 **Password: e4g1**
 
