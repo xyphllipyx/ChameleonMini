@@ -18,11 +18,11 @@ SETTINGS    += -DCONFIG_MF_ULTRALIGHT_SUPPORT
 SETTINGS	+= -DCONFIG_ISO14443A_SNIFF_SUPPORT
 SETTINGS	+= -DCONFIG_ISO14443A_READER_SUPPORT
 SETTINGS 	+= -DCONFIG_NTAG215_SUPPORT
-SETTINGS	+= -DCONFIG_VICINITY_SUPPORT
-SETTINGS	+= -DCONFIG_SL2S2002_SUPPORT
-SETTINGS	+= -DCONFIG_TITAGITSTANDARD_SUPPORT
+# SETTINGS	+= -DCONFIG_VICINITY_SUPPORT
+# SETTINGS	+= -DCONFIG_SL2S2002_SUPPORT
+# SETTINGS	+= -DCONFIG_TITAGITSTANDARD_SUPPORT
+# SETTINGS	+= -DCONFIG_EM4233_SUPPORT
 SETTINGS	+= -DCONFIG_ISO15693_SNIFF_SUPPORT
-SETTINGS	+= -DCONFIG_EM4233_SUPPORT
 
 #Support magic mode on mifare classic configuration
 SETTINGS    += -DSUPPORT_MF_CLASSIC_MAGIC_MODE
@@ -198,7 +198,7 @@ check_size:
 	if [ ! -f $(TARGET).elf ]; then \
 		exit 0; \
 	fi; \
-	PROGMEM_SIZE=$$(avr-size --mcu=atxmega128a4u --format=avr $(TARGET).elf | grep -oP "\d+" | sed -n 3p); \
+	PROGMEM_SIZE=$$(avr-size --mcu=atxmega128a4u --format=avr $(TARGET).elf | grep -oP "Program:\W+(\d+)" | grep -oP "\d+"); \
 	MAX_PRGMEM_SIZE=$$(printf "%d\n" $(FLASH_DATA_ADDR)); \
 	if [ $$PROGMEM_SIZE -gt $$MAX_PRGMEM_SIZE ]; then \
 		echo "make: *** $(TARGET).elf Application Section size $$PROGMEM_SIZE excedes maximum allowed $$MAX_PRGMEM_SIZE. Please disable some features in Makefile"; \
