@@ -159,7 +159,7 @@ MF_DETECTION_1K|Detecting reader to obtain keys|MFKEY32V2|List results directly|
 MF_DETECTION_4K|Detecting reader to obtain keys|MFKEY32V2|List results directly|
 ISO14443A_READER|Reader Mode|-|Display UID|
 ISO14443A_SNIFF|Sniffing|-|Not supported|
-ISO15693_SNIFF|Sniffing|-|Not supported|
+ISO15693_SNIFF|Sniffing|-|Supported|
 
 **4. Button Custom Function Introduction**
 
@@ -296,7 +296,8 @@ Sniff Mode NTAG|ISO14443A 106 kbit/s|Support|Support| No
 LEGIC prime|LEGICprime/ ISO14443A/ ISO15693|Possible but not supported|Possible but not supported|No|
 HID iCLASS|125kHz/ISO15693/ISO14443B|Possible but not supported|Possible but not supported|No|
 Epass|ISO14443A/B|Supported / Supported|Low rate only / not supported|No|
-ISO15693|ISO15693|Support|Support|No|
+TiTagIT Standard|ISO15693|Support|Support|Support|
+EM4233|ISO15693|Support|Support|Support|
 
 
 （2）Sniff Mode Support Type
@@ -305,7 +306,8 @@ ISO15693|ISO15693|Support|Support|No|
 |Encoding type|Whether the hardware supports|Does the software support| Whether the application layer supports|Note|
 | ------------------- |:-------------------:| -------------------:| ------------------- |-------------------:|
 Non-13.56MHz|Not Supported|Not Supported|Not Supported|
-ISO 14443 A 106 kbit/s|Reader -> card Direction sniffing|Maybe support the other direction|Currently only supported Reader -> card Direction sniffing |Support|
+ISO 14443 A 106 kbit/s|Reader -> card Direction sniffing|Maybe support the other direction|Currently only supported Reader -> card Direction sniffing ||
+ISO 15693|Support|Support|Support|Single subcarrier only|
 
 
 （3） Card Type Supported via Reading
