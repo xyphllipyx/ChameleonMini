@@ -2,6 +2,9 @@ Chameleon-Mini
 ==============
 This is NOT the official repository of ChameleonMini, a freely programmable, portable tool for NFC security analysis that can emulate and clone contactless cards, read RFID tags and sniff/log RF data. 
 
+Chameleon BLE API
+[**Codes.RAR**](https://github.com/RfidResearchGroup/ChameleonBLEAPI/blob/master/code.rar)
+
 Our Project is based on the open-source project by ChameleonMini RevG by Kasper & Oswald [Webshop](https://shop.kasper.it/). 
 
 Our ChameleonMini / ChameleonTiny by ProxGrind is available on Indiegogo now. 
@@ -18,9 +21,11 @@ Our US Reseller
 
 Most information can be found on **[Here](http://chameleontiny.com/)**
 
-Our APP can be found here: **[Here](https://play.google.com/store/apps/details?id=com.proxgrind.chameleon)**
+Our Android APP can be found here: **[Here](https://play.google.com/store/apps/details?id=com.proxgrind.chameleon)**
 
-Dropbox download for all relevant files: 
+[Bettse](https://github.com/bettse) wrote an iOS app: **[ChameleonTiny Manager](https://apps.apple.com/us/app/chameleontiny-manager/id1601341565)**
+
+Dropbox download for all relevant files: [Link-Broken]
 ----------------------------------------
 **[Here](https://www.dropbox.com/s/xt2o9ugalaam4xu/REV.G%20User%20Manual%2020200309.zip?dl=0)** **Dropbox**
 
@@ -70,21 +75,25 @@ B. Quick Crash Course
 
 **1.Detect keys and upload card files**
 
-(1) Prepare the computer GUI or Android APP.
+(1) Prepare the computer GUI, Android APP, or iOS App:
  
 Computer GUI download address: **[Here](http://www.icesql.se/download/ChameleonMiniGUI/publish.htm)**
 
 Source: **[Here](https://github.com/iceman1001/ChameleonMini-rebootedGUI)**
 
- Android APP download address:
+Android APP download address:
 
 Google Store:**[Here](https://play.google.com/store/apps/details?id=com.proxgrind.chameleon)**
+
+iOS App download address:
+
+Apple App Store: **[Here](https://apps.apple.com/us/app/chameleontiny-manager/id1601341565)**
 
 **Password: e4g1**
 
 (2) Connect the Chameleon MINI or TINY using the Android APP.
 
-USB port direct connection: Both the Chameleon MINI and TINY support direct connection to the mobile phone USB port. For the MINI, an additional OTG adapter needs to be purchased. TINY uses its own dual-headed TYPEC data cable to connect directly to TYPEC mobile phones.
+USB port direct connection: Both the Chameleon MINI and TINY support direct connection to the mobile phone USB port. For the MINI, an additional OTG adapter needs to be purchased. TINY uses its own dual-headed TYPE-C data cable to connect directly to TYPE-C mobile phones.
 Bluetooth connection: Chameleon MINI has built-in Bluetooth BLE4.0. Press any button first to wake up Bluetooth. Turn on Bluetooth on your Android phone and the app will automatically connect.
 
 (3) Use Android APP to enable detection mode.
@@ -106,9 +115,9 @@ Note: Multiple red LEDs are on at the same time during detection, which means th
 (5) Use Android APP to import existing card data files in batches.
 
  Use QQ to send the card data file to the mobile phone QQ, or connect the mobile phone to the computer and transfer the file to any directory on the mobile phone.
-Open the app, click the "DUMP" column below, click the "SCanner" in the "plus sign" in the upper right corner, click the three horizontal line buttons in the upper left corner, and select this phone. Then select the root directory of the QQ receiving file or the previously copied directory, and click Allow Access. All card data files will be automatically scanned into the "DUMP file" interface, which can be uploaded or edited at will. 
+Open the app, click the "DUMP" column below, click the "Scanner" in the "plus sign" in the upper right corner, click the three horizontal line buttons in the upper left corner, and select this phone. Then select the root directory of the QQ receiving file or the previously copied directory, and click Allow Access. All card data files will be automatically scanned into the "DUMP file" interface, which can be uploaded or edited at will. 
 
-Click the card data file in the “DUM” column below, and click “Upload” below to upload to the card slot corresponding to the chameleon.
+Click the card data file in the “DUMP” column below, and click “Upload” below to upload to the card slot corresponding to the chameleon.
 
 **2. Introduction to UID mode and SAK mode**
 
@@ -150,7 +159,7 @@ MF_DETECTION_1K|Detecting reader to obtain keys|MFKEY32V2|List results directly|
 MF_DETECTION_4K|Detecting reader to obtain keys|MFKEY32V2|List results directly|
 ISO14443A_READER|Reader Mode|-|Display UID|
 ISO14443A_SNIFF|Sniffing|-|Not supported|
-ISO15693_SNIFF|Sniffing|-|Not supported|
+ISO15693_SNIFF|Sniffing|-|Supported|
 
 **4. Button Custom Function Introduction**
 
@@ -199,9 +208,9 @@ In the closed state, press and hold the yellow button near the USB, and then let
 (2 ) ChameleonTiny
 
 Turn on the chameleon:
-In the closed state, press the A button once to turn on the chameleon power. The red LED lights up to indicate the slot number. After 5 seconds without operation, it will automatically sleep and shut down.
+In the off/standby state, press the A button once to turn on the chameleon power. The red LED lights up to indicate the slot number. After 5 seconds without operation, it will automatically sleep and shut down. This can be adjusted in Android Application.
 DFU firmware upgrade status:
-In the off state, hold down the B button and connect the USB. You can enter the DFU flash firmware mode.
+In the off state, hold down the B button and connect the USB. You can enter the DFU mode to flash new firmware .
 
  **Appendix**
  =================
@@ -287,7 +296,8 @@ Sniff Mode NTAG|ISO14443A 106 kbit/s|Support|Support| No
 LEGIC prime|LEGICprime/ ISO14443A/ ISO15693|Possible but not supported|Possible but not supported|No|
 HID iCLASS|125kHz/ISO15693/ISO14443B|Possible but not supported|Possible but not supported|No|
 Epass|ISO14443A/B|Supported / Supported|Low rate only / not supported|No|
-ISO15693|ISO15693|Support|Support|No|
+TiTagIT Standard|ISO15693|Support|Support|Support|
+EM4233|ISO15693|Support|Support|Support|
 
 
 （2）Sniff Mode Support Type
@@ -296,7 +306,8 @@ ISO15693|ISO15693|Support|Support|No|
 |Encoding type|Whether the hardware supports|Does the software support| Whether the application layer supports|Note|
 | ------------------- |:-------------------:| -------------------:| ------------------- |-------------------:|
 Non-13.56MHz|Not Supported|Not Supported|Not Supported|
-ISO 14443 A 106 kbit/s|Reader -> card Direction sniffing|Maybe support the other direction|Currently only supported Reader -> card Direction sniffing |Support|
+ISO 14443 A 106 kbit/s|Reader -> card Direction sniffing|Maybe support the other direction|Currently only supported Reader -> card Direction sniffing ||
+ISO 15693|Support|Support|Support|Single subcarrier only|
 
 
 （3） Card Type Supported via Reading

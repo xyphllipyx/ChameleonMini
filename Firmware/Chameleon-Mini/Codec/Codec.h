@@ -8,26 +8,6 @@
 #ifndef CODEC_H_
 #define CODEC_H_
 
-#include <avr/io.h>
-#include <stdint.h>
-#include <stdbool.h>
-#include "../Common.h"
-#include "../Configuration.h"
-#include "../Settings.h"
-
-#include "ISO14443-2A.h"
-#include "Reader14443-2A.h"
-#include "SniffISO14443-2A.h"
-#include "ISO15693.h"
-
-/* Timing definitions for ISO14443A */
-#define ISO14443A_SUBCARRIER_DIVIDER    16
-#define ISO14443A_BIT_GRID_CYCLES       128
-#define ISO14443A_BIT_RATE_CYCLES       128
-#define ISO14443A_FRAME_DELAY_PREV1     1236
-#define ISO14443A_FRAME_DELAY_PREV0     1172
-#define ISO14443A_RX_PENDING_TIMEOUT	4 // ms
-
 /* Peripheral definitions */
 #define CODEC_DEMOD_POWER_PORT      PORTB
 #define CODEC_DEMOD_POWER_MASK      PIN0_bm
@@ -58,6 +38,7 @@
 #define CODEC_SUBCARRIER_CCEN_PSK	TC1_CCAEN_bm
 #define CODEC_SUBCARRIER_CCEN_OOK	TC1_CCBEN_bm
 #define CODEC_TIMER_SAMPLING		TCD0
+#define CODEC_TIMER_SAMPLING_OVF_VECT	TCD0_OVF_vect
 #define CODEC_TIMER_SAMPLING_CCA_VECT	TCD0_CCA_vect
 #define CODEC_TIMER_SAMPLING_CCB_VECT	TCD0_CCB_vect
 #define CODEC_TIMER_SAMPLING_CCC_VECT   TCD0_CCC_vect
@@ -84,9 +65,32 @@
 #define CODEC_THRESHOLD_CALIBRATE_MAX   2048
 #define CODEC_THRESHOLD_CALIBRATE_STEPS 16
 #define CODEC_TIMER_TIMESTAMPS		TCD1
+#define CODEC_TIMER_TIMESTAMPS_OVF_VECT	TCD1_OVF_vect
 #define CODEC_TIMER_TIMESTAMPS_CCA_VECT	TCD1_CCA_vect
 #define CODEC_TIMER_TIMESTAMPS_CCB_VECT	TCD1_CCB_vect
 
+#ifndef __ASSEMBLER__
+
+#include <avr/io.h>
+#include <stdint.h>
+#include <stdbool.h>
+#include "../Common.h"
+#include "../Configuration.h"
+#include "../Settings.h"
+
+#include "ISO14443-2A.h"
+#include "Reader14443-2A.h"
+#include "SniffISO14443-2A.h"
+#include "ISO15693.h"
+#include "SniffISO15693.h"
+
+/* Timing definitions for ISO14443A */
+#define ISO14443A_SUBCARRIER_DIVIDER    16
+#define ISO14443A_BIT_GRID_CYCLES       128
+#define ISO14443A_BIT_RATE_CYCLES       128
+#define ISO14443A_FRAME_DELAY_PREV1     1236
+#define ISO14443A_FRAME_DELAY_PREV0     1172
+#define ISO14443A_RX_PENDING_TIMEOUT	4 // ms
 
 #define CODEC_BUFFER_SIZE           256
 
@@ -115,15 +119,31 @@ typedef enum {
 extern uint8_t CodecBuffer[CODEC_BUFFER_SIZE];
 extern uint8_t CodecBuffer2[CODEC_BUFFER_SIZE];
 
-void (* volatile isr_func_TCD0_CCC_vect)(void);
+extern enum RCTraffic {TRAFFIC_READER, TRAFFIC_CARD} SniffTrafficSource;
+
+/* Shared ISR pointers and handlers */
+extern void (* volatile isr_func_TCD0_CCC_vect)(void);
 void isr_Reader14443_2A_TCD0_CCC_vect(void);
 void isr_ISO15693_CODEC_TIMER_SAMPLING_CCC_VECT(void);
-void (* volatile isr_func_CODEC_DEMOD_IN_INT0_VECT)(void);
+extern void (* volatile isr_func_CODEC_DEMOD_IN_INT0_VECT)(void);
 void isr_ISO14443_2A_TCD0_CCC_vect(void);
 void isr_ISO15693_CODEC_DEMOD_IN_INT0_VECT(void);
-void (* volatile isr_func_CODEC_TIMER_LOADMOD_CCB_VECT)(void);
+extern void (* volatile isr_func_CODEC_TIMER_LOADMOD_OVF_VECT)(void);
+void isr_ISO14443_2A_CODEC_TIMER_LOADMOD_OVF_VECT(void);
+void isr_SNIFF_ISO15693_CODEC_TIMER_LOADMOD_OVF_VECT(void);
+extern void (* volatile isr_func_CODEC_TIMER_LOADMOD_CCA_VECT)(void);
+void isr_Reader14443_2A_CODEC_TIMER_LOADMOD_CCA_VECT(void);
+void isr_SNIFF_ISO15693_CODEC_TIMER_LOADMOD_CCA_VECT(void);
+extern void (* volatile isr_func_CODEC_TIMER_LOADMOD_CCB_VECT)(void);
 void isr_ISO15693_CODEC_TIMER_LOADMOD_CCB_VECT(void);
 void isr_SniffISO14443_2A_CODEC_TIMER_LOADMOD_CCB_VECT(void);
+void isr_SNIFF_ISO15693_CODEC_TIMER_LOADMOD_CCA_VECT(void);
+extern void (* volatile isr_func_CODEC_TIMER_TIMESTAMPS_CCA_VECT)(void);
+void isr_Reader14443_2A_CODEC_TIMER_TIMESTAMPS_CCA_VECT(void);
+void isr_SNIFF_ISO15693_CODEC_TIMER_TIMESTAMPS_CCA_VECT(void);
+extern void (* volatile isr_func_ACA_AC0_vect)(void);
+void isr_SniffISO14443_2A_ACA_AC0_VECT(void);
+void isr_SNIFF_ISO15693_ACA_AC0_VECT(void);
 
 INLINE void CodecInit(void) {
     ActiveConfiguration.CodecInitFunc();
@@ -163,9 +183,6 @@ INLINE void CodecInitCommon(void) {
     CODEC_DEMOD_IN_PORT.INTCTRL = PORT_INT0LVL_HI_gc | PORT_INT1LVL_HI_gc;
     EVSYS.CH0MUX = CODEC_DEMOD_IN_EVMUX0;
     EVSYS.CH1MUX = CODEC_DEMOD_IN_EVMUX1;
-
-    EVSYS.CH2MUX = CODEC_DEMOD_IN_EVMUX0;
-
 
     /* Configure loadmod pin configuration and use a virtual port configuration
      * for single instruction cycle access */
@@ -285,4 +302,7 @@ bool CodecIsReaderToBeRestarted(void);
 void CodecThresholdSet(uint16_t th);
 uint16_t CodecThresholdIncrement(void);
 void CodecThresholdReset(void);
+
+#endif /* __ASSEMBLER__ */
+
 #endif /* CODEC_H_ */

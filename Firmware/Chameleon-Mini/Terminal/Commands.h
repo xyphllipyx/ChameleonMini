@@ -66,6 +66,14 @@ CommandStatusIdType CommandSetConfig(char *OutMessage, const char *InParam);
 CommandStatusIdType CommandGetUid(char *OutParam);
 CommandStatusIdType CommandSetUid(char *OutMessage, const char *InParam);
 
+#define COMMAND_ATQA                "ATQA"
+CommandStatusIdType CommandGetAtqa(char* OutParam);
+CommandStatusIdType CommandSetAtqa(char* OutMessage, const char* InParam);
+
+#define COMMAND_SAK                 "SAK"
+CommandStatusIdType CommandGetSak(char* OutParam);
+CommandStatusIdType CommandSetSak(char* OutMessage, const char* InParam);
+
 #define COMMAND_READONLY    "READONLY"
 CommandStatusIdType CommandGetReadOnly(char *OutParam);
 CommandStatusIdType CommandSetReadOnly(char *OutMessage, const char *InParam);
@@ -165,6 +173,9 @@ CommandStatusIdType CommandExecGetUid(char *OutMessage);
 
 #define COMMAND_DUMP_MFU	"DUMP_MFU"
 CommandStatusIdType CommandExecDumpMFU(char *OutMessage);
+
+#define COMMAND_CLONE_MFU	"CLONE_MFU"
+CommandStatusIdType CommandExecCloneMFU(char *OutMessage);
 
 #define COMMAND_IDENTIFY_CARD	"IDENTIFY"
 CommandStatusIdType CommandExecIdentifyCard(char *OutMessage);

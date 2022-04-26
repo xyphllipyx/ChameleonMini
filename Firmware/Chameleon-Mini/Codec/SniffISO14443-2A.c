@@ -345,8 +345,7 @@ INLINE void Insert1(void) {
 }
 
 // This interrupt find Card -> Reader SOC
-ISR(ACA_AC0_vect) { // this interrupt either finds the SOC or gets triggered before
-
+ISR_SHARED isr_SniffISO14443_2A_ACA_AC0_VECT (void) { // this interrupt either finds the SOC or gets triggered before
     ACA.AC0CTRL &= ~AC_INTLVL_HI_gc; // disable this interrupt
     // enable the pause-finding timer
     CODEC_TIMER_LOADMOD.CTRLD = TC_EVACT_RESTART_gc | TC_EVSEL_CH2_gc;
@@ -354,16 +353,13 @@ ISR(ACA_AC0_vect) { // this interrupt either finds the SOC or gets triggered bef
     StateRegister = PICC_FRAME;
 }
 
-ISR(CODEC_TIMER_LOADMOD_CCB_VECT) { // pause found
-    isr_func_CODEC_TIMER_LOADMOD_CCB_VECT();
-}
-
+// Called once a pause is found
 // Decode the Card -> Reader signal
 // according to the pause and modulated period
 // if the half bit duration is modulated, then add 1 to buffer
 // if the half bit duration is not modulated, then add 0 to buffer
 //ISR(CODEC_TIMER_LOADMOD_CCB_VECT) // pause found
-void isr_SniffISO14443_2A_CODEC_TIMER_LOADMOD_CCB_VECT(void) {
+ISR_SHARED isr_SniffISO14443_2A_CODEC_TIMER_LOADMOD_CCB_VECT(void) {
     uint8_t tmp = CODEC_TIMER_TIMESTAMPS.CNTL;
     CODEC_TIMER_TIMESTAMPS.CNT = 0;
 
@@ -481,6 +477,7 @@ void Sniff14443ACodecInit(void) {
 #endif
     // Common Codec Register settings
     CodecInitCommon();
+    isr_func_ACA_AC0_vect = &isr_SniffISO14443_2A_ACA_AC0_VECT;
     isr_func_CODEC_TIMER_LOADMOD_CCB_VECT = &isr_SniffISO14443_2A_CODEC_TIMER_LOADMOD_CCB_VECT;
     // Enable demodulator power
     CodecSetDemodPower(true);
@@ -511,7 +508,7 @@ void Sniff14443ACodecTask(void) {
         // Let the Application layer know where this data comes from
         LEDHook(LED_CODEC_RX, LED_PULSE);
 
-        TrafficSource = TRAFFIC_READER;
+        SniffTrafficSource = TRAFFIC_READER;
         ApplicationProcess(CodecBuffer, ReaderBitCount);
     }
 
@@ -524,7 +521,7 @@ void Sniff14443ACodecTask(void) {
         LEDHook(LED_CODEC_RX, LED_PULSE);
 
         // Let the Application layer know where this data comes from
-        TrafficSource = TRAFFIC_CARD;
+        SniffTrafficSource = TRAFFIC_CARD;
         ApplicationProcess(CodecBuffer2, CardBitCount);
     }
 

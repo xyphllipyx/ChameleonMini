@@ -112,6 +112,8 @@ static uint8_t CompatWritePageAddress;
 static bool Authenticated;
 static uint8_t FirstAuthenticatedPage;
 static bool ReadAccessProtected;
+static uint16_t CardATQAValue;
+static uint8_t CardSAKValue;
 static uint8_t RNDBBuff [8];
 static uint8_t InitialVector[8] = {0};
 static uint8_t TripleDesKey [16];
@@ -153,6 +155,8 @@ static void AppInitCommon(void) {
     FromHalt = false;
     Authenticated = false;
     ArmedForCompatWrite = false;
+    CardATQAValue = ATQA_VALUE;
+    CardSAKValue = SAK_CL1_VALUE;
 }
 void MifareUltralightCAppInit(void) {
     Flavor = UL_C;
@@ -285,7 +289,7 @@ static uint16_t AppProcess(uint8_t *const Buffer, uint16_t ByteCount) {
 
         //Handle MF ULC counter
         if (CompatWritePageAddress == MF_ULC_COUNTER_ADDRESS && Flavor == UL_C) {
-            if (IncrementCounter(&Buffer[2])) {
+            if (IncrementCounter(&Buffer[0])) {
                 Buffer[0] = ACK_VALUE;
                 return ACK_FRAME_SIZE;
             } else {
@@ -294,7 +298,7 @@ static uint16_t AppProcess(uint8_t *const Buffer, uint16_t ByteCount) {
             }
         }
 
-        AppWritePage(CompatWritePageAddress, &Buffer[2]);
+        AppWritePage(CompatWritePageAddress, &Buffer[0]);
         Buffer[0] = ACK_VALUE;
         return ACK_FRAME_SIZE;
     }
@@ -673,3 +677,22 @@ void MifareUltralightSetUid(ConfigurationUidType Uid) {
     MemoryWriteBlock(&BCC2, UID_BCC2_ADDRESS, ISO14443A_CL_BCC_SIZE);
 }
 
+void MifareUltralightGetAtqa(uint16_t * Atqa)
+{
+    *Atqa = CardATQAValue;
+}
+
+void MifareUltralightSetAtqa(uint16_t Atqa)
+{
+    CardATQAValue = Atqa;
+}
+
+void MifareUltralightGetSak(uint8_t * Sak)
+{
+    *Sak = CardSAKValue;
+}
+
+void MifareUltralightSetSak(uint8_t Sak)
+{
+    CardSAKValue = Sak;
+}

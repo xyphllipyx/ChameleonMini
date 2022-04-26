@@ -62,6 +62,20 @@ const PROGMEM CommandEntryType CommandTable[] = {
         .GetFunc    = CommandGetUid
     },
     {
+        .Command    = COMMAND_ATQA,
+        .ExecFunc   = NO_FUNCTION,
+        .ExecParamFunc = NO_FUNCTION,
+        .SetFunc    = CommandSetAtqa,
+        .GetFunc    = CommandGetAtqa
+    },
+    {
+        .Command    = COMMAND_SAK,
+        .ExecFunc   = NO_FUNCTION,
+        .ExecParamFunc = NO_FUNCTION,
+        .SetFunc    = CommandSetSak,
+        .GetFunc    = CommandGetSak
+    },
+    {
         .Command    = COMMAND_READONLY,
         .ExecFunc   = NO_FUNCTION,
         .ExecParamFunc = NO_FUNCTION,
@@ -246,6 +260,7 @@ const PROGMEM CommandEntryType CommandTable[] = {
         .SetFunc 	= NO_FUNCTION,
         .GetFunc 	= CommandGetSysTick
     },
+#ifdef CONFIG_ISO14443A_READER_SUPPORT
     {
         .Command	= COMMAND_SEND_RAW,
         .ExecFunc 	= NO_FUNCTION,
@@ -275,12 +290,20 @@ const PROGMEM CommandEntryType CommandTable[] = {
         .GetFunc 	= NO_FUNCTION
     },
     {
+        .Command	= COMMAND_CLONE_MFU,
+        .ExecFunc 	= CommandExecCloneMFU,
+        .ExecParamFunc  = NO_FUNCTION,
+        .SetFunc 	= NO_FUNCTION,
+        .GetFunc 	= NO_FUNCTION
+    },
+    {
         .Command	= COMMAND_IDENTIFY_CARD,
         .ExecFunc 	= CommandExecIdentifyCard,
         .ExecParamFunc = NO_FUNCTION,
         .SetFunc 	= NO_FUNCTION,
         .GetFunc 	= NO_FUNCTION
     },
+#endif
     {
         .Command	= COMMAND_TIMEOUT,
         .ExecFunc 	= NO_FUNCTION,
@@ -309,6 +332,7 @@ const PROGMEM CommandEntryType CommandTable[] = {
         .SetFunc    = CommandSetField,
         .GetFunc    = CommandGetField
     },
+#ifdef CONFIG_ISO14443A_READER_SUPPORT
     {
         .Command        = COMMAND_CLONE,
         .ExecFunc       = CommandExecClone,
@@ -316,6 +340,7 @@ const PROGMEM CommandEntryType CommandTable[] = {
         .SetFunc        = NO_FUNCTION,
         .GetFunc        = NO_FUNCTION
     },
+#endif
     {
         .Command    = COMMAND_SETUIDMODE,
         .ExecFunc   = NO_FUNCTION,

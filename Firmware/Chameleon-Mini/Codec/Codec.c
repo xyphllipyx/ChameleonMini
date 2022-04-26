@@ -11,7 +11,7 @@
 
 uint16_t Reader_FWT = ISO14443A_RX_PENDING_TIMEOUT;
 
-//    这个是从开启到准备好的时间间隔，之前不能发送数据
+//    This is the time interval from start to ready, data cannot be sent before
 #define READER_FIELD_MINIMUM_WAITING_TIME	70 // ms
 
 static uint16_t ReaderFieldStartTimestamp = 0;
@@ -25,6 +25,17 @@ static volatile struct {
 
 uint8_t CodecBuffer[CODEC_BUFFER_SIZE];
 uint8_t CodecBuffer2[CODEC_BUFFER_SIZE];
+
+enum RCTraffic SniffTrafficSource;
+
+void (* volatile isr_func_TCD0_CCC_vect)(void) = NULL;
+void (* volatile isr_func_CODEC_DEMOD_IN_INT0_VECT)(void) = NULL;
+void (* volatile isr_func_ACA_AC0_vect)(void);
+void (* volatile isr_func_CODEC_TIMER_LOADMOD_OVF_VECT)(void) = NULL;
+void (* volatile isr_func_CODEC_TIMER_LOADMOD_CCA_VECT)(void) = NULL;
+void (* volatile isr_func_CODEC_TIMER_LOADMOD_CCB_VECT)(void) = NULL;
+void (* volatile isr_func_CODEC_TIMER_TIMESTAMPS_CCA_VECT)(void) = NULL;
+
 // the following three functions prevent sending data directly after turning on the reader field
 void CodecReaderFieldStart(void) { // DO NOT CALL THIS FUNCTION INSIDE APPLICATION!
     if (!CodecGetReaderField() && !ReaderFieldFlags.ToBeRestarted) {
