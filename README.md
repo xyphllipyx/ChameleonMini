@@ -88,7 +88,7 @@ Our Project is based on the open-source project [ChameleonMini RevG](/../../../.
       - IOS: **[ChameleonTiny Manager](https://apps.apple.com/us/app/chameleontiny-manager/id1601341565)**
       - Password: e4g1
    3. Connect to the Chameleon MINI or TINY using the APP.
-      - Connect via USB
+      - Connect via USB or Bluetooth
 
    - Note:
       - Both the Chameleon MINI and TINY support direct connection to the mobile phone USB port. 
