@@ -35,7 +35,7 @@ Our Project is based on the open-source project [ChameleonMini RevG](/../../../.
 
 #### 1. Prepare your Windows. Linux, or MAC computer:
 
-   1. Prepare the firmware. 
+   1. Prepare the firmware:
    2. Go to GITHUB to compile the latest firmware: **[Here](/../../../../RfidResearchGroup/ChameleonMini)** 
       - Or use the precompiled [firmware in the release section](/../../../../iceman1001/ChameleonMini-rebooted/releases).
    3. Install the DFU driver. 
@@ -236,19 +236,22 @@ CLONE|Read the UID card number immediately after pressing, continue searching, a
 ---
 
 #### 1. Turn on Bluetooth and check the battery:
+
    1. When the power is `OFF`, press any button once to turn on the Bluetooth power, and at the same time, display the current power with a white LED.
    2. With the Bluetooth in the `ON` state, click any button to turn off the Bluetooth power, the power LED goes out, and the system sleeps. 
    3. Bluetooth will sleep automatically after no operation for 15 seconds.
          - Press any button once to shut down immediately.
 
 #### 2. Turn on the chameleon:
+
    1. With the Bluetooth in the `ON` state, double click any button. Or in the `OFF` state, triple click any button times to turn `ON` the chameleon.
    2. The red LED lights up to indicate the slot number. 
    3. Chameleon will automatically sleep and shut down after no operation for 5 seconds.
   
 #### 3. Bootloader/DFU firmware upgrade methods:
+
    1. With the chameleon in the `OFF` state, press and hold the yellow button near the USB while inserting it into the USB port. The chameleon will enter the `DFU firmware upgrade` mode.
-   2. Plug your chameleon in via USB into a PC and use your favorite terminal application to connect to it. Type `upgrade` and hit `Enter`.
+   2. Usee your favorite terminal application to connect to it. Type `upgrade` and hit `Enter`.
    3. Further information from the original: [Here](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)
 
 #### 4. Schematics for ChameleonMini:
@@ -259,12 +262,16 @@ CLONE|Read the UID card number immediately after pressing, continue searching, a
 ---
 
 #### 1. Turn on the chameleon:
+
    1. With the chameleon in the `OFF` state, press the A button once to turn on the chameleon power.
    2. The red LED lights up to indicate the slot number. 
    3. Chameleon will automatically sleep and shut down after no operation for 5 seconds. This can be adjusted in the Android APP.
 
 #### 2. Bootloader/DFU firmware upgrade methods:
+
    1. With the chameleon in the `OFF` state, press and hold the B button while inserting it into the USB port.
+   2. Usee your favorite terminal application to connect to it. Type `upgrade` and hit `Enter`.
+   3. Further information from the original: [Here](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)
 
 #### 3. Schematics:
 
