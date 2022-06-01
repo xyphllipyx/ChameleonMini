@@ -35,19 +35,41 @@ Our Project is based on the open-source project [ChameleonMini RevG](/../../../.
 
 #### 1. Prepare your Windows. Linux, or MAC computer:
 
-   1. Prepare the firmware:
+   1. Tools:
+      - Optional GUI:
+         - Windows: **[Here](http://www.icesql.se/download/ChameleonMiniGUI/publish.htm)**
+         - Source: **[Here](/../../../../iceman1001/ChameleonMini-rebootedGUI)**
+      - Terminal APP:
+         - Putty or similar APP   
    2. Go to GITHUB to compile the latest firmware: **[Here](/../../../../RfidResearchGroup/ChameleonMini)** 
-      - Or use the precompiled [firmware in the release section](/../../../../iceman1001/ChameleonMini-rebooted/releases).
+      - Or use the precompiled [firmware in the release section](/../../../../RfidResearchGroup/ChameleonMini/tree/proxgrind/Firmware/Chameleon-Mini/Latest).
    3. Install the DFU driver. 
-      - The DFU driver comes from ATMEL's official LIBUSB driver library. You can download it yourself or find it in the [repo](/../../../../iceman1001/ChameleonMini-rebooted/tree/master/Drivers).
+      - The DFU driver comes from ATMEL's official LIBUSB driver library. You can download it yourself or find it in the [repo](/../../../../RfidResearchGroup/ChameleonMini/tree/proxgrind/Drivers)
 
 #### 2. Write the firmware:
    
-   1. Enter the chameleon DFU mode.
-      1. When the device is off, press and hold the yellow button near the USB (TINY uses the B button), insert the USB, and then you can enter the DFU upgrade mode. Or send the command `UPGRADE` in the connected state, and it can also enter the DFU upgrade mode.
-   2. Start to upgrade the firmware. 
-      1. Run the `ChameleonFirmwareUpgrade.bat` file in the repo to automatically start the firmware upgrade. 
-      2. It usually takes 2-5 seconds. After the progress bar is complete, the firmware upgrade is complete.
+   1. Enter the chameleon DFU mode:
+
+      - Method 1 (CLI):
+
+         - Mini:
+ 
+            1.  With the chameleon in the `OFF` state, press and hold the yellow button near the USB while inserting it into the USB port. The chameleon will enter the `DFU firmware upgrade` mode.
+            2. Use your favorite terminal application to connect to it. Type `upgrade` and hit `Enter`.
+            3. Further information from the original: [Here](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)
+         
+         - Tiny:
+         
+            1. ~~~
+      
+      - Method 2 [GUI](https://github.com/iceman1001/ChameleonMini-rebootedGUI):
+      
+         1. Send the command `UPGRADE` in the connected state, and it can also enter the DFU upgrade mode.
+      
+   2. Start to upgrade the firmware:
+
+         1. Run the `ChameleonFirmwareUpgrade.bat` file in the [repo](/../../../../RfidResearchGroup/ChameleonMini/tree/proxgrind/Firmware/Chameleon-Mini) to automatically start the firmware upgrade. 
+         2. It usually takes 2-5 seconds. After the progress bar is complete, the firmware upgrade is complete.
 
 - Note:
    - The chameleon REV.G version uses the same firmware for both the MINI with Bluetooth version and TINY. The hardware design of the RF part is exactly the same. The hardware is also compatible with the official firmware of the [KAOS brothers](/../../../../emsec/ChameleonMini). 
@@ -56,11 +78,18 @@ Our Project is based on the open-source project [ChameleonMini RevG](/../../../.
 ### A2. Upgrade (OTA) Bluetooth firmware for Chameleon MINI
 ---
 
-#### 1. Download the APP:
+#### 1. Download Tools and APP:
 
-   - Android: **[Chameleon](https://play.google.com/store/apps/details?id=com.proxgrind.chameleon)**
-   - IOS: **[ChameleonTiny Manager](https://apps.apple.com/us/app/chameleontiny-manager/id1601341565)**
-   - Password: e4g1
+   1. Tools:
+      - Optional GUI:
+         - Windows: **[Here](http://www.icesql.se/download/ChameleonMiniGUI/publish.htm)**
+         - Source: **[Here](/../../../../iceman1001/ChameleonMini-rebootedGUI)**
+      - Terminal APP:
+         - Putty or similar APP
+   2. Download the APP:
+      - Android: **[Chameleon](https://play.google.com/store/apps/details?id=com.proxgrind.chameleon)**
+      - IOS: **[ChameleonTiny Manager](https://apps.apple.com/us/app/chameleontiny-manager/id1601341565)**
+      - Password: e4g1
    
 #### 2. Open the app and connect the device using Bluetooth:
 
@@ -250,9 +279,14 @@ CLONE|Read the UID card number immediately after pressing, continue searching, a
   
 #### 3. Bootloader/DFU firmware upgrade methods:
 
-   1. With the chameleon in the `OFF` state, press and hold the yellow button near the USB while inserting it into the USB port. The chameleon will enter the `DFU firmware upgrade` mode.
-   2. Use your favorite terminal application to connect to it. Type `upgrade` and hit `Enter`.
-   3. Further information from the original: [Here](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)
+   - Method 1 (CLI):
+
+      1.  With the chameleon in the `OFF` state, press and hold the yellow button near the USB while inserting it into the USB port. The chameleon will enter the `DFU firmware upgrade` mode.
+      2. Use your favorite terminal application to connect to it. Type `upgrade` and hit `Enter`.
+      3. Further information from the original: [Here](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)
+   
+   - Method 2 [GUI](https://github.com/iceman1001/ChameleonMini-rebootedGUI):
+      1. `Upgrade` button
 
 #### 4. Schematics for ChameleonMini:
 
@@ -267,7 +301,7 @@ CLONE|Read the UID card number immediately after pressing, continue searching, a
    2. The red LED lights up to indicate the slot number. 
    3. Chameleon will automatically sleep and shut down after no operation for 5 seconds. This can be adjusted in the Android APP.
 
-#### 2. Bootloader/DFU firmware upgrade methods:
+#### 2. Bootloader/DFU firmware upgrade
 
    1. With the chameleon in the `OFF` state, press and hold the B button while inserting it into the USB port.
    2. Use your favorite terminal application to connect to it. Type `upgrade` and hit `Enter`.
