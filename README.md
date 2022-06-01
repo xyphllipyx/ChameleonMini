@@ -251,7 +251,7 @@ CLONE|Read the UID card number immediately after pressing, continue searching, a
 #### 3. Bootloader/DFU firmware upgrade methods:
 
    1. With the chameleon in the `OFF` state, press and hold the yellow button near the USB while inserting it into the USB port. The chameleon will enter the `DFU firmware upgrade` mode.
-   2. Usee your favorite terminal application to connect to it. Type `upgrade` and hit `Enter`.
+   2. Use your favorite terminal application to connect to it. Type `upgrade` and hit `Enter`.
    3. Further information from the original: [Here](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)
 
 #### 4. Schematics for ChameleonMini:
@@ -270,7 +270,7 @@ CLONE|Read the UID card number immediately after pressing, continue searching, a
 #### 2. Bootloader/DFU firmware upgrade methods:
 
    1. With the chameleon in the `OFF` state, press and hold the B button while inserting it into the USB port.
-   2. Usee your favorite terminal application to connect to it. Type `upgrade` and hit `Enter`.
+   2. Use your favorite terminal application to connect to it. Type `upgrade` and hit `Enter`.
    3. Further information from the original: [Here](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)
 
 #### 3. Schematics:
