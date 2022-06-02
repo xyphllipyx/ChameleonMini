@@ -6,12 +6,29 @@ Our Project is based on the open-source project [ChameleonMini RevG](/../../../.
 
 - Information:
    - Most information can be found: **[Here](http://chameleontiny.com/)**
-   - Chameleon BLE API: [**Codes.RAR**](/../../../../RfidResearchGroup/ChameleonBLEAPI/blob/master/code.rar)
-- Apps:
-   - Android: **[Chameleon](https://play.google.com/store/apps/details?id=com.proxgrind.chameleon)**
-   - IOS: **[ChameleonTiny Manager](https://apps.apple.com/us/app/chameleontiny-manager/id1601341565)**
-      - Credit to **[bettse](/../../../../bettse)**
-   - Password: e4g1
+   - Chameleon BLE API: [**Here**](/../../../../RfidResearchGroup/ChameleonBLEAPI/blob/master/code.rar)
+- Tools:
+   - Phone APP:
+      - Android: **[Chameleon](https://play.google.com/store/apps/details?id=com.proxgrind.chameleon)**
+         - The Android APP is currently **NOT** compatible with the official firmware
+      - IOS: **[ChameleonTiny Manager](https://apps.apple.com/us/app/chameleontiny-manager/id1601341565)**
+         - The IOS APP is currently **NOT** compatible with the official firmware
+         - Credit to **[bettse](/../../../../bettse)**
+      - Password: e4g1
+   - Optional GUI (Winodws Only):
+      - Windows: **[Here](http://www.icesql.se/download/ChameleonMiniGUI/publish.htm)**
+      - Source: **[Here](/../../../../iceman1001/ChameleonMini-rebootedGUI)**
+   - Chameleon Firmware:
+      - Compile the latest firmware: **[Here](/Firmware)** 
+         - Or use the precompiled: **[Here](/../Firmware/Chameleon-Mini/Latest)**
+      - The Chameleon Mini REV.G version uses the same firmware for both the Mini with Bluetooth version and Tiny
+      - The hardware design of the RF part is exactly the same
+      - The hardware is also compatible with the official firmware of the [KAOS brothers](/../../../../emsec/ChameleonMini) 
+   - Terminal APP:
+      - Putty or similar APP
+   - DFU driver:
+      - The DFU driver comes from ATMEL's official LIBUSB driver library 
+      - You can download it yourself or from the repo: [Here](/../../proxgrind/Drivers)
 - Resellers:
    - Our Asia & Oceania Reseller: **[Here](https://sneaktechnology.com/)**
    - Our Europe Reseller: **[Here](https://lab401.com/)**
@@ -33,150 +50,154 @@ Our Project is based on the open-source project [ChameleonMini RevG](/../../../.
 ### A1. Upgrade Chameleon AVR Firmware
 ---
 
-#### 1. Prepare your Windows. Linux, or MAC computer:
+#### 1. Obtain Tools:
 
-   1. Tools:
-      - Optional GUI:
-         - Windows: **[Here](http://www.icesql.se/download/ChameleonMiniGUI/publish.htm)**
-         - Source: **[Here](/../../../../iceman1001/ChameleonMini-rebootedGUI)**
-      - Terminal APP:
-         - Putty or similar APP   
-   2. Go to GITHUB to compile the latest firmware: **[Here](/../)** 
-      - Or use the precompiled [firmware in the release section](/../../../../RfidResearchGroup/ChameleonMini/tree/proxgrind/Firmware/Chameleon-Mini/Latest).
-   3. Install the DFU driver. 
-      - The DFU driver comes from ATMEL's official LIBUSB driver library. You can download it yourself or find it in the [repo](/../../proxgrind/Drivers)
+   - Optional GUI (Windows Only)
+   - Terminal APP
+   - Firmware
+   - DFU driver
 
 #### 2. Write the firmware:
-   
-   1. Enter the chameleon DFU mode:
 
-      <details><summary>Method 1: CLI</summary>
+   1. Enter the Chameleon DFU mode:
 
-         - Mini:
- 
-            1.  With the chameleon in the `OFF` state, press and hold the black (Rev E) or yellow (Rev G) button near the USB while inserting it into the USB port. The chameleon will enter the `DFU firmware upgrade` mode.
-            2. Use your favorite terminal application to connect to it. Type `upgrade` and hit `Enter`.
-            3. Further information from the original: [Here](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)
-         
-         - Tiny:
-         
-            1. With the chameleon in the `OFF` state, press and hold the B button while inserting it into the USB port. The chameleon will enter the `DFU firmware upgrade` mode. 
-            2. Use your favorite terminal application to connect to it. Type `upgrade` and hit `Enter`.
-            3. Device should now be read.
-            4. Further information from the original: [Here](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)
-      
-         </details>
-   
-      <details><summary>Method 2: Windows Only GUI</summary>
-      
+      <details><summary>Method 1: GUI (Windows Only)</summary>
+
          - Mini or Tiny:
    
-            1. With the chameleon in the `OFF` position, connect it via USB cable to your computer. 
-            2. Send the`UPGRADE` command while it is connected.
+            1. With the Chameleon in the `OFF` position, connect it via USB cable to your computer
+               - On the Mini, it may be a good idea to remove the battery before putting the device into DFU
+            2. Send the`UPGRADE` command while it is connected
             3. Device should now be ready
             4. Further information from the original: [Here](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)
    
       </details>
+
+      <details><summary>Method 2: CLI</summary>
+
+         - Mini:
+            1. With the Chameleon in the `OFF` state, press and hold the black (Rev E) or yellow (Rev G) button near the USB while inserting it into the USB port
+               - It may be a good idea to remove the battery before putting the device into DFU
+            2. Use your favorite terminal application to connect to it. Type `upgrade` and hit `Enter`
+            3. The Chameleon will enter the `DFU firmware upgrade` mode
+            4. Further information from the original: [Here](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)
+         
+         - Tiny:
+            1. With the Chameleon in the `OFF` state, press and hold the B button while inserting it into the USB port
+            2. Use your favorite terminal application to connect to it. Type `upgrade` and hit `Enter`
+            3. The Chameleon will enter the `DFU firmware upgrade` mode
+            4. Further information from the original: [Here](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)
+   
+         - Note:
+            - More info from source: [Here](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)
+      
+         </details>
       
    2. Start to upgrade the firmware:
 
-      <details><summary>Method 1: Automatic Windows Only</summary>
+      <details><summary>Method 1: Automatic (Windows Only)</summary>   
    
-         1. Run the `ChameleonFirmwareUpgrade.bat` file in the [repo](/../../../../RfidResearchGroup/ChameleonMini/tree/proxgrind/Firmware/Chameleon-Mini) to automatically start the firmware upgrade. 
-         2. It usually takes 2-5 seconds. After the progress bar is complete, the firmware upgrade is complete.
-      
-      </details>
-   
-      <details><summary>Method 2: Manual</summary>
-   
-         1. Step 1
-         2. Step 2
-   
+         - Mini or Tiny:
+            1. After either compiling or obtaining the firmware HEX and EEP files, place them in the same diretory as [ChameleonFirmwareUpgrade.bat]  (/../../../../RfidResearchGroup/ChameleonMini/tree/proxgrind/Firmware/Chameleon-Mini)
+            2. Ensure Chameleon is in `DFU firmware upgrade` mode
+            3. Run the `ChameleonFirmwareUpgrade.bat` file to automatically start the firmware upgrade
+            4. It usually takes 2-5 seconds
+            5. After the progress bar is complete, the firmware upgrade is complete
+
       </details>
 
-- Note:
-   - The chameleon MINI REV.G version uses the same firmware for both the MINI with Bluetooth version and TINY. The hardware design of the RF part is exactly the same. The hardware is also compatible with the official firmware of the [KAOS brothers](/../../../../emsec/ChameleonMini). 
-   - The Android APP is currently not compatible with the official firmware.
+      <details><summary>Method 2: Manual</summary>   
+   
+         - Mini or Tiny:
+            -  Guides:
+               - Icemans Guide (Windows): [Here](/../../../../iceman1001/ChameleonMini-rebooted/wiki/Getting-started#get-ready-to-flash-bootloader-mode) and [Here](/../../../../iceman1001/ChameleonMini-rebooted/wiki/Getting-started#get-ready-to-flash-bootloader-mode)
+               - Icemans Guide (Linux): [Here](/../../../../iceman1001/ChameleonMini-rebooted/wiki/Compiling-Linux-(Unix))
+               - Icemans Guide (Mac): [Here](/../../../../iceman1001/ChameleonMini-rebooted/wiki/Compiling-OSX)
 
-### A2. Upgrade (OTA) Bluetooth firmware for Chameleon MINI
+            - Note:
+               - Replace any relevant files or other parts with the resources in this repo
+
+      </details>
+
+### A2. Upgrade (OTA) Bluetooth Firmware (Chameleon Mini only)
 ---
 
-#### 1. Download Tools and APP:
+#### 1. Obtain Tools:
 
-   1. Tools:
-      - Optional GUI:
-         - Windows: **[Here](http://www.icesql.se/download/ChameleonMiniGUI/publish.htm)**
-         - Source: **[Here](/../../../../iceman1001/ChameleonMini-rebootedGUI)**
-      - Terminal APP:
-         - Putty or similar APP
-   2. Download the APP:
-      - Android: **[Chameleon](https://play.google.com/store/apps/details?id=com.proxgrind.chameleon)**
-      - IOS: **[ChameleonTiny Manager](https://apps.apple.com/us/app/chameleontiny-manager/id1601341565)**
-      - Password: e4g1
+   - Optional GUI
+   - Terminal APP
+   - Phone APP
+   - Firmware
    
-#### 2. Open the app and connect the device using Bluetooth:
+#### 2. Open the APP and connect the device using Bluetooth:
 
-   1. Press any button on the MINI and the white battery light should come on. You can now connect via Bluetooth. 
-   2. Open the app again and click `Connect` to automatically connect the chameleon.
+   1. Press any button on the Mini and the white battery light should come `ON`
+      - You can now connect via Bluetooth
+   2. Open the APP again and click `Connect` to automatically connect the Chameleon
 
 #### 3. Start the upgrade (OTA) of the Bluetooth firmware:
 
-   1. In the `Device Information` column, press `BLE CMD Version` 5 times. 
-   2. On the `OTA upgrade` page, click `Auto Upgrade`, and the APP will immediately start to upgrade to the latest Bluetooth firmware that comes with it.
-   3. The app will automatically exit after the upgrade is complete.
+   1. In the `Device Information` column, press `BLE CMD Version` 5 times
+   2. On the `OTA upgrade` page, click `Auto Upgrade`
+   3. The APP will immediately start to upgrade to the latest Bluetooth firmware that comes with it
+   4. The APP will automatically exit after the upgrade is complete
 
 ## B. Crash Course
 
 ### B1. Detect keys and upload card files
 ---
 
-#### 1. Prepare the computer GUI, Android APP, or iOS APP:
+#### 1. Obtain Tools and Connect Device:
 
-   1. Tools:
-      - Windows GUI: **[Here](http://www.icesql.se/download/ChameleonMiniGUI/publish.htm)**
-      - Source: **[Here](/../../../../iceman1001/ChameleonMini-rebootedGUI)**
-   2. Download the APP:
-      - Android: **[Chameleon](https://play.google.com/store/apps/details?id=com.proxgrind.chameleon)**
-      - IOS: **[ChameleonTiny Manager](https://apps.apple.com/us/app/chameleontiny-manager/id1601341565)**
-      - Password: e4g1
-   3. Connect to the Chameleon MINI or TINY using the APP.
+  1. Tools:
+      - Optional GUI
+      - Terminal APP
+      - Phone APP
+      - Firmware
+
+   2. Connect to the Chameleon Mini or Tiny using the APP
       - Connect via USB or Bluetooth
 
    - Note:
-      - Both the Chameleon MINI and TINY support direct connection to the mobile phone USB port. 
-         - For the MINI, an additional OTG adapter needs to be purchased. TINY uses its own dual-headed TYPE-C data cable to connect directly to TYPE-C mobile phones.
-      - Chameleon MINI has built-in Bluetooth BLE4.0. Press any button first to wake up Bluetooth. Turn `ON` Bluetooth on your phone and the APP will automatically connect.
+      - Both the Chameleon Mini and Tiny support direct connection to the mobile phone USB port
+         - For the Mini, an additional OTG adapter needs to be purchased
+         - Tiny uses its own dual-headed TYPE-C data cable to connect directly to TYPE-C mobile phones
+      - Chameleon Mini has built-in Bluetooth BLE4.0. Press any button first to wake up Bluetooth
+      - Turn Bluetooth `ON` on your phone and the APP will automatically connect
 
 #### 2. Use APP to enable detection mode:
 
-   1. After connecting, click on a single card slot and select `DETECTION_1K` or `4K` in the `card slot mode`. This card slot will now have the detection mode turned on. 
-   2. Write the original card number in the `UID Card Number` column. Click `Write`. If you don't know the UID number, you can fill in it at will. 
-   3. Then click the `Clear` button below to clear the last detection record.
+   1. After connecting, click on a single card slot and select `DETECTION_1K` or `4K` in the `card slot mode`
+   2. This card slot will now have the detection mode turned `ON`
+   3. Write the original card number in the `UID Card Number` column. Click `Write`
+      - If you don't know the UID number, you can fill in it at will
+   4. Then click the `Clear` button below to clear the last detection record
 
 #### 3. Use the APP to get keys:
 
-   1. Take the chameleon to the access control reader and swipe. The key and access traces when the chaser reads the chameleon will be recorded by the chameleon.
-   2. Connect back to the mobile phone and press the `crack` button.
-   3. After few seconds, the app will automatically solve and list the results, as shown in the figure below:
+   1. Take the Chameleon to the access control reader and swipe 
+   2. The key and access traces when the chaser reads the Chameleon will be recorded by the Chameleon
+   3. Connect back to the mobile phone and press the `Crack` button
+   4. After a few seconds, the APP will automatically solve and list the results, as shown in the figure below:
    
 <a href="https://ibb.co/Q6xcVkW"><img src="https://i.ibb.co/Q6xcVkW/Untitled-1.png" alt="Untitled-1" border="0"></a>
 
-   4. The list shows which blocks the read head just visited, and what password was used for each access.
-   5. Click the `History` button. The APP will automatically list the keys separately and save them for other software to use.
-   6. If your mobile phone comes with an NFC function, you can put the original key directly on the mobile phone.
-   7. The APP will automatically use the key in the list to read the entire card, and after it is successful, it will automatically save the entire card data file on the mobile phone.
+   5. The list shows which blocks the read head just visited, and what password was used for each access
+   6. Click the `History` button. The APP will automatically list the keys separately and save them for other software to use
+   7. If your mobile phone comes with an NFC function, you can put the original key directly on the mobile phone
+   8. The APP will automatically use the key in the list to read the entire card, and after it is successful, it will automatically save the entire card data file on the mobile phone
 
    - Note: 
       - Multiple red LEDs are on at the same time during detection, which means the memory is full, just clear the memory.
 
 #### 4. Use Android APP to import existing card data files in batches:
 
-   1. Use QQ to send the card data file to the mobile phone QQ, or connect the mobile phone to the computer and transfer the file to any directory on the mobile phone.
-   2. Open the app, click the `DUMP` column below, click the `Scanner` in the plus sign in the upper right corner.
-   3. Click the three horizontal line buttons in the upper left corner, and select this phone. 
-   4. Select the root directory of the QQ receiving file or the previously copied directory, and click `Allow Access`.
-   5. All card data files will be automatically scanned into the `DUMP` file interface, which can be uploaded or edited at will. 
-   6. Click the card data file in the `DUMP` column below, and click `Upload` below to upload to the card slot corresponding to the chameleon.
+   1. Use QQ to send the card data file to the mobile phone QQ, or connect the mobile phone to the computer and transfer the file to any directory on the mobile phone
+   2. Open the APP, click the `DUMP` column below, click the `Scanner` in the plus sign in the upper right corner
+   3. Click the three horizontal line buttons in the upper left corner, and select this phone
+   4. Select the root directory of the QQ receiving file or the previously copied directory, and click `Allow Access`
+   5. All card data files will be automatically scanned into the `DUMP` file interface, which can be uploaded or edited at will
+   6. Click the card data file in the `DUMP` column below, and click `Upload` below to upload to the card slot corresponding to the Chameleon
 
 ### B2. Introduction to UID mode and SAK mode
 ---
@@ -184,19 +205,20 @@ Our Project is based on the open-source project [ChameleonMini RevG](/../../../.
 #### 1. UID Mode:
 
    1.  Enter UID mode:
-      - Click the button `UID Changeable (GEN1a)` in the APP or directly send the command `UIDMODE = 1` to turn it on, and `UIDMODE = 0` to turn it `OFF`.
-   2. After the UID mode is turned `ON`, the card simulated by Chameleon will become a GEN1a card. 
-      - Commonly known as a UID card or Chinese magic card.
-   3. Global card slot takes effect.
+      - Click the button `UID Changeable (GEN1a)` in the APP or directly send the command `UIDMODE = 1` to turn it on, and `UIDMODE = 0` to turn it `OFF`
+   2. After the UID mode is turned `ON`, the card simulated by Chameleon will become a GEN1a card
+      - Commonly known as a UID card or Chinese magic card
+   3. Global card slot takes effect
 
 #### 2. SAK mode:
 
-   1. Click the `SAK Mode` button in the APP or directly send the command `SAKMODE = 1` to turn it `ON`, and `SAKMODE = 0` to turn it `OFF`.
-   2. After the `SAK Mode` is turned `ON`, the card will feedback the real SAK value when it is found. 
-   3. The SAK value is determined by the 0 sector, 0 block, and the position is the position of the sixth byte immediately after the UID number. 
-   4. If the SAK mode is not turned on, the SAK is a fixed value of 08, and 0 blocks of data are ignored.
-   5. This function is used to meet the situation where some cards with special SAK values cannot be used normally after being copied. This achieves better compatibility.
-   6. The current card slot takes effect.
+   1. Click the `SAK Mode` button in the APP or directly send the command `SAKMODE = 1` to turn it `ON`, and `SAKMODE = 0` to turn it `OFF`
+   2. After the `SAK Mode` is turned `ON`, the card will feedback the real SAK value when it is found
+   3. The SAK value is determined by the 0 sector, 0 block, and the position is the position of the sixth byte immediately after the UID number
+   4. If the SAK mode is not turned on, the SAK is a fixed value of 08, and 0 blocks of data are ignored
+   5. This function is used to meet the situation where some cards with special SAK values cannot be used normally after being copied
+      - This achieves better compatibility
+   6. The current card slot takes effect
 
 ### B3. Card Slot Functions
 ---
@@ -248,16 +270,15 @@ STORE_LOG|Write the log data in the temporary cache to the memory, which can be 
 CLEAR_LOG|Clear log data immediately after pressing|
 CLONE|Read the UID card number immediately after pressing, continue searching, and simulate immediately after reading the card|
 
-## C. Hardware, Lights, and Basic Use
+## C. Hardware & Lights
 
 ### C1. All units
 ---
 
 #### 1. Charging: 
 
-   - Any time you connect USB, it will automatically start charging. 
-   - It will stop automatically after filling.
-   - The white LED indicates the power level.
+   - Any time you connect USB, it will automatically start charging
+   - The Mini will have a white light while the Tiny will have a red light over the USB port to indicate if it is charging
 
 #### 2. Charging and Standby Mode:
 
@@ -272,58 +293,71 @@ CLONE|Read the UID card number immediately after pressing, continue searching, a
    - Duration: Swipe the card 3 times a day for 5 seconds each time, and it can be used for one year on a single charge
    - Sleeping time: Fully charged, it can be left for two years when it is turned off and sleeping
    - Port type: 
-      - MINI: MicroUSB 
-      - TINY: Type-C
+      - Mini: MicroUSB 
+      - Tiny: Type-C
 
 #### 3. Detect memory full:
 
-   - If the memory is full during dense flow detection, multiple red LEDs will be abnormally lit.
+   - If the memory is full during dense flow detection, multiple red LEDs will be abnormally lit
 
 #### 4. Usage Guide for New Functions:
 
 <a href="https://ibb.co/VvcGbg9"><img src="https://i.ibb.co/K9pgB2h/EUd-Gl7w-Uw-AAg-Cf6.jpg" alt="EUd-Gl7w-Uw-AAg-Cf6" border="0"></a><br />
-
 
 ### C2. Chameleon Mini
 ---
 
 #### 1. Turn on Bluetooth and check the battery:
 
-   1. When the power is `OFF`, press any button once to turn on the Bluetooth power, and at the same time, display the current power with a white LED.
-   2. With the Bluetooth in the `ON` state, click any button to turn off the Bluetooth power, the power LED goes out, and the system sleeps. 
-   3. Bluetooth will sleep automatically after no operation for 15 seconds.
-         - Press any button once to shut down immediately.
+   1. When the power is `OFF`, press any button once to turn on the Bluetooth power, and at the same time, display the current power with a white LED
+   2. With the Bluetooth in the `ON` state, click any button to turn off the Bluetooth power, the power LED goes out, and the system sleeps
+   3. Bluetooth will sleep automatically after no operation for 15 seconds
+         - Press any button once to shut down immediately
 
-#### 2. Turn on the chameleon:
+#### 2. Turn on the Chameleon:
 
-   1. With the Bluetooth in the `ON` state, double click any button. Or in the `OFF` state, triple click any button times to turn `ON` the chameleon.
-   2. The red LED lights up to indicate the slot number. 
-   3. Chameleon will automatically sleep and shut down after no operation for 5 seconds.
+   1. With the Bluetooth in the `ON` state, double click any button.
+      - Or in the `OFF` state, triple click any button times to turn `ON` the Chameleon
+   2. The red LED lights up to indicate the slot number
+   3. Chameleon will automatically sleep and shut down after no operation for 5 seconds
   
 #### 3. Bootloader/DFU firmware upgrade methods:
 
-   - See [Here](#2-write-the-firmware)
+   - Section A1: **[Here](#2-write-the-firmware)**
 
-#### 4. Schematics for ChameleonMini:
+#### 4. Schematics for Chameleon Mini:
 
    - Chameleon Mini: **[Here](http://chameleontiny.com/downloads/)**
+
+#### 5. Demos
+
+   - [ChameleonMini RevG In Lab Demo / Technical Explanation of Command Line Interface](https://www.dailymotion.com/video/x3lf45p)
+   - [Mifare Reader Attack: Sniffing, Cracking, Emulation, Open! LAB401 Academy - CHAMELEON MINI Tutorial](https://www.youtube.com/watch?v=pI7k5b0yhb0)
+   - [AndreasBujok/ChameleonMini](/../../../../AndreasBujok/ChameleonMini)
+   - [How to use the new Proxgrind Chameleon Tiny and Mini with the APP](https://www.youtube.com/watch?v=PiSc9WEbeCE)
 
 ### C3. Chameleon Tiny
 ---
 
-#### 1. Turn on the chameleon:
+#### 1. Turn on the Chameleon and Bluetooth:
 
-   1. With the chameleon in the `OFF` state, press the A button once to turn on the chameleon power.
-   2. The red LED lights up to indicate the slot number. 
-   3. Chameleon will automatically sleep and shut down after no operation for 5 seconds. This can be adjusted in the Android APP.
+   1. With the Chameleon in the `OFF` state, press the `A button` once to turn `ON` the Chameleon power
+   2. The red LED lights up to indicate the slot number
+   3. Chameleon will automatically sleep and shut down after no operation for 5 seconds
+      - This can be adjusted in the APP
 
-#### 2. Bootloader/DFU firmware upgrade
+#### 3. Bootloader/DFU firmware upgrade
 
-hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+   - Section A1: **[Here](#2-write-the-firmware)**
 
 #### 3. Schematics:
 
-   - Same as the Mini
+   - ~~Same as the Mini~~ ?
+
+#### 4. Demos
+
+   - [How to use the new Proxgrind Chameleon Tiny and Mini with the APP](https://www.youtube.com/watch?v=PiSc9WEbeCE)
+   - [ChameleonTiny 8 Prox in1 & Sniff - Crack RFID ~ NFC ~ UID](https://www.youtube.com/watch?v=6yITj165tS4)
 
 ## D. Appendix
 
@@ -331,6 +365,7 @@ hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
 ---
 
 #### 1. Comparison Table of Specs
+
 
 |-     | Rev.G Official by KAOS    | Rev.E Old Rdv2.0 by ProxGrind | Rev.G by ProxGrind    |Rev.G  Tiny by ProxGrind |
 | ------------------- |:-------------------:| -------------------:| -------------------:|-------------------:
@@ -386,18 +421,18 @@ hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
 
 #### 1. From EMSEC:
 
-   - [Here](/../../../../emsec/ChameleonMini/master/Doc/Doxygen/html/_page__command_line.html)
+   - Repo: **[Here](/../../../../emsec/ChameleonMini/master/Doc/Doxygen/html/_page__command_line.html)**
    
 #### 2. This repo:
 
-   - [Instruction sheet](/../../../../RfidResearchGroup/ChameleonMini/blob/proxgrind/Doc/DoxygenPages/CommandLine.txt)
+   - Instruction sheet: **[Here](/../../../../RfidResearchGroup/ChameleonMini/blob/proxgrind/Doc/DoxygenPages/CommandLine.txt)**
 
 ### D3. Supported Cards, Encoding, & Simulation Types
 ---
 
 #### 1. From EMSEC:
 
-   - [Here](/../../../../emsec/ChameleonMini/wiki/Supported-Cards-and--Codecs)
+   - Repo: [Here](/../../../../emsec/ChameleonMini/wiki/Supported-Cards-and--Codecs)
 
 #### 2. Comparison Table of Encoding/Simulation Types
 
