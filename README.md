@@ -63,59 +63,58 @@ Our Project is based on the open-source project [ChameleonMini RevG](/../../../.
 
       <details><summary>Method 1: GUI (Windows Only)</summary>
 
-         - Mini or Tiny:
-   
-            1. With the Chameleon in the `OFF` position, connect it via USB cable to your computer
-               - On the Mini, it may be a good idea to remove the battery before putting the device into DFU
-            2. Send the`UPGRADE` command while it is connected
-            3. Device should now be ready
-            4. Further information from the original: [Here](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)
-   
+      - Mini or Tiny:
+         1. With the Chameleon in the `OFF` position, connect it via USB cable to your computer
+            - On the Mini, it may be a good idea to remove the battery before putting the device into DFU
+         2. Send the`UPGRADE` command while it is connected
+         3. Device should now be ready
+         4. Further information from the original: [Here](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)
+
       </details>
 
       <details><summary>Method 2: CLI</summary>
 
-         - Mini:
-            1. With the Chameleon in the `OFF` state, press and hold the black (Rev E) or yellow (Rev G) button near the USB while inserting it into the USB port
-               - It may be a good idea to remove the battery before putting the device into DFU
-            2. Use your favorite terminal application to connect to it. Type `upgrade` and hit `Enter`
-            3. The Chameleon will enter the `DFU firmware upgrade` mode
-            4. Further information from the original: [Here](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)
-         
-         - Tiny:
-            1. With the Chameleon in the `OFF` state, press and hold the B button while inserting it into the USB port
-            2. Use your favorite terminal application to connect to it. Type `upgrade` and hit `Enter`
-            3. The Chameleon will enter the `DFU firmware upgrade` mode
-            4. Further information from the original: [Here](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)
+      - Mini:
+         1. With the Chameleon in the `OFF` state, press and hold the black (Rev E) or yellow (Rev G) button near the USB while inserting it into the USB port
+            - It may be a good idea to remove the battery before putting the device into DFU
+         2. Use your favorite terminal application to connect to it. Type `upgrade` and hit `Enter`
+         3. The Chameleon will enter the `DFU firmware upgrade` mode
+         4. Further information from the original: [Here](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)
+
+      - Tiny:
+         1. With the Chameleon in the `OFF` state, press and hold the B button while inserting it into the USB port
+         2. Use your favorite terminal application to connect to it. Type `upgrade` and hit `Enter`
+         3. The Chameleon will enter the `DFU firmware upgrade` mode
+         4. Further information from the original: [Here](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)
+
+      - Note:
+         - More info from source: [Here](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)
    
-         - Note:
-            - More info from source: [Here](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)
-      
-         </details>
+      </details>
       
    2. Start to upgrade the firmware:
 
-      <details><summary>Method 1: Automatic (Windows Only)</summary>   
-   
-         - Mini or Tiny:
-            1. After either compiling or obtaining the firmware HEX and EEP files, place them in the same diretory as [ChameleonFirmwareUpgrade.bat]  (/../../../../RfidResearchGroup/ChameleonMini/tree/proxgrind/Firmware/Chameleon-Mini)
-            2. Ensure Chameleon is in `DFU firmware upgrade` mode
-            3. Run the `ChameleonFirmwareUpgrade.bat` file to automatically start the firmware upgrade
-            4. It usually takes 2-5 seconds
-            5. After the progress bar is complete, the firmware upgrade is complete
+      <details><summary>Method 1: Automatic (Windows Only)</summary>
+
+      - Mini or Tiny:
+         1. After either compiling or obtaining the firmware HEX and EEP files, place them in the same diretory as [ChameleonFirmwareUpgrade.bat](/../../../../RfidResearchGroup/ChameleonMini/tree/proxgrind/Firmware/Chameleon-Mini)
+         2. Ensure Chameleon is in `DFU firmware upgrade` mode
+         3. Run the `ChameleonFirmwareUpgrade.bat` file to automatically start the firmware upgrade
+         4. It usually takes 2 - 5 seconds
+         5. After the progress bar is complete, the firmware upgrade is complete
 
       </details>
 
-      <details><summary>Method 2: Manual</summary>   
-   
-         - Mini or Tiny:
-            -  Guides:
-               - Icemans Guide (Windows): [Here](/../../../../iceman1001/ChameleonMini-rebooted/wiki/Getting-started#get-ready-to-flash-bootloader-mode) and [Here](/../../../../iceman1001/ChameleonMini-rebooted/wiki/Getting-started#get-ready-to-flash-bootloader-mode)
-               - Icemans Guide (Linux): [Here](/../../../../iceman1001/ChameleonMini-rebooted/wiki/Compiling-Linux-(Unix))
-               - Icemans Guide (Mac): [Here](/../../../../iceman1001/ChameleonMini-rebooted/wiki/Compiling-OSX)
-
-            - Note:
-               - Replace any relevant files or other parts with the resources in this repo
+      <details><summary>Method 2: Manual</summary>
+         
+      - Mini or Tiny:
+         -  Guides:
+            - Icemans Guide (Windows): [Here](/../../../../iceman1001/ChameleonMini-rebooted/wiki/Getting-started#get-ready-to-flash-bootloader-mode) and [Here](/../../../../iceman1001/ChameleonMini-rebooted/wiki/Getting-started#get-ready-to-flash-bootloader-mode)
+            - Icemans Guide (Linux): [Here](/../../../../iceman1001/ChameleonMini-rebooted/wiki/Compiling-Linux-(Unix))
+            - Icemans Guide (Mac): [Here](/../../../../iceman1001/ChameleonMini-rebooted/wiki/Compiling-OSX)
+    
+      - Note:
+         - Replace any relevant files or other parts with the resources in this repo
 
       </details>
 
