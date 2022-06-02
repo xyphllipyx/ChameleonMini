@@ -1,6 +1,6 @@
-# Chameleon-Mini
+# ChameleonMini 
 
-This is NOT the official repository of ChameleonMini, a freely programmable portable tool for NFC security analysis that can emulate and clone contactless cards, read RFID tags, and sniff/log RF data.
+This is NOT the official repository of ChameleonMini, a freely programmable portable tool for NFC security analysis that can emulate and clone contactless cards, read RFID tags, and sniff/log RF data. This repository brings support for the Chameleon Tiny.
 
 Our Project is based on the open-source project [ChameleonMini RevG](/../../../../emsec/ChameleonMini) by Kasper & Oswald. They also have their own [Webshop](https://shop.kasper.it/).
 
@@ -41,38 +41,61 @@ Our Project is based on the open-source project [ChameleonMini RevG](/../../../.
          - Source: **[Here](/../../../../iceman1001/ChameleonMini-rebootedGUI)**
       - Terminal APP:
          - Putty or similar APP   
-   2. Go to GITHUB to compile the latest firmware: **[Here](/../../../../RfidResearchGroup/ChameleonMini)** 
+   2. Go to GITHUB to compile the latest firmware: **[Here](/../)** 
       - Or use the precompiled [firmware in the release section](/../../../../RfidResearchGroup/ChameleonMini/tree/proxgrind/Firmware/Chameleon-Mini/Latest).
    3. Install the DFU driver. 
-      - The DFU driver comes from ATMEL's official LIBUSB driver library. You can download it yourself or find it in the [repo](/../../../../RfidResearchGroup/ChameleonMini/tree/proxgrind/Drivers)
+      - The DFU driver comes from ATMEL's official LIBUSB driver library. You can download it yourself or find it in the [repo](/../../proxgrind/Drivers)
 
 #### 2. Write the firmware:
    
    1. Enter the chameleon DFU mode:
 
-      - Method 1 (CLI):
+      <details><summary>Method 1: CLI</summary>
 
          - Mini:
  
-            1.  With the chameleon in the `OFF` state, press and hold the yellow button near the USB while inserting it into the USB port. The chameleon will enter the `DFU firmware upgrade` mode.
+            1.  With the chameleon in the `OFF` state, press and hold the black (Rev E) or yellow (Rev G) button near the USB while inserting it into the USB port. The chameleon will enter the `DFU firmware upgrade` mode.
             2. Use your favorite terminal application to connect to it. Type `upgrade` and hit `Enter`.
             3. Further information from the original: [Here](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)
          
          - Tiny:
          
-            1. ~~~
+            1. With the chameleon in the `OFF` state, press and hold the B button while inserting it into the USB port. The chameleon will enter the `DFU firmware upgrade` mode. 
+            2. Use your favorite terminal application to connect to it. Type `upgrade` and hit `Enter`.
+            3. Device should now be read.
+            4. Further information from the original: [Here](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)
       
-      - Method 2 [GUI](https://github.com/iceman1001/ChameleonMini-rebootedGUI):
+         </details>
+   
+      <details><summary>Method 2: Windows Only GUI</summary>
       
-         1. Send the command `UPGRADE` in the connected state, and it can also enter the DFU upgrade mode.
+         - Mini or Tiny:
+   
+            1. With the chameleon in the `OFF` position, connect it via USB cable to your computer. 
+            2. Send the`UPGRADE` command while it is connected.
+            3. Device should now be ready
+            4. Further information from the original: [Here](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)
+   
+      </details>
       
    2. Start to upgrade the firmware:
 
+      <details><summary>Method 1: Automatic Windows Only</summary>
+   
          1. Run the `ChameleonFirmwareUpgrade.bat` file in the [repo](/../../../../RfidResearchGroup/ChameleonMini/tree/proxgrind/Firmware/Chameleon-Mini) to automatically start the firmware upgrade. 
          2. It usually takes 2-5 seconds. After the progress bar is complete, the firmware upgrade is complete.
+      
+      </details>
+   
+      <details><summary>Method 2: Manual</summary>
+   
+         1. Step 1
+         2. Step 2
+   
+      </details>
 
 - Note:
-   - The chameleon REV.G version uses the same firmware for both the MINI with Bluetooth version and TINY. The hardware design of the RF part is exactly the same. The hardware is also compatible with the official firmware of the [KAOS brothers](/../../../../emsec/ChameleonMini). 
+   - The chameleon MINI REV.G version uses the same firmware for both the MINI with Bluetooth version and TINY. The hardware design of the RF part is exactly the same. The hardware is also compatible with the official firmware of the [KAOS brothers](/../../../../emsec/ChameleonMini). 
    - The Android APP is currently not compatible with the official firmware.
 
 ### A2. Upgrade (OTA) Bluetooth firmware for Chameleon MINI
@@ -261,7 +284,7 @@ CLONE|Read the UID card number immediately after pressing, continue searching, a
 <a href="https://ibb.co/VvcGbg9"><img src="https://i.ibb.co/K9pgB2h/EUd-Gl7w-Uw-AAg-Cf6.jpg" alt="EUd-Gl7w-Uw-AAg-Cf6" border="0"></a><br />
 
 
-### C2. ChameleonMini Rev G
+### C2. Chameleon Mini
 ---
 
 #### 1. Turn on Bluetooth and check the battery:
@@ -279,18 +302,11 @@ CLONE|Read the UID card number immediately after pressing, continue searching, a
   
 #### 3. Bootloader/DFU firmware upgrade methods:
 
-   - Method 1 (CLI):
-
-      1.  With the chameleon in the `OFF` state, press and hold the yellow button near the USB while inserting it into the USB port. The chameleon will enter the `DFU firmware upgrade` mode.
-      2. Use your favorite terminal application to connect to it. Type `upgrade` and hit `Enter`.
-      3. Further information from the original: [Here](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)
-   
-   - Method 2 [GUI](https://github.com/iceman1001/ChameleonMini-rebootedGUI):
-      1. `Upgrade` button
+   - See [Here](#2-write-the-firmware)
 
 #### 4. Schematics for ChameleonMini:
 
-   - Chameleon Tiny: **[Here](http://chameleontiny.com/downloads/)**
+   - Chameleon Mini: **[Here](http://chameleontiny.com/downloads/)**
 
 ### C3. Chameleon Tiny
 ---
@@ -303,9 +319,7 @@ CLONE|Read the UID card number immediately after pressing, continue searching, a
 
 #### 2. Bootloader/DFU firmware upgrade
 
-   1. With the chameleon in the `OFF` state, press and hold the B button while inserting it into the USB port.
-   2. Use your favorite terminal application to connect to it. Type `upgrade` and hit `Enter`.
-   3. Further information from the original: [Here](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)
+hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
 
 #### 3. Schematics:
 
@@ -338,7 +352,7 @@ CLONE|Read the UID card number immediately after pressing, continue searching, a
 **Firmware anti lost**|×|×|√|×|
 
 #### 2. Comparison Table of Analog Card Characteristics
----
+
 
 ||**Rev.G Official By KAOS**|**Rev.E old RDV2.0 By PROXGRIND**|**Rev.G new RDV2.0 By PROXGRIND** |**M1 white tag**|
 | ------------------- |:-------------------:| -------------------:| ------------------- |-------------------:|
@@ -351,8 +365,8 @@ CLONE|Read the UID card number immediately after pressing, continue searching, a
 **Magic back door** |By default|No|Dual mode|No
 **SAK ATQA Support**|No|No|Modifiable|No|
 
-#### 3. Comparison Table of New Commands
----
+#### 3. Table of New Commands
+
 
 | Command    | Effect Range    | Description | 
 | ------------------- |:-------------------:| -------------------:|
