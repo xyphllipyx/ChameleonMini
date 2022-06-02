@@ -28,7 +28,7 @@ Our Project is based on the open-source project [ChameleonMini RevG](/../../../.
       - Putty or similar APP
    - DFU driver:
       - The DFU driver comes from ATMEL's official LIBUSB driver library 
-      - You can download it yourself or from the repo: [Here](/../../proxgrind/Drivers)
+      - You can download it yourself or from the repo: **[Here](/../../proxgrind/Drivers)**
 - Resellers:
    - Our Asia & Oceania Reseller: **[Here](https://sneaktechnology.com/)**
    - Our Europe Reseller: **[Here](https://lab401.com/)**
@@ -43,7 +43,7 @@ Our Project is based on the open-source project [ChameleonMini RevG](/../../../.
       - **WARNING:** This is currently under construction
    - **RevE:** Contains the entire contents of the discontinued RevE repository
    - **RevE-light:** Contains our development files for the RevE-light
-      - **WARNING:** currently not supported / not functional
+      - **WARNING:** This is currently not supported / not functional
 
 ## A. Upgrade to the latest firmware
 
@@ -68,7 +68,7 @@ Our Project is based on the open-source project [ChameleonMini RevG](/../../../.
             - On the Mini, it may be a good idea to remove the battery before putting the device into DFU
          2. Send the`UPGRADE` command while it is connected
          3. Device should now be ready
-         4. Further information from the original: [Here](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)
+         4. Further information from the original: **[Here](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)**
 
       </details>
 
@@ -79,13 +79,13 @@ Our Project is based on the open-source project [ChameleonMini RevG](/../../../.
             - It may be a good idea to remove the battery before putting the device into DFU
          2. Use your favorite terminal application to connect to it. Type `upgrade` and hit `Enter`
          3. The Chameleon will enter the `DFU firmware upgrade` mode
-         4. Further information from the original: [Here](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)
+         4. Further information from the original: **[Here](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)**
 
       - Tiny:
          1. With the Chameleon in the `OFF` state, press and hold the B button while inserting it into the USB port
          2. Use your favorite terminal application to connect to it. Type `upgrade` and hit `Enter`
          3. The Chameleon will enter the `DFU firmware upgrade` mode
-         4. Further information from the original: [Here](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)
+         4. Further information from the original: **[Here](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)**
 
       - Note:
          - More info from source: [Here](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)
@@ -109,9 +109,9 @@ Our Project is based on the open-source project [ChameleonMini RevG](/../../../.
          
       - Mini or Tiny:
          -  Guides:
-            - Icemans Guide (Windows): [Here](/../../../../iceman1001/ChameleonMini-rebooted/wiki/Getting-started#get-ready-to-flash-bootloader-mode) and [Here](/../../../../iceman1001/ChameleonMini-rebooted/wiki/Getting-started#get-ready-to-flash-bootloader-mode)
-            - Icemans Guide (Linux): [Here](/../../../../iceman1001/ChameleonMini-rebooted/wiki/Compiling-Linux-(Unix))
-            - Icemans Guide (Mac): [Here](/../../../../iceman1001/ChameleonMini-rebooted/wiki/Compiling-OSX)
+            - Icemans Guide (Windows): **[Here](/../../../../iceman1001/ChameleonMini-rebooted/wiki/Getting-started#get-ready-to-flash-bootloader-mode)** and **[Here](/../../../../iceman1001/ChameleonMini-rebooted/wiki/Getting-started#get-ready-to-flash-bootloader-mode)**
+            - Icemans Guide (Linux): **[Here](/../../../../iceman1001/ChameleonMini-rebooted/wiki/Compiling-Linux-(Unix))**
+            - Icemans Guide (Mac): **[Here](/../../../../iceman1001/ChameleonMini-rebooted/wiki/Compiling-OSX)**
     
       - Note:
          - Replace any relevant files or other parts with the resources in this repo
@@ -357,6 +357,7 @@ CLONE|Read the UID card number immediately after pressing, continue searching, a
 
    - [How to use the new Proxgrind Chameleon Tiny and Mini with the APP](https://www.youtube.com/watch?v=PiSc9WEbeCE)
    - [ChameleonTiny 8 Prox in1 & Sniff - Crack RFID ~ NFC ~ UID](https://www.youtube.com/watch?v=6yITj165tS4)
+   - [Chameleontiny pro -Standalone clone of a MIFARE 1K UID](https://www.youtube.com/watch?v=Ce5DlCHyeGY)
 
 ## D. Appendix
 
@@ -431,7 +432,7 @@ CLONE|Read the UID card number immediately after pressing, continue searching, a
 
 #### 1. From EMSEC:
 
-   - Repo: [Here](/../../../../emsec/ChameleonMini/wiki/Supported-Cards-and--Codecs)
+   - Repo: **[Here](/../../../../emsec/ChameleonMini/wiki/Supported-Cards-and--Codecs)**
 
 #### 2. Comparison Table of Encoding/Simulation Types
 
