@@ -231,10 +231,10 @@ Our Project is based on the open-source project [ChameleonMini RevG](/../../../.
 #### 1. UID Mode:
 
    1.  Enter UID mode:
-      - Click the button `UID Changeable (GEN1a)` in the APP or directly send the command `UIDMODE = 1` to turn it on, and `UIDMODE = 0` to turn it `OFF`
+      - Click the button `UID Changeable (GEN1a)` in the APP or directly send the command `UIDMODE = 1` to turn it `ON`, and `UIDMODE = 0` to turn it `OFF`
    2. After the UID mode is turned `ON`, the card simulated by Chameleon will become a GEN1a card
       - Commonly known as a UID card or Chinese magic card
-   3. Global card slot takes effect
+   3. The current card slot takes effect
 
 #### 2. SAK Mode:
 
@@ -335,8 +335,8 @@ CLONE|Read the UID card number immediately after pressing, continue searching, a
 
 #### 1. Turn on Bluetooth and Check the Battery:
 
-   1. When the power is `OFF`, press any button once to turn on the Bluetooth power, and at the same time, display the current power with a white LED
-   2. With the Bluetooth in the `ON` state, click any button to turn off the Bluetooth power, the power LED goes out, and the system sleeps
+   1. When the power is `OFF`, press any button once to turn `ON` the Bluetooth power, and at the same time, display the current power with a white LED
+   2. With the Bluetooth in the `ON` state, click any button to turn `OFF` the Bluetooth power, the power LED goes out, and the system sleeps
    3. Bluetooth will sleep automatically after no operation for 15 seconds
          - Press any button once to shut down immediately
 
