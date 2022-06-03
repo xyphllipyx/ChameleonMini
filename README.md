@@ -446,20 +446,18 @@ CLONE|Read the UID card number immediately after pressing, continue searching, a
 ### D2. Complete Instruction List
 ---
 
-#### 1. From EMSEC:
+#### 1. Links:
 
-   - Repo: **[Here](/../../../../emsec/ChameleonMini/master/Doc/Doxygen/html/_page__command_line.html)**
-   
-#### 2. This Repo:
-
-   - Instruction Sheet: **[Here](/Doc/DoxygenPages/CommandLine.txt)**
+  - Instruction Sheet: **[Here](/Doc/DoxygenPages/CommandLine.txt)**
+  - emsec: **[Here](/../../../../emsec/ChameleonMini/master/Doc/Doxygen/html/_page__command_line.html)**
+  - AndreasBujok: **[Here](https://github.com/AndreasBujok/ChameleonMini)**
 
 ### D3. Supported Cards, Encoding, & Simulation Types
 ---
 
-#### 1. From EMSEC:
+#### 1. Links:
 
-   - Repo: **[Here](/../../../../emsec/ChameleonMini/wiki/Supported-Cards-and--Codecs)**
+   - emsec: **[Here](/../../../../emsec/ChameleonMini/wiki/Supported-Cards-and--Codecs)**
 
 #### 2. Comparison Table of Encoding/Simulation Types
 
