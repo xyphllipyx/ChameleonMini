@@ -39,7 +39,7 @@ Our Project is based on the open-source project [ChameleonMini RevG](/../../../.
       - The DFU driver comes from ATMEL's official LIBUSB driver library 
       - You can download it yourself or from the repo: **[Here](/Drivers)**
    - DFU Programmer:
-      - Zip file from Iceman: **[Here](/../../../../iceman1001/ChameleonMini-rebooted/blob/master/Software/Flashing-Windows/dfu-programmer-win-0.7.2.zip)**  
+      - Zip file from SourceForge: **[Here](https://sourceforge.net/projects/dfu-programmer/files/dfu-programmer/0.7.2/dfu-programmer-win-0.7.2.zip/download)**  
 - Resellers:
    - Our Asia & Oceania Reseller: **[Here](https://sneaktechnology.com/)**
    - Our Europe Reseller: **[Here](https://lab401.com/)**
@@ -75,6 +75,10 @@ Our Project is based on the open-source project [ChameleonMini RevG](/../../../.
    2. Place the Chameleon firmware in the directory
    3. Unzip the DFU Programmer folder to the working directory
    4. If you are using the auto install on Windows, place [ChameleonFirmwareUpgrade.bat](/Firmware/Chameleon-Mini/ChameleonFirmwareUpgrade.bat) in the working directory as well
+
+   - Further information:
+      - **[Here](/Doc/Doxygen/html/_page__getting_started.html)
+      - **[emsec](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)**
 
 #### 3. Enter the Chameleon Direct Firmware Update (DFU) mode:
 
@@ -113,7 +117,8 @@ Our Project is based on the open-source project [ChameleonMini RevG](/../../../.
       3. Chameleon should now be in `DFU` mode
 
    - Further information:
-      - **[emsec](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)**
+         - **[Here](/Doc/Doxygen/html/_page__getting_started.html)
+         - **[emsec](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)**
 
    </details>
       
@@ -199,7 +204,7 @@ Our Project is based on the open-source project [ChameleonMini RevG](/../../../.
 
 #### 2. Use APP to Enable Detection Mode:
 
-   1. After connecting, click on a single card slot and select `DETECTION_1K` or `4K` in the `Card Slot` mode
+   1. After connecting, click on a single card slot and select `MF_DETECTION_1K` or `MF_DETECTION_4K` in the `Card Slot` mode
    2. This card slot will now have the `Detection` mode turned `ON`
    3. Write the original card number in the `UID Card Number` column
       - If you don't know the UID number, you can fill in it at will
@@ -366,8 +371,7 @@ CLONE|Read the UID card number immediately after pressing, continue searching, a
 #### 5. Demos
 
    - [ChameleonMini RevG In Lab Demo / Technical Explanation of Command Line Interface](https://www.dailymotion.com/video/x3lf45p)
-   - [Mifare Reader Attack: Sniffing, Cracking, Emulation, Open! LAB401 Academy - CHAMELEON MINI Tutorial](https://www.youtube.com/watch?v=pI7k5b0yhb0)
-   - [AndreasBujok/ChameleonMini](/../../../../AndreasBujok/ChameleonMini)
+   - [Mifare Reader Attack: Sniffing, Cracking, Emulation, Open! LAB401 Academy - CHAMELEON MINI Tutorial](https://www.youtube.com/watch?v=pI7k5b0yhb0
    - [How to use the new Proxgrind Chameleon Tiny and Mini with the APP](https://www.youtube.com/watch?v=PiSc9WEbeCE)
 
 ### C3. Chameleon Tiny
@@ -458,7 +462,7 @@ CLONE|Read the UID card number immediately after pressing, continue searching, a
 
   - Instruction Sheet: **[Here](/Doc/DoxygenPages/CommandLine.txt)**
   - emsec: **[Here](/../../../../emsec/ChameleonMini/master/Doc/Doxygen/html/_page__command_line.html)**
-  - AndreasBujok: **[Here](https://github.com/AndreasBujok/ChameleonMini)**
+  - [AndreasBujok/ChameleonMini](/../../../../AndreasBujok/ChameleonMini)
 
 ### D3. Supported Cards, Encoding, & Simulation Types
 ---
