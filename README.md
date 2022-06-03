@@ -308,6 +308,7 @@ TOGGLE_FIELD|Click once to turn off the antenna and click again to turn on the a
 STORE_LOG|Write the log data in the temporary cache to the memory, which can be saved even when power is off|
 CLEAR_LOG|Clear log data immediately after pressing|
 CLONE|Read the UID card number immediately after pressing, continue searching, and simulate immediately after reading the card|
+CLONE_MFU|Clones a Mifare Ultralight card that is in the range of the antenna to the current slot, which is then accordingly configured to emulate it|
 
 ## C. Hardware & Lights
 
