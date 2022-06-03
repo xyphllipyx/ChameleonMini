@@ -5,8 +5,17 @@ This is NOT the official repository of ChameleonMini, a freely programmable port
 Our Project is based on the open-source project [ChameleonMini RevG](/../../../../emsec/ChameleonMini) by Kasper & Oswald. They also have their own [Webshop](https://shop.kasper.it/).
 
 - Information:
-   - Most information can be found: **[Here](http://chameleontiny.com/)**
+   - Chameleon Tiny Site: **[Here](http://chameleontiny.com/)**
    - Chameleon BLE API: [**Here**](/../../../../RfidResearchGroup/ChameleonBLEAPI/blob/master/code.rar)
+   - Doxygen: **[Here](/../../../../doxygen/doxygen)**
+      - For viewing some of the documentation
+      - Binaries: **[Here](https://www.doxygen.nl/download.html)**
+      - Install: **[Here](https://www.doxygen.nl/manual/install.html)**
+   - Documentation (RfidResearchgroup): **[Here](https://github.com/RfidResearchGroup/ChameleonMini/tree/proxgrind/Doc/Doxygen/html)**
+      - Need to manually download and view
+      - Open [Doc/Doxyfile](Doc/Doxyfile) and then `Show HTML Output`
+   - Documentation (emsec): **[Here](https://rawgit.com/emsec/ChameleonMini/master/Doc/Doxygen/html)**
+      - Source: **[Here](/../../../../emsec/ChameleonMini/tree/master/Doc)**
 - Tools:
    - Phone APP:
       - Android: **[Chameleon](https://play.google.com/store/apps/details?id=com.proxgrind.chameleon)**
@@ -177,7 +186,6 @@ Our Project is based on the open-source project [ChameleonMini RevG](/../../../.
       - Optional GUI
       - Terminal APP
       - Phone APP
-      - Firmware
 
    2. Connect to the Chameleon Mini or Tiny using the APP
       - Connect via USB or Bluetooth
