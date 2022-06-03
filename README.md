@@ -29,6 +29,8 @@ Our Project is based on the open-source project [ChameleonMini RevG](/../../../.
    - DFU driver:
       - The DFU driver comes from ATMEL's official LIBUSB driver library 
       - You can download it yourself or from the repo: **[Here](/Drivers)**
+   - DFU Programmer:
+      - Zip file from Iceman: **[Here](/../../../../iceman1001/ChameleonMini-rebooted/blob/master/Software/Flashing-Windows/dfu-programmer-win-0.7.2.zip)**  
 - Resellers:
    - Our Asia & Oceania Reseller: **[Here](https://sneaktechnology.com/)**
    - Our Europe Reseller: **[Here](https://lab401.com/)**
@@ -55,9 +57,17 @@ Our Project is based on the open-source project [ChameleonMini RevG](/../../../.
    - Optional GUI (Windows Only)
    - Terminal APP
    - Firmware
-   - DFU driver
+   - DFU Driver
+   - DFU Programmer
 
-#### 2. Enter the Chameleon Direct Firmware Update (DFU) mode:
+#### 2. Create a Working Directory
+
+   1. Create a directory to work from
+   2. Place the Chameleon firmware in the directory
+   3. Unzip the DFU Programmer folder to the working directory
+   4. If you are using the auto install on Windows, place [ChameleonFirmwareUpgrade.bat](/Firmware/Chameleon-Mini/ChameleonFirmwareUpgrade.bat) in the working directory as well
+
+#### 3. Enter the Chameleon Direct Firmware Update (DFU) mode:
 
    <details><summary>Method 1: GUI (Windows Only)</summary>
 
@@ -98,23 +108,23 @@ Our Project is based on the open-source project [ChameleonMini RevG](/../../../.
 
    </details>
       
-#### 3. Install DFU Driver (Windows):
+#### 4. Install DFU Driver (Windows):
       
    - Mini or Tiny: 
       1. Download the drivers from the repo
-      2. Ensure you have connected your Chameleon and that it is in DFU mode
+      2. Ensure you have connected your Chameleon and that it is in `DFU` mode
       3. You should have an unknow USB device in device manager
       4. Update the device with the driver files from the repo
       5. You should now have an 'ATxmega*' device
    
-#### 4. Start Firmware Upgrade:
+#### 5. Start Firmware Upgrade:
 
    <details><summary>Method 1: Automatic (Windows Only)</summary>
 
    - Mini or Tiny:
-      1. After either compiling or obtaining the firmware HEX and EEP files, place them in the same diretory as [ChameleonFirmwareUpgrade.bat](/Firmware/Chameleon-Mini/ChameleonFirmwareUpgrade.bat)
-      2. Ensure Chameleon is in `DFU firmware upgrade` mode
-      3. Run the `ChameleonFirmwareUpgrade.bat` file to automatically start the firmware upgrade
+      1. If you haven't already, place [ChameleonFirmwareUpgrade.bat](/Firmware/Chameleon-Mini/ChameleonFirmwareUpgrade.bat) in your working directory with your firmware and other tools
+      2. Ensure Chameleon is in `DFU` mode
+      3. Run the `ChameleonFirmwareUpgrade.bat` file **AS ADMIN** to automatically start the firmware upgrade
       4. It usually takes 2 - 5 seconds
       5. After the progress bar is complete, the firmware upgrade is complete
 
