@@ -64,11 +64,12 @@ Our Project is based on the open-source project [ChameleonMini RevG](/../../../.
       <details><summary>Method 1: GUI (Windows Only)</summary>
 
       - Mini or Tiny:
-         1. With the Chameleon in the `OFF` position, connect it via USB cable to your computer
+         1. If it is a Chameleon Mini, ensure it is in the `OFF` position
+         2. Connect it via USB cable to your computer
             - On the Mini, it may be a good idea to remove the battery before putting the device into DFU
-         2. Send the`UPGRADE` command while it is connected
-         3. Device should now be ready
-         4. Further information from the original: **[Here](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)**
+         3. Send the`UPGRADE` command while it is connected
+         4. Device should now be ready
+         5. Further information from the original: **[Here](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)**
 
       </details>
 
@@ -82,13 +83,13 @@ Our Project is based on the open-source project [ChameleonMini RevG](/../../../.
          4. Further information from the original: **[Here](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)**
 
       - Tiny:
-         1. With the Chameleon in the `OFF` state, press and hold the B button while inserting it into the USB port
+         1. Press and hold the B button while inserting it into the USB port
          2. Use your favorite terminal application to connect to it. Type `upgrade` and hit `Enter`
          3. The Chameleon will enter the `DFU firmware upgrade` mode
          4. Further information from the original: **[Here](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)**
 
       - Note:
-         - More info from source: [Here](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)
+         - More info from source: **[Here](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)**
    
       </details>
       
