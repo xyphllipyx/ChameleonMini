@@ -97,7 +97,7 @@ Our Project is based on the open-source project [ChameleonMini RevG](/../../../.
       <details><summary>Method 1: Automatic (Windows Only)</summary>
 
       - Mini or Tiny:
-         1. After either compiling or obtaining the firmware HEX and EEP files, place them in the same diretory as [ChameleonFirmwareUpgrade.bat](/../../../../RfidResearchGroup/ChameleonMini/tree/proxgrind/Firmware/Chameleon-Mini)
+         1. After either compiling or obtaining the firmware HEX and EEP files, place them in the same diretory as [ChameleonFirmwareUpgrade.bat](/../Firmware/Chameleon-Mini)
          2. Ensure Chameleon is in `DFU firmware upgrade` mode
          3. Run the `ChameleonFirmwareUpgrade.bat` file to automatically start the firmware upgrade
          4. It usually takes 2 - 5 seconds
