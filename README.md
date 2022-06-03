@@ -20,7 +20,7 @@ Our Project is based on the open-source project [ChameleonMini RevG](/../../../.
       - Source: **[Here](/../../../../iceman1001/ChameleonMini-rebootedGUI)**
    - Chameleon Firmware:
       - Compile the latest firmware: **[Here](/Firmware)** 
-         - Or use the precompiled: **[Here](/../Firmware/Chameleon-Mini/Latest)**
+         - Or use the precompiled: **[Here](/Firmware/Chameleon-Mini/Latest)**
       - The Chameleon Mini REV.G version uses the same firmware for both the Mini with Bluetooth version and Tiny
       - The hardware design of the RF part is exactly the same
       - The hardware is also compatible with the official firmware of the [KAOS brothers](/../../../../emsec/ChameleonMini) 
@@ -28,7 +28,7 @@ Our Project is based on the open-source project [ChameleonMini RevG](/../../../.
       - Putty or similar APP
    - DFU driver:
       - The DFU driver comes from ATMEL's official LIBUSB driver library 
-      - You can download it yourself or from the repo: **[Here](/../../proxgrind/Drivers)**
+      - You can download it yourself or from the repo: **[Here](/Drivers)**
 - Resellers:
    - Our Asia & Oceania Reseller: **[Here](https://sneaktechnology.com/)**
    - Our Europe Reseller: **[Here](https://lab401.com/)**
@@ -97,7 +97,7 @@ Our Project is based on the open-source project [ChameleonMini RevG](/../../../.
       <details><summary>Method 1: Automatic (Windows Only)</summary>
 
       - Mini or Tiny:
-         1. After either compiling or obtaining the firmware HEX and EEP files, place them in the same diretory as [ChameleonFirmwareUpgrade.bat](/../Firmware/Chameleon-Mini)
+         1. After either compiling or obtaining the firmware HEX and EEP files, place them in the same diretory as [ChameleonFirmwareUpgrade.bat](/Firmware/Chameleon-Mini/ChameleonFirmwareUpgrade.bat)
          2. Ensure Chameleon is in `DFU firmware upgrade` mode
          3. Run the `ChameleonFirmwareUpgrade.bat` file to automatically start the firmware upgrade
          4. It usually takes 2 - 5 seconds
@@ -425,7 +425,7 @@ CLONE|Read the UID card number immediately after pressing, continue searching, a
    
 #### 2. This repo:
 
-   - Instruction sheet: **[Here](/../../../../RfidResearchGroup/ChameleonMini/blob/proxgrind/Doc/DoxygenPages/CommandLine.txt)**
+   - Instruction sheet: **[Here](/Doc/DoxygenPages/CommandLine.txt)**
 
 ### D3. Supported Cards, Encoding, & Simulation Types
 ---
