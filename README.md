@@ -371,7 +371,7 @@ CLONE|Read the UID card number immediately after pressing, continue searching, a
 #### 5. Demos
 
    - [ChameleonMini RevG In Lab Demo / Technical Explanation of Command Line Interface](https://www.dailymotion.com/video/x3lf45p)
-   - [Mifare Reader Attack: Sniffing, Cracking, Emulation, Open! LAB401 Academy - CHAMELEON MINI Tutorial](https://www.youtube.com/watch?v=pI7k5b0yhb0
+   - [Mifare Reader Attack: Sniffing, Cracking, Emulation, Open! LAB401 Academy - CHAMELEON MINI Tutorial](https://www.youtube.com/watch?v=pI7k5b0yhb0)
    - [How to use the new Proxgrind Chameleon Tiny and Mini with the APP](https://www.youtube.com/watch?v=PiSc9WEbeCE)
 
 ### C3. Chameleon Tiny
@@ -384,7 +384,7 @@ CLONE|Read the UID card number immediately after pressing, continue searching, a
    3. Chameleon will automatically sleep and shut down after no operation for 5 seconds
       - This can be adjusted in the APP
 
-#### 3. Bootloader/DFU Firmware Upgrade
+#### 2. Bootloader/DFU Firmware Upgrade
 
    - Section A1: **[Here](#2-write-the-firmware)**
 
