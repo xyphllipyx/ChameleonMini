@@ -243,15 +243,16 @@ Our Project is based on the open-source project [ChameleonMini RevG](/../../../.
 
 #### 1. UID Mode:
 
-   1.  Enter UID mode:
-      - Click the button `UID Changeable (GEN1a)` in the APP or directly send the command `UIDMODE = 1` to turn it `ON`, and `UIDMODE = 0` to turn it `OFF`
+   1.  Click the button `UID Changeable (GEN1a)` in the APP or directly send the command `UIDMODE = 1` to turn it `ON`
+      - `UIDMODE = 0` to turn it `OFF`
    2. After the UID mode is turned `ON`, the card simulated by Chameleon will become a GEN1a card
       - Commonly known as a UID card or Chinese magic card
    3. The current card slot takes effect
 
 #### 2. SAK Mode:
 
-   1. Click the `SAK Mode` button in the APP or directly send the command `SAKMODE = 1` to turn it `ON`, and `SAKMODE = 0` to turn it `OFF`
+   1. Click the `SAK Mode` button in the APP or directly send the command `SAKMODE = 1` to turn it `ON`
+      - `SAKMODE = 0` to turn it `OFF`
    2. After the `SAK Mode` is turned `ON`, the card will feedback the real SAK value when it is found
    3. The SAK value is determined by the 0 sector, 0 block, and the position is the position of the sixth byte immediately after the UID number
    4. If the `SAK Mode` is not turned on, the SAK is a fixed value of 08, and 0 blocks of data are ignored
