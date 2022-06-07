@@ -77,7 +77,7 @@ Our Project is based on the open-source project [ChameleonMini RevG](/../../../.
    4. If you are using the auto install on Windows, place [ChameleonFirmwareUpgrade.bat](/Firmware/Chameleon-Mini/ChameleonFirmwareUpgrade.bat) in the working directory as well
 
    - Further information:
-      - **[Here](/Doc/Doxygen/html/_page__getting_started.html)
+      - **[Here](/Doc/Doxygen/html/_page__getting_started.html)**
       - **[emsec](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)**
 
 #### 3. Enter the Chameleon Direct Firmware Update (DFU) mode:
@@ -117,19 +117,22 @@ Our Project is based on the open-source project [ChameleonMini RevG](/../../../.
       3. Chameleon should now be in `DFU` mode
 
    - Further information:
-         - **[Here](/Doc/Doxygen/html/_page__getting_started.html)
+         - **[Here](/Doc/Doxygen/html/_page__getting_started.html)**
          - **[emsec](/../../../../emsec/ChameleonMini/blob/master/Doc/DoxygenPages/GettingStarted.txt)**
 
    </details>
       
-#### 4. Install DFU Driver (Windows):
+#### 4. Install DFU Driver:
       
-   - Mini or Tiny: 
+   <details><summary>Windows</summary>
+
+   - Mini or Tiny:
       1. Download the drivers from the repo
       2. Ensure you have connected your Chameleon and that it is in `DFU` mode
       3. You should have an unknow USB device in device manager
       4. Update the device with the driver files from the repo
       5. You should now have an 'ATxmega*' device
+   </details>
    
 #### 5. Start Firmware Upgrade:
 
@@ -145,15 +148,14 @@ Our Project is based on the open-source project [ChameleonMini RevG](/../../../.
    </details>
 
    <details><summary>Method 2: Manual</summary>
-         
-   - Mini or Tiny:
-      -  Guides:
-         - Icemans Guide (Windows): **[Here](/../../../../iceman1001/ChameleonMini-rebooted/wiki/Getting-started#get-ready-to-flash-bootloader-mode)** and **[Here](/../../../../iceman1001/ChameleonMini-rebooted/wiki/Getting-started#get-ready-to-flash-bootloader-mode)**
-         - Icemans Guide (Linux): **[Here](/../../../../iceman1001/ChameleonMini-rebooted/wiki/Compiling-Linux-(Unix))**
-         - Icemans Guide (Mac): **[Here](/../../../../iceman1001/ChameleonMini-rebooted/wiki/Compiling-OSX)**
-    
-         - Note:
-            - Replace any relevant files or other parts with the resources in this repo
+   
+- Mini or Tiny:
+   - Guides:
+      - Icemans Guide (Windows): **[Here](/../../../../iceman1001/ChameleonMini-rebooted/wiki/Getting-started#get-ready-to-flash-bootloader-mode)** and **[Here](/../../../../iceman1001/ChameleonMini-rebooted/wiki/Getting-started#get-ready-to-flash-bootloader-mode)**
+      - Icemans Guide (Linux): **[Here](/../../../../iceman1001/ChameleonMini-rebooted/wiki/Compiling-Linux-(Unix))**
+      - Icemans Guide (Mac): **[Here](/../../../../iceman1001/ChameleonMini-rebooted/wiki/Compiling-OSX)**
+   - Note:
+      - Replace any relevant files or other parts with the resources in this repo
 
       </details>
 
@@ -243,7 +245,7 @@ Our Project is based on the open-source project [ChameleonMini RevG](/../../../.
 
 #### 1. UID Mode:
 
-   1.  Click the button `UID Changeable (GEN1a)` in the APP or directly send the command `UIDMODE = 1` to turn it `ON`
+   1. Click the button `UID Changeable (GEN1a)` in the APP or directly send the command `UIDMODE = 1` to turn it `ON`
       - `UIDMODE = 0` to turn it `OFF`
    2. After the UID mode is turned `ON`, the card simulated by Chameleon will become a GEN1a card
       - Commonly known as a UID card or Chinese magic card
@@ -364,7 +366,7 @@ CLONE_MFU|Clones a Mifare Ultralight card that is in the range of the antenna to
   
 #### 3. Bootloader/DFU Firmware Upgrade Methods:
 
-   - Section A1: **[Here](#2-write-the-firmware)**
+   - Section A1: **[Here](#a1-upgrade-chameleon-avr-firmware)**
 
 #### 4. Schematics for Chameleon Mini:
 
