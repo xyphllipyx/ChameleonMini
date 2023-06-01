@@ -1,5 +1,5 @@
 /*
- * NTAG215.c
+ * NTAG21x.c
  *
  *  Created on: 20.02.2019
  *  Author: Giovanni Cammisa (gcammisa)
@@ -12,7 +12,7 @@
 #include "ISO14443-3A.h"
 #include "../Codec/ISO14443-2A.h"
 #include "../Memory.h"
-#include "NTAG215.h"
+#include "NTAG21x.h"
 
 // DEFINE ATQA and SAK
 #define ATQA_VALUE                  0x0044
@@ -55,7 +55,9 @@
 #define STATIC_LOCKBYTE_0_ADDRESS   0x0A
 #define STATIC_LOCKBYTE_1_ADDRESS   0x0B
 // CONFIG stuff
-#define CONFIG_AREA_START_ADDRESS   NTAG215_PAGE_SIZE * 0x83
+#define NTAG213_CONFIG_AREA_START_ADDRESS   NTAG21x_PAGE_SIZE * 0x29
+#define NTAG215_CONFIG_AREA_START_ADDRESS   NTAG21x_PAGE_SIZE * 0x83
+#define NTAG216_CONFIG_AREA_START_ADDRESS   NTAG21x_PAGE_SIZE * 0xE3
 #define CONFIG_AREA_SIZE            8
 // CONFIG offsets, relative to config start address
 #define CONF_AUTH0_OFFSET           0x03
@@ -72,11 +74,17 @@
 
 #define VERSION_INFO_LENGTH         8 //8 bytes info lenght + crc
 
-#define BYTES_PER_READ              NTAG215_PAGE_SIZE * 4
+#define BYTES_PER_READ              NTAG21x_PAGE_SIZE * 4
 
 // SIGNATURE Lenght
 #define SIGNATURE_LENGTH            32
 
+
+static enum {
+    TYPE_NTAG213,
+    TYPE_NTAG215,
+    TYPE_NTAG216
+} Ntag_Type;
 
 static enum {
     STATE_HALT,
@@ -86,6 +94,7 @@ static enum {
     STATE_ACTIVE
 } State;
 
+static uint32_t ConfigStartAddr = NTAG213_CONFIG_AREA_START_ADDRESS;
 static bool FromHalt = false;
 static uint8_t PageCount;
 static bool ArmedForCompatWrite;
@@ -96,27 +105,69 @@ static bool ReadAccessProtected;
 static uint8_t Access;
 
 
-void NTAG215AppInit(void)
+void NTAG21xAppInit(void)
 {
-
     State = STATE_IDLE;
     FromHalt = false;
     ArmedForCompatWrite = false;
     Authenticated = false;
-    PageCount = NTAG215_PAGES;
+    //PageCount = NTAG215_PAGES;
+
+    switch (Ntag_Type)
+	{
+    case TYPE_NTAG213:
+        PageCount = NTAG213_PAGES;
+        break;
+    case TYPE_NTAG215:
+        PageCount = NTAG215_PAGES;
+        break;
+    case TYPE_NTAG216:
+        PageCount = NTAG216_PAGES;
+        break;
+    }
 
     /* Fetch some of the configuration into RAM */
-    MemoryReadBlock(&FirstAuthenticatedPage, CONFIG_AREA_START_ADDRESS + CONF_AUTH0_OFFSET, 1);
-    MemoryReadBlock(&Access, CONFIG_AREA_START_ADDRESS + CONF_ACCESS_OFFSET, 1);
+    MemoryReadBlock(&FirstAuthenticatedPage, ConfigStartAddr + CONF_AUTH0_OFFSET, 1);
+    MemoryReadBlock(&Access, ConfigStartAddr  + CONF_ACCESS_OFFSET, 1);
     ReadAccessProtected = !!(Access & CONF_ACCESS_PROT);
 }
 
-void NTAG215AppReset(void)
+#if defined(CONFIG_NTAG213_SUPPORT)
+void NTAG213AppInit(void)
+{
+    Ntag_Type = TYPE_NTAG213;
+    PageCount = NTAG213_PAGES;
+    ConfigStartAddr = NTAG213_CONFIG_AREA_START_ADDRESS;
+    NTAG21xAppInit();
+}
+#endif // CONIFG_NTAG213_SUPPORT
+
+#ifdef CONFIG_NTAG215_SUPPORT
+void NTAG215AppInit(void)
+{
+    Ntag_Type = TYPE_NTAG215;
+    PageCount = NTAG215_PAGES;
+    ConfigStartAddr = NTAG215_CONFIG_AREA_START_ADDRESS;
+    NTAG21xAppInit();
+}
+#endif // CONFIG_NTAG215_SUPPORT
+
+#ifdef CONFIG_NTAG216_SUPPORT
+void NTAG216AppInit(void)
+{
+    Ntag_Type = TYPE_NTAG216;
+    PageCount = NTAG216_PAGES;
+    ConfigStartAddr = NTAG216_CONFIG_AREA_START_ADDRESS;
+    NTAG21xAppInit();
+}
+#endif // CONFIG_NTAG216_SUPPORT
+
+void NTAG21xAppReset(void)
 {
     State = STATE_IDLE;
 }
 
-void NTAG215AppTask(void)
+void NTAG21xAppTask(void)
 {
 
 }
@@ -136,7 +187,7 @@ static bool VerifyAuthentication(uint8_t PageAddress)
 static uint8_t AppWritePage(uint8_t PageAddress, uint8_t* const Buffer)
 {
     if (!ActiveConfiguration.ReadOnly) {
-        MemoryWriteBlock(Buffer, PageAddress * NTAG215_PAGE_SIZE, NTAG215_PAGE_SIZE);
+        MemoryWriteBlock(Buffer, PageAddress * NTAG21x_PAGE_SIZE, NTAG21x_PAGE_SIZE);
     } else {
         /* If the chameleon is in read only mode, it silently
         * ignores any attempt to write data. */
@@ -167,7 +218,17 @@ static uint16_t AppProcess(uint8_t* const Buffer, uint16_t ByteCount)
             Buffer[3] = 0x02;
             Buffer[4] = 0x01;
             Buffer[5] = 0x00;
-            Buffer[6] = 0x11;
+            switch (Ntag_Type) {
+            case TYPE_NTAG213:
+                Buffer[6] = 0x0F;
+                break;
+            case TYPE_NTAG215:
+                Buffer[6] = 0x11;
+                break;
+            case TYPE_NTAG216:
+                Buffer[6] = 0x13;
+                break;
+            }
             Buffer[7] = 0x03;
             ISO14443AAppendCRCA(Buffer, VERSION_INFO_LENGTH);
             return (VERSION_INFO_LENGTH + ISO14443A_CRCA_SIZE) * 8;
@@ -195,7 +256,7 @@ static uint16_t AppProcess(uint8_t* const Buffer, uint16_t ByteCount)
             }
             /* Read out, emulating the wraparound */
             for (Offset = 0; Offset < BYTES_PER_READ; Offset += 4) {
-                MemoryReadBlock(&Buffer[Offset], PageAddress * NTAG215_PAGE_SIZE, NTAG215_PAGE_SIZE);
+                MemoryReadBlock(&Buffer[Offset], PageAddress * NTAG21x_PAGE_SIZE, NTAG21x_PAGE_SIZE);
                 PageAddress++;
                 if (PageAddress == PageLimit) { // if arrived ad the last page, start reading from page 0
                     PageAddress = 0;
@@ -222,8 +283,8 @@ static uint16_t AppProcess(uint8_t* const Buffer, uint16_t ByteCount)
                     }
                 }
 
-                ByteCount = (EndPageAddress - StartPageAddress + 1) * NTAG215_PAGE_SIZE;
-                MemoryReadBlock(Buffer, StartPageAddress * NTAG215_PAGE_SIZE, ByteCount);
+                ByteCount = (EndPageAddress - StartPageAddress + 1) * NTAG21x_PAGE_SIZE;
+                MemoryReadBlock(Buffer, StartPageAddress * NTAG21x_PAGE_SIZE, ByteCount);
                 ISO14443AAppendCRCA(Buffer, ByteCount);
                 return (ByteCount + ISO14443A_CRCA_SIZE) * 8;
         }
@@ -235,7 +296,7 @@ static uint16_t AppProcess(uint8_t* const Buffer, uint16_t ByteCount)
                 /* TODO: IMPLEMENT COUNTER AUTHLIM */
 
                 /* Read and compare the password */
-                MemoryReadBlock(Password, CONFIG_AREA_START_ADDRESS + CONF_PASSWORD_OFFSET, 4);
+                MemoryReadBlock(Password, ConfigStartAddr  + CONF_PASSWORD_OFFSET, 4);
                 if (Password[0] != Buffer[1] || Password[1] != Buffer[2] || Password[2] != Buffer[3] || Password[3] != Buffer[4]) {
                     Buffer[0] = NAK_NOT_AUTHED;
                     return NAK_FRAME_SIZE;
@@ -244,7 +305,7 @@ static uint16_t AppProcess(uint8_t* const Buffer, uint16_t ByteCount)
 		        //RESET AUTHLIM COUNTER, CURRENTLY NOT IMPLEMENTED 
                 Authenticated = 1;
                 /* Send the PACK value back */
-                MemoryReadBlock(Buffer, CONFIG_AREA_START_ADDRESS + CONF_PACK_OFFSET, 2);
+                MemoryReadBlock(Buffer, ConfigStartAddr  + CONF_PACK_OFFSET, 2);
                 ISO14443AAppendCRCA(Buffer, 2);
                 return (2 + ISO14443A_CRCA_SIZE) * 8;
         }
@@ -324,7 +385,7 @@ static uint16_t AppProcess(uint8_t* const Buffer, uint16_t ByteCount)
 
 
 // FINITE STATE MACHINE STUFF, SHOULD BE THE VERY SIMILAR TO Mifare Ultralight
-uint16_t NTAG215AppProcess(uint8_t* Buffer, uint16_t BitCount)
+uint16_t NTAG21xAppProcess(uint8_t* Buffer, uint16_t BitCount)
 {
     uint8_t Cmd = Buffer[0];
     uint16_t ByteCount;
@@ -418,14 +479,14 @@ uint16_t NTAG215AppProcess(uint8_t* Buffer, uint16_t BitCount)
 }
 
 // HELPER FUNCTIONS
-void NTAG215GetUid(ConfigurationUidType Uid)
+void NTAG21xGetUid(ConfigurationUidType Uid)
 {
     /* Read UID from memory */
     MemoryReadBlock(&Uid[0], UID_CL1_ADDRESS, UID_CL1_SIZE);
     MemoryReadBlock(&Uid[UID_CL1_SIZE], UID_CL2_ADDRESS, UID_CL2_SIZE);
 }
 
-void NTAG215SetUid(ConfigurationUidType Uid)
+void NTAG21xSetUid(ConfigurationUidType Uid)
 {
     /* Calculate check bytes and write everything into memory */
     uint8_t BCC1 = ISO14443A_UID0_CT ^ Uid[0] ^ Uid[1] ^ Uid[2];
