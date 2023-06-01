@@ -34,7 +34,7 @@ jobs:
         name: "ChameleonBuild"
         path: "FirmwareBuild/**"
     - name: Create a Pre-release
-      uses: actions/create-release@v1.1.4
+      uses: DonghaoFeng-Moloco/create-release@main
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
