@@ -51,8 +51,14 @@ static const MapEntryType PROGMEM ConfigurationMap[] = {
 #ifdef CONFIG_ISO14443A_READER_SUPPORT
     { .Id = CONFIG_ISO14443A_READER,	.Text = "ISO14443A_READER" },
 #endif
+#ifdef CONFIG_NTAG213_SUPPORT
+    { .Id = CONFIG_NTAG213,	.Text = "NTAG213" },
+#endif
 #ifdef CONFIG_NTAG215_SUPPORT
     { .Id = CONFIG_NTAG215,	.Text = "NTAG215" },
+#endif
+#ifdef CONFIG_NTAG216_SUPPORT
+    { .Id = CONFIG_NTAG216,	.Text = "NTAG216" },
 #endif
 #ifdef CONFIG_VICINITY_SUPPORT
     { .Id = CONFIG_VICINITY,	.Text = "VICINITY" },
@@ -485,20 +491,56 @@ static const PROGMEM ConfigurationType ConfigurationTable[] = {
         .TagFamily = TAG_FAMILY_ISO15693
     },
 #endif
+#ifdef CONFIG_NTAG213_SUPPORT
+    [CONFIG_NTAG213] = {
+        .CodecInitFunc = ISO14443ACodecInit,
+        .CodecDeInitFunc = ISO14443ACodecDeInit,
+        .CodecTaskFunc = ISO14443ACodecTask,
+        .ApplicationInitFunc = NTAG213AppInit,
+        .ApplicationResetFunc = NTAG21xAppReset,
+        .ApplicationTaskFunc = NTAG21xAppTask,
+        .ApplicationTickFunc = ApplicationTickDummy,
+        .ApplicationProcessFunc = NTAG21xAppProcess,
+        .ApplicationGetUidFunc = NTAG21xGetUid,
+        .ApplicationSetUidFunc = NTAG21xSetUid,
+        .UidSize = NTAG21x_UID_SIZE,
+        .MemorySize = NTAG213_MEM_SIZE,
+        .ReadOnly = false,
+        .TagFamily = TAG_FAMILY_ISO14443A
+    },
+#endif
 #ifdef CONFIG_NTAG215_SUPPORT
     [CONFIG_NTAG215] = {
         .CodecInitFunc = ISO14443ACodecInit,
         .CodecDeInitFunc = ISO14443ACodecDeInit,
         .CodecTaskFunc = ISO14443ACodecTask,
         .ApplicationInitFunc = NTAG215AppInit,
-        .ApplicationResetFunc = NTAG215AppReset,
-        .ApplicationTaskFunc = NTAG215AppTask,
+        .ApplicationResetFunc = NTAG21xAppReset,
+        .ApplicationTaskFunc = NTAG21xAppTask,
         .ApplicationTickFunc = ApplicationTickDummy,
-        .ApplicationProcessFunc = NTAG215AppProcess,
-        .ApplicationGetUidFunc = NTAG215GetUid,
-        .ApplicationSetUidFunc = NTAG215SetUid,
-        .UidSize = NTAG215_UID_SIZE,
+        .ApplicationProcessFunc = NTAG21xAppProcess,
+        .ApplicationGetUidFunc = NTAG21xGetUid,
+        .ApplicationSetUidFunc = NTAG21xSetUid,
+        .UidSize = NTAG21x_UID_SIZE,
         .MemorySize = NTAG215_MEM_SIZE,
+        .ReadOnly = false,
+        .TagFamily = TAG_FAMILY_ISO14443A
+    },
+#endif
+#ifdef CONFIG_NTAG216_SUPPORT
+    [CONFIG_NTAG216] = {
+        .CodecInitFunc = ISO14443ACodecInit,
+        .CodecDeInitFunc = ISO14443ACodecDeInit,
+        .CodecTaskFunc = ISO14443ACodecTask,
+        .ApplicationInitFunc = NTAG216AppInit,
+        .ApplicationResetFunc = NTAG21xAppReset,
+        .ApplicationTaskFunc = NTAG21xAppTask,
+        .ApplicationTickFunc = ApplicationTickDummy,
+        .ApplicationProcessFunc = NTAG21xAppProcess,
+        .ApplicationGetUidFunc = NTAG21xGetUid,
+        .ApplicationSetUidFunc = NTAG21xSetUid,
+        .UidSize = NTAG21x_UID_SIZE,
+        .MemorySize = NTAG216_MEM_SIZE,
         .ReadOnly = false,
         .TagFamily = TAG_FAMILY_ISO14443A
     },

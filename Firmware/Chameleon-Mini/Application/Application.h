@@ -21,7 +21,7 @@
 #include "TITagitstandard.h"
 #include "Sniff14443A.h"
 #include "EM4233.h"
-#include "NTAG215.h"
+#include "NTAG21x.h"
 #include "Sniff15693.h"
 #include "IClass.h"
 
