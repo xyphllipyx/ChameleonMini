@@ -19,6 +19,8 @@ jobs:
       run: sudo apt-get update -yqq
     - name: Install AVR GCC Suite
       run: sudo apt-get install -yqq make autoconf build-essential ca-certificates pkg-config libreadline-dev gcc-avr binutils-avr gdb-avr avr-libc avrdude
+    - name: Install GHR
+      run: go install github.com/tcnksm/ghr@latest
     - name: Make Firmware
       run: make
       working-directory: Firmware/Chameleon-Mini/
