@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Make a firmware build folder
       run: mkdir FirmwareBuild
     - name: Print Kernel Ver
@@ -30,7 +30,7 @@ jobs:
       run: mv Chameleon*.eep $GITHUB_WORKSPACE/FirmwareBuild/
       working-directory: Firmware/Chameleon-Mini/
     - name: Upload Build Artifact to Action
-      uses: actions/upload-artifact@v2.1.4
+      uses: actions/upload-artifact@v3
       with:
         name: "ChameleonBuild"
         path: "FirmwareBuild/**"
