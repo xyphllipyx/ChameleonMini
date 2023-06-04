@@ -515,8 +515,8 @@ MifareClassic1K/4K 4B/7B|ISO14443A 106 kbit/s|Support|Support|Not Supported|No c
 ## E. External Contributions
 ---
 
-- Iceman
-- Philippe Teuwen
+- @iceman1001
+- Philippe Teuwen (@doegox)
 - Willok
 - DXL
 - ProxGrind aka Olaf
